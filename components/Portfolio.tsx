@@ -90,7 +90,7 @@ const POSTS = [
 
 // ── IRONMAN / GYM ──────────────────────────────────────────────
 // Replace # with your actual Google Sheets or OneDrive share link
-const GYM_TRACKER_URL = '#'
+const GYM_TRACKER_URL = 'https://docs.google.com/spreadsheets/d/1n55fCkjTbq4fRDdX-duE-72flZUlar5hGinjMlM436Y/edit?usp=sharing'
 
 // ADD completed races like: { name: 'Ironman 70.3 Muskoka', date: 'Aug 2026', status: 'completed', time: '5:34:12' }
 const RACES: { name: string; date: string; status: 'upcoming' | 'completed'; time?: string }[] = [
