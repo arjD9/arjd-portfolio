@@ -19,3 +19,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
+export const metadata = {
+  title: "Arjun Portfolio",
+  icons: {
+    icon: "/favicon.ico",
+  },
+};

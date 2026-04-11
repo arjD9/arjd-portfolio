@@ -115,12 +115,12 @@ type Section = 'home' | 'about' | 'writing' | 'projects'
 function WaveCanvas({ dark }: { dark: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const mouse = useRef({ x: 0.5, y: 0.5, tx: 0.5, ty: 0.5 })
-  const raf = useRef<number>(0)
-  const t = useRef(0)
+  const raf   = useRef<number>(0)
+  const t     = useRef(0)
 
   useEffect(() => {
     const canvas = canvasRef.current!
-    const ctx = canvas.getContext('2d')!
+    const ctx    = canvas.getContext('2d')!
 
     const resize = () => {
       canvas.width  = window.innerWidth
@@ -136,38 +136,82 @@ function WaveCanvas({ dark }: { dark: boolean }) {
     window.addEventListener('mousemove', onMove)
 
     const draw = () => {
-      const m = mouse.current
-      m.x += (m.tx - m.x) * 0.04
-      m.y += (m.ty - m.y) * 0.04
+      const m  = mouse.current
+      m.x += (m.tx - m.x) * 0.035
+      m.y += (m.ty - m.y) * 0.035
 
-      const W = canvas.width, H = canvas.height
+      const W  = canvas.width
+      const H  = canvas.height
       ctx.clearRect(0, 0, W, H)
 
-      const lineColor = dark ? 'rgba(200,198,188,' : 'rgba(100,98,90,'
+      // Wave layers: 3 groups — background (faint, slow), mid (medium),
+      //              foreground (strong, fast, mouse-reactive)
+      const groups = [
+        // [count, baseAmp, ampScale, freqBase, freqScale, spdBase, spdScale, alphaBase, alphaScale, lineW, mouseInfluence]
+        { count: 7,  amp: [28, 18],  freq: [0.0028, 0.0015], spd: [0.004, 0.002], alpha: [0.06,  0.05],  lw: 0.8, mi: 20 },
+        { count: 8,  amp: [48, 28],  freq: [0.0042, 0.0022], spd: [0.007, 0.003], alpha: [0.10,  0.07],  lw: 1.0, mi: 45 },
+        { count: 6,  amp: [70, 35],  freq: [0.0058, 0.003],  spd: [0.011, 0.005], alpha: [0.14,  0.09],  lw: 1.3, mi: 80 },
+      ]
 
-      for (let wi = 0; wi < 9; wi++) {
-        const prog  = wi / 8
-        const amp   = 14 + prog * 32 + m.y * 28
-        const freq  = 0.004 + prog * 0.003
-        const spd   = 0.006 + prog * 0.004
-        const yBase = H * (0.04 + prog * 0.92)
-        const bump  = Math.max(0, 1 - Math.abs(prog - m.y) * 2.2) * 38
-        const alpha = 0.05 + prog * 0.065
+      // Light mode: dark warm lines. Dark mode: bright cool lines.
+      const baseR = dark ? 210 : 80
+      const baseG = dark ? 206 : 76
+      const baseB = dark ? 195 : 68
 
-        ctx.beginPath()
-        for (let x = 0; x <= W; x += 3) {
-          const d = Math.abs(x / W - m.x)
-          const b = Math.max(0, 1 - d * 4.5) * bump
-          const y = yBase
-            + Math.sin(x * freq + t.current * spd + wi * 0.85) * amp
-            + Math.sin(x * freq * 1.7 + t.current * spd * 0.6 + wi) * amp * 0.35
-            + b
-          x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y)
+      let globalWi = 0
+      for (const g of groups) {
+        for (let wi = 0; wi < g.count; wi++) {
+          const prog  = wi / Math.max(g.count - 1, 1)
+          const yBase = H * (0.03 + prog * 0.94)
+
+          // Amplitude: base + mouse-y influence
+          const amp   = g.amp[0] + prog * g.amp[1] + m.y * 35
+
+          // Two overlapping frequencies for complexity
+          const freq1 = g.freq[0] + prog * g.freq[1]
+          const freq2 = freq1 * 1.618                           // golden ratio harmonic
+          const freq3 = freq1 * 0.47                            // slow sub-harmonic
+
+          const spd1  = g.spd[0]  + prog * g.spd[1]
+          const spd2  = spd1 * 0.7
+          const spd3  = spd1 * 1.4
+
+          // Alpha: stronger in foreground group, with subtle prog gradient
+          const alpha = g.alpha[0] + prog * g.alpha[1]
+
+          // Mouse-x ripple: a Gaussian bump that travels with cursor
+          const mxInfluence = g.mi * m.y                        // scales with cursor height
+
+          ctx.beginPath()
+          for (let x = 0; x <= W; x += 2) {
+            const nx   = x / W
+            const dist = Math.abs(nx - m.x)
+
+            // Gaussian ripple centred on mouse x
+            const bump = Math.exp(-dist * dist * 14) * mxInfluence
+
+            // Secondary ripple — wider, softer
+            const bump2 = Math.exp(-dist * dist * 3) * mxInfluence * 0.3
+
+            const phase = globalWi * 0.72
+
+            const y = yBase
+              + Math.sin(x * freq1 + t.current * spd1 + phase) * amp
+              + Math.sin(x * freq2 + t.current * spd2 + phase * 1.3) * amp * 0.42
+              + Math.sin(x * freq3 + t.current * spd3 + phase * 0.6) * amp * 0.25
+              + bump + bump2
+
+            x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y)
+          }
+
+          ctx.strokeStyle = `rgba(${baseR},${baseG},${baseB},${alpha})`
+          ctx.lineWidth   = g.lw
+          ctx.stroke()
+
+          globalWi++
         }
-        ctx.strokeStyle = lineColor + alpha + ')'
-        ctx.lineWidth = 1
-        ctx.stroke()
       }
+
       t.current++
       raf.current = requestAnimationFrame(draw)
     }
@@ -184,7 +228,7 @@ function WaveCanvas({ dark }: { dark: boolean }) {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 w-full h-full pointer-events-none z-0"
-      style={{ opacity: 0.55 }}
+      style={{ opacity: 0.85 }}
     />
   )
 }
@@ -666,13 +710,30 @@ function Footer({ dark }: { dark: boolean }) {
 /* ─── ROOT ──────────────────────────────────────────────────── */
 export default function Portfolio() {
   const [section, setSection] = useState<Section>('home')
-  const [dark,    setDark]    = useState(false)
+
+  // Init dark mode: honour explicit user choice stored in localStorage,
+  // otherwise fall back to system preference. Never auto-dark on page load.
+  const [dark, setDark] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false
+    const stored = localStorage.getItem('theme')
+    if (stored === 'dark')  return true
+    if (stored === 'light') return false
+    // No stored choice — use system preference
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+  })
+
+  // Sync <html> class on mount so Tailwind dark: variants work
+  useEffect(() => {
+    if (dark) document.documentElement.classList.add('dark')
+    else      document.documentElement.classList.remove('dark')
+  }, [dark])
 
   const toggleDark = useCallback(() => {
     setDark(d => {
       const next = !d
+      localStorage.setItem('theme', next ? 'dark' : 'light')
       if (next) document.documentElement.classList.add('dark')
-      else       document.documentElement.classList.remove('dark')
+      else      document.documentElement.classList.remove('dark')
       return next
     })
   }, [])
