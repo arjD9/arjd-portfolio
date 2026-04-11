@@ -533,7 +533,6 @@ function TrainingSection({ dark }: { dark: boolean }) {
         <div className="flex-1">
           <p className={`text-sm font-body ${dark ? 'text-sand-200' : 'text-sand-800'}`}>Training Tracker</p>
           <p className={`text-[11px] tracking-[0.06em] font-body ${dark ? 'text-sand-500' : 'text-sand-400'}`}>
-            {GYM_TRACKER_URL === '#' ? 'Add your sheet URL in Portfolio.tsx' : 'View full log →'}
           </p>
         </div>
         <span className={`text-sm transition-transform duration-200 group-hover:translate-x-1 ${dark ? 'text-sand-600' : 'text-sand-400'}`}>→</span>
