@@ -1,3 +1,4 @@
+import React from 'react'
 import type { Metadata } from 'next'
 import './globals.css'
 
@@ -10,6 +11,9 @@ export const metadata: Metadata = {
     url: 'https://arjundindigal.github.io',
     siteName: 'Arjun Dindigal',
   },
+  icons: {
+    icon: "/favicon.ico",
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -19,9 +23,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
-export const metadata = {
-  title: "Arjun Portfolio",
-  icons: {
-    icon: "/favicon.ico",
-  },
-};
