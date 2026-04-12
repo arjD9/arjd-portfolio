@@ -772,21 +772,12 @@ function TrainingSection({ dark }: { dark: boolean }) {
           initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.22 }}
           className={`rounded-xl border overflow-hidden ${dark ? 'bg-sand-900 border-sand-800' : 'bg-white border-sand-200'}`}>
           <div className={`aspect-video w-full flex flex-col items-center justify-center gap-3 ${dark ? 'bg-sand-800' : 'bg-sand-100'}`}>
-            {/*
-              TO ADD YOUR GOLF VIDEO — two options:
-
-              Option A — YouTube embed (recommended):
-              Replace this div with:
-              <iframe
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-                className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-
-              Option B — local video file (put in public/videos/):
-              <video src="/videos/golf-swing.mp4" controls className="w-full h-full object-cover" />
-            */}
+            {<iframe
+  src="https://www.youtube.com/embed/iriOazO32T0"
+  className="w-full h-full"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+/>}
             <span className={`text-3xl ${dark ? 'text-sand-700' : 'text-sand-300'}`}>▷</span>
             <p className={`text-[11px] tracking-[0.1em] uppercase font-body ${dark ? 'text-sand-700' : 'text-sand-300'}`}>Add video — see comment in Portfolio.tsx</p>
           </div>
