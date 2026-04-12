@@ -59,10 +59,11 @@ const PRINTS = [
 
 const SKILLS = ['SolidWorks','Siemens NX','Fusion 360','FEA','GD&T','DFMA','C++','Python','MATLAB','ROS','RTOS','STM32','Arduino','Java','FastAPI','Git','CNC','FDM/SLA','Composites']
 
+// ── POSTS — fill in title and excerpt when you're ready to write
 const POSTS = [
-  { date: 'Coming soon', cat: 'Engineering', title: 'What I learned building test rigs at a rocketry team',  excerpt: "There's a gap between what a static fire looks like in CAD and what it looks like at 3 AM in a field." },
-  { date: 'Coming soon', cat: 'Design',      title: 'Why DFMA should be taught in first year',               excerpt: "Every time a machinist asks 'what did they mean?' is a failure of the drawing." },
-  { date: 'Coming soon', cat: 'Process',     title: 'PID from scratch: what the textbook skips',             excerpt: 'Implementing PID for the VEX bot taught me more in 3 weeks than a semester of controls.' },
+  { date: 'Coming soon', cat: 'Engineering', title: '', excerpt: '' },
+  { date: 'Coming soon', cat: 'Design',      title: '', excerpt: '' },
+  { date: 'Coming soon', cat: 'Process',     title: '', excerpt: '' },
 ]
 
 // ── TRAINING — paste your Google Sheets / OneDrive share link below
@@ -421,8 +422,9 @@ function HomeSection({ dark }: { dark: boolean }) {
       </motion.h1>
 
       <motion.p {...s(2)} className={`text-sm leading-relaxed max-w-md mb-10 font-body ${dark ? 'text-sand-400' : 'text-sand-500'}`}>
-        {/* BIO: Replace this sentence with your own words. */}
-        Mechatronics student at Waterloo with hands-on experience in mechanical design, software, and systems that bridge both worlds. I care about making things that actually work.
+        I'm a first-year Mechatronics student at Waterloo who genuinely likes building things —
+        whether that's a fixture on a shop floor, a robot that actually works, or code that doesn't break.
+        I've been lucky to get my hands dirty early and I'm just getting started.
       </motion.p>
 
       <motion.div {...s(3)} className="flex flex-wrap gap-2 mb-16">
@@ -495,8 +497,10 @@ function AboutSection({ dark }: { dark: boolean }) {
         Engineer at heart,<br /><span className="italic">builder by habit.</span>
       </h1>
       <p className={`text-sm leading-relaxed max-w-md mb-10 font-body ${dark ? 'text-sand-400' : 'text-sand-500'}`}>
-        {/* ABOUT BIO: Replace this. */}
-        I'm Arjun — a Mechatronics student at Waterloo who loves the full loop from concept to physical thing. Most at home when design, fabrication, and code all talk to each other.
+        I grew up taking things apart to see how they worked and somehow that never stopped.
+        Now I'm studying Mechatronics at Waterloo, working co-ops where I actually get to build stuff,
+        and spending the rest of my time on a golf course, in a gym, or thinking about triathlons
+        I probably shouldn't sign up for yet.
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
@@ -549,20 +553,33 @@ function WritingSection({ dark }: { dark: boolean }) {
   return (
     <Sec>
       <Eyebrow dark={dark}>Writing</Eyebrow>
-      <h1 className={`font-display text-4xl md:text-5xl leading-[1.15] mb-10 ${dark ? 'text-sand-50' : 'text-sand-900'}`}>
+      <h1 className={`font-display text-4xl md:text-5xl leading-[1.15] mb-4 ${dark ? 'text-sand-50' : 'text-sand-900'}`}>
         Thinking <span className="italic">in public.</span>
       </h1>
+
+      {/* Coming soon notice */}
+      <div className={`flex items-center gap-3 mb-10 px-4 py-3 rounded-xl border ${dark ? 'border-sand-800 bg-sand-900/60' : 'border-sand-200 bg-sand-50'}`}>
+        <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${dark ? 'bg-sand-600' : 'bg-sand-300'}`} />
+        <p className={`text-xs font-body tracking-wide ${dark ? 'text-sand-500' : 'text-sand-400'}`}>
+          Posts coming soon — check back later.
+        </p>
+      </div>
+
       <div className={`border-t ${dark ? 'border-sand-800' : 'border-sand-200'}`}>
         {POSTS.map((p, i) => (
-          <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} data-hover
-            className={`border-b py-7 group cursor-pointer transition-all duration-200 rounded-sm ${dark ? 'border-sand-800 hover:bg-sand-900/60' : 'border-sand-200 hover:bg-sand-50'}`}>
-            <div className="flex items-center gap-3 mb-3 flex-wrap">
+          <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}
+            className={`border-b py-7 ${dark ? 'border-sand-800' : 'border-sand-200'}`}>
+            <div className="flex items-center gap-3 mb-4 flex-wrap">
               <span className={`text-[10px] tracking-[0.1em] uppercase font-body ${dark ? 'text-sand-600' : 'text-sand-400'}`}>{p.date}</span>
               <span className={`text-[9px] tracking-[0.08em] uppercase px-2.5 py-0.5 rounded-full border font-body ${dark ? 'border-sand-700 text-sand-600' : 'border-sand-200 text-sand-400'}`}>{p.cat}</span>
             </div>
-            <h2 className={`font-display text-xl md:text-2xl mb-2 group-hover:translate-x-1 transition-transform duration-200 ${dark ? 'text-sand-100' : 'text-sand-900'}`}>{p.title}</h2>
-            <p className={`text-sm leading-relaxed font-body ${dark ? 'text-sand-500' : 'text-sand-400'}`}>{p.excerpt}</p>
-            <p className={`text-[11px] tracking-[0.1em] uppercase mt-3 font-body opacity-0 group-hover:opacity-100 transition-opacity duration-200 ${dark ? 'text-sand-500' : 'text-sand-400'}`}>Read →</p>
+            {/* Empty title placeholder */}
+            <div className={`h-6 w-64 rounded-md mb-3 ${dark ? 'bg-sand-800' : 'bg-sand-100'}`} />
+            {/* Empty excerpt placeholder */}
+            <div className="space-y-2">
+              <div className={`h-3 w-full rounded ${dark ? 'bg-sand-900' : 'bg-sand-50'}`} />
+              <div className={`h-3 w-3/4 rounded ${dark ? 'bg-sand-900' : 'bg-sand-50'}`} />
+            </div>
           </motion.div>
         ))}
       </div>
@@ -703,11 +720,12 @@ function TrainingSection({ dark }: { dark: boolean }) {
     <Sec>
       <Eyebrow dark={dark}>Training</Eyebrow>
       <h1 className={`font-display text-4xl md:text-5xl leading-[1.15] mb-4 ${dark ? 'text-sand-50' : 'text-sand-900'}`}>
-        Gym &amp; <span className="italic">Ironman</span><br />Training.
+        Gym, Golf &amp; <span className="italic">Ironman.</span>
       </h1>
       <p className={`text-sm leading-relaxed max-w-md mb-10 font-body ${dark ? 'text-sand-400' : 'text-sand-500'}`}>
-        {/* TRAINING BIO: Replace this — your goal race, motivation, how long you've been at it. */}
-        Chasing an Ironman finish line. I track every swim, bike, run, and lift — logging volume, intensity, and progress. Engineering meets endurance.
+        Outside of engineering I'm either at the gym, on a golf course, or convincing myself
+        that training for a triathlon is a reasonable use of time. Turns out the same obsessiveness
+        that goes into a CAD model works pretty well for sport too.
       </p>
 
       {/* Tracker link */}
@@ -725,9 +743,59 @@ function TrainingSection({ dark }: { dark: boolean }) {
         <span className={`text-sm flex-shrink-0 transition-transform duration-200 group-hover:translate-x-1 ${dark ? 'text-sand-600' : 'text-sand-400'}`}>→</span>
       </motion.a>
 
-      {/* Disciplines */}
-      <div className="mb-12">
-        <p className={`text-[11px] tracking-[0.16em] uppercase mb-4 font-body ${dark ? 'text-sand-600' : 'text-sand-400'}`}>Disciplines</p>
+      {/* ── GOLF ─────────────────────────────────────── */}
+      <div className="mb-14">
+        <p className={`text-[11px] tracking-[0.16em] uppercase mb-5 font-body ${dark ? 'text-sand-600' : 'text-sand-400'}`}>Golf</p>
+
+        {/* Handicap stat */}
+        <div className="flex items-start gap-4 mb-6 flex-wrap">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
+            className={`rounded-xl px-6 py-5 border flex-shrink-0 ${dark ? 'bg-sand-900 border-sand-800' : 'bg-white border-sand-200'}`}>
+            <p className={`text-[10px] tracking-[0.12em] uppercase mb-1 font-body ${dark ? 'text-sand-600' : 'text-sand-400'}`}>Handicap</p>
+            <p className={`font-display text-4xl ${dark ? 'text-sand-50' : 'text-sand-900'}`}>8.6</p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.16 }}
+            className={`rounded-xl px-6 py-5 border flex-1 min-w-[180px] ${dark ? 'bg-sand-900 border-sand-800' : 'bg-white border-sand-200'}`}>
+            <p className={`text-[10px] tracking-[0.12em] uppercase mb-2 font-body ${dark ? 'text-sand-600' : 'text-sand-400'}`}>About my game</p>
+            <p className={`text-xs leading-relaxed font-body ${dark ? 'text-sand-400' : 'text-sand-500'}`}>
+              {/* GOLF BIO: Add a line or two about how long you've played, your home course, what you're working on. */}
+              Been playing for a few years now and working the handicap down.
+              Love the problem-solving side of the game as much as the sport itself.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Video slot */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.22 }}
+          className={`rounded-xl border overflow-hidden ${dark ? 'bg-sand-900 border-sand-800' : 'bg-white border-sand-200'}`}>
+          <div className={`aspect-video w-full flex flex-col items-center justify-center gap-3 ${dark ? 'bg-sand-800' : 'bg-sand-100'}`}>
+            {/*
+              TO ADD YOUR GOLF VIDEO — two options:
+
+              Option A — YouTube embed (recommended):
+              Replace this div with:
+              <iframe
+                src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+
+              Option B — local video file (put in public/videos/):
+              <video src="/videos/golf-swing.mp4" controls className="w-full h-full object-cover" />
+            */}
+            <span className={`text-3xl ${dark ? 'text-sand-700' : 'text-sand-300'}`}>▷</span>
+            <p className={`text-[11px] tracking-[0.1em] uppercase font-body ${dark ? 'text-sand-700' : 'text-sand-300'}`}>Add video — see comment in Portfolio.tsx</p>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* ── IRONMAN / ENDURANCE ──────────────────────── */}
+      <div className="mb-14">
+        <p className={`text-[11px] tracking-[0.16em] uppercase mb-5 font-body ${dark ? 'text-sand-600' : 'text-sand-400'}`}>Ironman Training</p>
         <div className="grid grid-cols-2 gap-3">
           {disciplines.map((d, i) => (
             <motion.div key={d.label} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.18 + i * 0.07 }}
@@ -740,7 +808,7 @@ function TrainingSection({ dark }: { dark: boolean }) {
         </div>
       </div>
 
-      {/* Races */}
+      {/* ── RACES ────────────────────────────────────── */}
       <div>
         <p className={`text-[11px] tracking-[0.16em] uppercase mb-4 font-body ${dark ? 'text-sand-600' : 'text-sand-400'}`}>Races</p>
         <div className={`border-t ${dark ? 'border-sand-800' : 'border-sand-200'}`}>
