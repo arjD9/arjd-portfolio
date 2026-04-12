@@ -425,7 +425,7 @@ function HomeSection({ dark }: { dark: boolean }) {
         training for an Iron Man 70.3, building consistency in the gym, 
         and golfing regardless of the season.
 
-        Currently Exploring Fall 2026 oppurtunities
+        
       </motion.p>
 
       <motion.div {...s(3)} className="flex flex-wrap gap-2 mb-16">
@@ -495,7 +495,7 @@ function AboutSection({ dark }: { dark: boolean }) {
     <Sec>
       <Eyebrow dark={dark}>About</Eyebrow>
       <h1 className={`font-display text-4xl md:text-5xl leading-[1.15] mb-5 ${dark ? 'text-sand-50' : 'text-sand-900'}`}>
-        What I cannot create I do not understand,<br /><span className="italic">-Richard Feynman </span>
+        What I cannot create I do not understand.<br /><span className="italic">-Richard Feynman </span>
       </h1>
       <p className={`text-sm leading-relaxed max-w-md mb-10 font-body ${dark ? 'text-sand-400' : 'text-sand-500'}`}>
         I am a Mechatronics Engineering student focused on R&D in robotics systems, with interests spanning mechanical design, electromechanics, perception, and software.
