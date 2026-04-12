@@ -706,7 +706,7 @@ function ConnectSection({dark}:{dark:boolean}) {
         </Card>
       </motion.div>
       <p className={`text-xs mt-4 font-body ${dark?'text-slate-700':'text-stone-300'}`}>
-        To activate the form: sign up free at formspree.io, create a form, and replace YOUR_FORM_ID in Portfolio.tsx. Until then it opens your mail app.
+        {/* To activate the form: sign up free at formspree.io, create a form, and replace YOUR_FORM_ID in Portfolio.tsx. Until then it opens your mail app */}.
       </p>
     </Sec>
   )
