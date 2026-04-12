@@ -410,19 +410,22 @@ function HomeSection({ dark }: { dark: boolean }) {
           <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse-slow flex-shrink-0" />
           <span className={`text-xs tracking-[0.07em] font-body ${dark ? 'text-sand-500' : 'text-sand-400'}`}>Mechatronics Engineering · University of Waterloo</span>
         </div>
-        <Eyebrow dark={dark}>Engineer &amp; Builder</Eyebrow>
+        <Eyebrow dark={dark}>Engineer &amp; Athlete</Eyebrow>
       </motion.div>
 
       <motion.h1 {...s(1)} className={`font-display text-4xl sm:text-5xl md:text-6xl leading-[1.1] mb-5 ${dark ? 'text-sand-50' : 'text-sand-900'}`}>
         Arjun Dindigal.<br />
-        <span className="italic text-sand-400">Building things</span><br />
-        that move, compute,<br />and last.
+        <span className="italic text-sand-400">Always Building</span><br />
+        Exploring Fall 2026 <br />opportunities.
       </motion.h1>
 
       <motion.p {...s(2)} className={`text-sm leading-relaxed max-w-md mb-10 font-body ${dark ? 'text-sand-400' : 'text-sand-500'}`}>
-        I'm a first-year Mechatronics student at Waterloo who genuinely likes building things —
-        whether that's a fixture on a shop floor, a robot that actually works, or code that doesn't break.
-        I've been lucky to get my hands dirty early and I'm just getting started.
+        Focused on robotics, mechanical systems, perception, and learning about how 
+        intelligent systems interact with the physical world. Outside of work, I’m 
+        training for an Iron Man 70.3, building consistency in the gym, 
+        and golfing regardless of the season.
+
+        Currently Exploring Fall 2026 oppurtunities
       </motion.p>
 
       <motion.div {...s(3)} className="flex flex-wrap gap-2 mb-16">
@@ -492,13 +495,16 @@ function AboutSection({ dark }: { dark: boolean }) {
     <Sec>
       <Eyebrow dark={dark}>About</Eyebrow>
       <h1 className={`font-display text-4xl md:text-5xl leading-[1.15] mb-5 ${dark ? 'text-sand-50' : 'text-sand-900'}`}>
-        Engineer at heart,<br /><span className="italic">builder by habit.</span>
+        What I cannot create I do not understand,<br /><span className="italic">-Richard Feynman </span>
       </h1>
       <p className={`text-sm leading-relaxed max-w-md mb-10 font-body ${dark ? 'text-sand-400' : 'text-sand-500'}`}>
-        I grew up taking things apart to see how they worked and somehow that never stopped.
-        Now I'm studying Mechatronics at Waterloo, working co-ops where I actually get to build stuff,
-        and spending the rest of my time on a golf course, in a gym, or thinking about triathlons
-        I probably shouldn't sign up for yet.
+        I am a Mechatronics Engineering student focused on R&D in robotics systems, with interests spanning mechanical design, electromechanics, perception, and software.
+
+        I’ve built my foundation through self-directed learning across programming, hardware systems, and product design, driven by a curiosity for how complex systems are engineered end-to-end. I’m especially interested in how robotics moves from concept to reality—how mechanical structures, sensing, and computation are co-designed to produce reliable, intelligent behavior.
+
+        My approach is rooted in experimentation and iteration: breaking problems down from first principles, building working prototypes, and refining through testing and failure. I enjoy working across the full stack of robotics systems, where design decisions in one layer directly shape performance in another.
+
+        At a high level, I’m interested in R&D environments where ideas are rapidly translated into tangible systems, and where engineering is treated as an ongoing process of discovery and refinement.
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
@@ -710,9 +716,9 @@ function ProjectsSection({ dark }: { dark: boolean }) {
 function TrainingSection({ dark }: { dark: boolean }) {
   const disciplines = [
     { label: 'Swim', icon: '◌', desc: 'Open water & pool sessions' },
-    { label: 'Bike', icon: '◎', desc: 'Long road rides & intervals' },
+    { label: 'Bike', icon: '◎', desc: 'Long road rides & mountain biking' },
     { label: 'Run', icon: '◉', desc: 'Base building & brick runs' },
-    { label: 'Strength', icon: '◆', desc: 'Gym lifts & power work' },
+    { label: 'Strength', icon: '◆', desc: '5 times a week, currently on Arnold x Upper lower' },
   ]
   return (
     <Sec>
@@ -722,8 +728,9 @@ function TrainingSection({ dark }: { dark: boolean }) {
       </h1>
       <p className={`text-sm leading-relaxed max-w-md mb-10 font-body ${dark ? 'text-sand-400' : 'text-sand-500'}`}>
         Outside of engineering I'm either at the gym, on a golf course, or convincing myself
-        that training for a triathlon is a reasonable use of time. Turns out the same obsessiveness
-        that goes into a CAD model works pretty well for sport too.
+        that training for races is a reasonable use of time. I am obssesed with constantly improving
+        my physical fitness and training for races. It gives me a heightned sense of fullfillment
+        and keeps my headspace level in the midst of school, applying to jobs, and advancing my career.
       </p>
 
       {/* Tracker link */}
@@ -760,65 +767,65 @@ function TrainingSection({ dark }: { dark: boolean }) {
             <p className={`text-xs leading-relaxed font-body ${dark ? 'text-sand-400' : 'text-sand-500'}`}>
               {/* GOLF BIO: Add a line or two about how long you've played, your home course, what you're working on. */}
               Been playing for 2 years consistently and fell in love quickly.
-              Great way to take the load off and compete with buddies; one of my favourite hobbiees
+              Great way to take the load off and compete with buddies. Easily one of my favourite hobbies.
             </p>
           </motion.div>
         </div>
       </div>
 
-        {/* Video slot */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.22 }}
-          className={`rounded-xl border overflow-hidden ${dark ? 'bg-sand-900 border-sand-800' : 'bg-white border-sand-200'
-            }`}
-        >
-          <div className="aspect-video w-full">
-            <iframe
-              src="https://www.youtube.com/embed/iriOazO32T0"
-              className="w-full h-full"
-              style={{ border: 0 }}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-        </motion.div>
-
-        {/* ── IRONMAN / ENDURANCE ──────────────────────── */}
-        <div className="mb-14">
-          <p className={`text-[11px] tracking-[0.16em] uppercase mb-5 font-body ${dark ? 'text-sand-600' : 'text-sand-400'}`}>Ironman Training</p>
-          <div className="grid grid-cols-2 gap-3">
-            {disciplines.map((d, i) => (
-              <motion.div key={d.label} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.18 + i * 0.07 }}
-                className={`rounded-xl p-4 md:p-5 border ${dark ? 'bg-sand-900 border-sand-800' : 'bg-white border-sand-200'}`}>
-                <span className={`text-lg mb-3 block ${dark ? 'text-sand-500' : 'text-sand-300'}`}>{d.icon}</span>
-                <p className={`text-sm font-body mb-1 ${dark ? 'text-sand-200' : 'text-sand-800'}`}>{d.label}</p>
-                <p className={`text-xs font-body ${dark ? 'text-sand-500' : 'text-sand-400'}`}>{d.desc}</p>
-              </motion.div>
-            ))}
-          </div>
+      {/* Video slot */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.22 }}
+        className={`rounded-xl border overflow-hidden ${dark ? 'bg-sand-900 border-sand-800' : 'bg-white border-sand-200'
+          }`}
+      >
+        <div className="aspect-video w-full">
+          <iframe
+            src="https://www.youtube.com/embed/iriOazO32T0"
+            className="w-full h-full"
+            style={{ border: 0 }}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
         </div>
+      </motion.div>
 
-        {/* ── RACES ────────────────────────────────────── */}
-        <div>
-          <p className={`text-[11px] tracking-[0.16em] uppercase mb-4 font-body ${dark ? 'text-sand-600' : 'text-sand-400'}`}>Races</p>
-          <div className={`border-t ${dark ? 'border-sand-800' : 'border-sand-200'}`}>
-            {RACES.map((r, i) => (
-              <motion.div key={i} initial={{ opacity: 0, x: -6 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.28 + i * 0.08 }}
-                className={`flex items-center justify-between py-4 border-b gap-3 ${dark ? 'border-sand-800' : 'border-sand-200'}`}>
-                <div className="min-w-0">
-                  <p className={`text-sm font-body truncate ${dark ? 'text-sand-200' : 'text-sand-800'}`}>{r.name}</p>
-                  <p className={`text-xs mt-0.5 font-body ${dark ? 'text-sand-600' : 'text-sand-400'}`}>{r.date}</p>
-                </div>
-                <span className={`text-[10px] tracking-[0.1em] uppercase px-2.5 py-1 rounded-full border flex-shrink-0 ${r.status === 'completed' ? (dark ? 'border-green-800 text-green-500' : 'border-green-300 text-green-600') : (dark ? 'border-sand-700 text-sand-500' : 'border-sand-200 text-sand-400')}`}>
-                  {r.status === 'completed' ? (r.time ?? 'Finished') : 'Upcoming'}
-                </span>
-              </motion.div>
-            ))}
-          </div> {/* border-t container */}
+      {/* ── IRONMAN / ENDURANCE ──────────────────────── */}
+      <div className="mb-14">
+        <p className={`text-[11px] tracking-[0.16em] uppercase mb-5 font-body ${dark ? 'text-sand-600' : 'text-sand-400'}`}>Ironman Training</p>
+        <div className="grid grid-cols-2 gap-3">
+          {disciplines.map((d, i) => (
+            <motion.div key={d.label} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.18 + i * 0.07 }}
+              className={`rounded-xl p-4 md:p-5 border ${dark ? 'bg-sand-900 border-sand-800' : 'bg-white border-sand-200'}`}>
+              <span className={`text-lg mb-3 block ${dark ? 'text-sand-500' : 'text-sand-300'}`}>{d.icon}</span>
+              <p className={`text-sm font-body mb-1 ${dark ? 'text-sand-200' : 'text-sand-800'}`}>{d.label}</p>
+              <p className={`text-xs font-body ${dark ? 'text-sand-500' : 'text-sand-400'}`}>{d.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
 
-        </div> {/*CLOSE RACES SECTION */}
+      {/* ── RACES ────────────────────────────────────── */}
+      <div>
+        <p className={`text-[11px] tracking-[0.16em] uppercase mb-4 font-body ${dark ? 'text-sand-600' : 'text-sand-400'}`}>Races</p>
+        <div className={`border-t ${dark ? 'border-sand-800' : 'border-sand-200'}`}>
+          {RACES.map((r, i) => (
+            <motion.div key={i} initial={{ opacity: 0, x: -6 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.28 + i * 0.08 }}
+              className={`flex items-center justify-between py-4 border-b gap-3 ${dark ? 'border-sand-800' : 'border-sand-200'}`}>
+              <div className="min-w-0">
+                <p className={`text-sm font-body truncate ${dark ? 'text-sand-200' : 'text-sand-800'}`}>{r.name}</p>
+                <p className={`text-xs mt-0.5 font-body ${dark ? 'text-sand-600' : 'text-sand-400'}`}>{r.date}</p>
+              </div>
+              <span className={`text-[10px] tracking-[0.1em] uppercase px-2.5 py-1 rounded-full border flex-shrink-0 ${r.status === 'completed' ? (dark ? 'border-green-800 text-green-500' : 'border-green-300 text-green-600') : (dark ? 'border-sand-700 text-sand-500' : 'border-sand-200 text-sand-400')}`}>
+                {r.status === 'completed' ? (r.time ?? 'Finished') : 'Upcoming'}
+              </span>
+            </motion.div>
+          ))}
+        </div> {/* border-t container */}
+
+      </div> {/*CLOSE RACES SECTION */}
 
     </Sec>
   )
