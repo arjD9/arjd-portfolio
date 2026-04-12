@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
+
 /* ─── DATA ──────────────────────────────────────────────────── */
 const EXPERIENCES = [
   {
@@ -763,6 +764,7 @@ function TrainingSection({ dark }: { dark: boolean }) {
             </p>
           </motion.div>
         </div>
+      </div>
 
         {/* Video slot */}
         <motion.div
