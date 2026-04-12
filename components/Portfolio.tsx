@@ -761,8 +761,8 @@ function TrainingSection({ dark }: { dark: boolean }) {
             <p className={`text-[10px] tracking-[0.12em] uppercase mb-2 font-body ${dark ? 'text-sand-600' : 'text-sand-400'}`}>About my game</p>
             <p className={`text-xs leading-relaxed font-body ${dark ? 'text-sand-400' : 'text-sand-500'}`}>
               {/* GOLF BIO: Add a line or two about how long you've played, your home course, what you're working on. */}
-              Been playing for a few years now and working the handicap down.
-              Love the problem-solving side of the game as much as the sport itself.
+              Been playing for 2 years consistently and fell in love quickly.
+              Great way to take the load off and compete with buddies; one of my favourite hobbiees
             </p>
           </motion.div>
         </div>
