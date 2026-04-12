@@ -768,21 +768,24 @@ function TrainingSection({ dark }: { dark: boolean }) {
         </div>
 
         {/* Video slot */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.22 }}
-          className={`rounded-xl border overflow-hidden ${dark ? 'bg-sand-900 border-sand-800' : 'bg-white border-sand-200'}`}>
-          <div className={`aspect-video w-full flex flex-col items-center justify-center gap-3 ${dark ? 'bg-sand-800' : 'bg-sand-100'}`}>
-            {<iframe
-  src="https://www.youtube.com/embed/iriOazO32T0"
-  className="w-full h-full"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowFullScreen
-/>}
-            <span className={`text-3xl ${dark ? 'text-sand-700' : 'text-sand-300'}`}>▷</span>
-            <p className={`text-[11px] tracking-[0.1em] uppercase font-body ${dark ? 'text-sand-700' : 'text-sand-300'}`}>Add video — see comment in Portfolio.tsx</p>
-          </div>
-        </motion.div>
-      </div>
+<motion.div
+  initial={{ opacity: 0, y: 10 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.22 }}
+  className={`rounded-xl border overflow-hidden ${
+    dark ? 'bg-sand-900 border-sand-800' : 'bg-white border-sand-200'
+  }`}
+>
+  <div className="aspect-video w-full">
+    <iframe
+      src="https://www.youtube.com/embed/iriOazO32T0"
+      className="w-full h-full"
+      style={{ border: 0 }}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+    />
+  </div>
+</motion.div>
 
       {/* ── IRONMAN / ENDURANCE ──────────────────────── */}
       <div className="mb-14">
