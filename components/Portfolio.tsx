@@ -67,7 +67,7 @@ const POSTS = [
 ]
 
 // ── TRAINING — paste your Google Sheets / OneDrive share link below
-const GYM_TRACKER_URL = '#'
+const GYM_TRACKER_URL = 'https://docs.google.com/spreadsheets/d/1n55fCkjTbq4fRDdX-duE-72flZUlar5hGinjMlM436Y/edit?usp=sharing'
 
 const RACES: { name: string; date: string; status: 'upcoming' | 'completed'; time?: string }[] = [
   { name: 'Ironman 70.3 — goal race', date: 'TBD', status: 'upcoming' },
