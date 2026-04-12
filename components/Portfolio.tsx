@@ -836,7 +836,7 @@ function Footer({ dark }: { dark: boolean }) {
   return (
     <div className={`border-t ${dark ? 'border-sand-800' : 'border-sand-200'}`}>
       <div className="max-w-[760px] mx-auto px-5 md:px-8 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <span className={`text-[11px] tracking-[0.1em] uppercase font-body ${dark ? 'text-sand-600' : 'text-sand-400'}`}>Arjun Dindigal · 2025</span>
+        <span className={`text-[11px] tracking-[0.1em] uppercase font-body ${dark ? 'text-sand-600' : 'text-sand-400'}`}>Arjun Dindigal · 2026</span>
         <div className="flex gap-5 flex-wrap">
           {[
             { label: 'LinkedIn', href: 'https://www.linkedin.com/in/arjundindigal' },
