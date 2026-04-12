@@ -1,18 +1,19 @@
-import React from 'react'
 import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Arjun Dindigal',
   description: 'Mechatronics Engineer — design, fabrication, and code.',
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+  },
   openGraph: {
     title: 'Arjun Dindigal',
     description: 'Mechatronics Engineering student at Waterloo. Building things that move, compute, and last.',
     url: 'https://arjundindigal.github.io',
     siteName: 'Arjun Dindigal',
-  },
-  icons: {
-    icon: "/favicon.ico",
   },
 }
 

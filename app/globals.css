@@ -97,30 +97,8 @@ body {
 /* Magnetic button base */
 .magnetic { display: inline-block; transition: transform 0.3s cubic-bezier(.23,1,.32,1); }
 
-/* Noise grain overlay */
-.grain::before {
-  content: '';
-  position: fixed;
-  inset: -50%;
-  width: 200%; height: 200%;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.025;
-  pointer-events: none;
-  z-index: 1;
-  animation: grain-move 8s steps(10) infinite;
-}
-@keyframes grain-move {
-  0%,100% { transform: translate(0,0); }
-  10%  { transform: translate(-2%, -3%); }
-  20%  { transform: translate(3%, 2%); }
-  30%  { transform: translate(-1%, 4%); }
-  40%  { transform: translate(4%, -1%); }
-  50%  { transform: translate(-3%, 1%); }
-  60%  { transform: translate(2%, 3%); }
-  70%  { transform: translate(-4%, -2%); }
-  80%  { transform: translate(1%, -4%); }
-  90%  { transform: translate(3%, 3%); }
-}
+/* grain class kept for compatibility but does nothing — grain removed */
+.grain::before { display: none; }
 
 /* Accordion drawer */
 .drawer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.38s ease; }
