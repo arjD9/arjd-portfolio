@@ -76,11 +76,7 @@ const WRITING_POST = {
   date: 'April 2026',
   cat: 'Reflection',
   // ADD YOUR WRITING HERE — plain paragraphs, separated by \n\n
-  content: `Add your writing here. Each paragraph separated by a blank line will render as its own paragraph.
-
-You can write as much or as little as you want. This is your space to reflect on your first term at Waterloo — what surprised you, what you learned, what you're looking forward to.
-
-Come back to Claude and say "update my 1A term post to say..." and I'll update this content for you.`,
+  content: `Reflecting on my 1A term`,
 }
 
 const GYM_TRACKER_URL = 'https://docs.google.com/spreadsheets/d/1n55fCkjTbq4fRDdX-duE-72flZUlar5hGinjMlM436Y/view?usp=sharing'
