@@ -676,7 +676,7 @@ function TrainingSection({dark}:{dark:boolean}) {
     {label:'Swim',     icon:'◌',desc:'Open water & pool sessions'},
     {label:'Bike',     icon:'◎',desc:'Long road rides & mountain biking'},
     {label:'Run',      icon:'◉',desc:'Base building & brick runs'},
-    {label:'Strength', icon:'◆',desc:'5x a week — Arnold split / Upper Lower'},
+    {label:'Strength', icon:'◆',desc:'Full Body twice a week'},
   ]
   const externalLinks = [
     {label:'Training Tracker',  sub:'Full workout log',      href:GYM_TRACKER_URL, icon:'⊞'},
