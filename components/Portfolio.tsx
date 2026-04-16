@@ -80,7 +80,7 @@ const WRITING_POST = {
 
 You can write as much or as little as you want. This is your space to reflect on your first term at Waterloo — what surprised you, what you learned, what you're looking forward to.
 
-Come back to Claude and say "update my 1A term post to say..." and I'll update this content for you.`,
+Reflecting on my 1A Term`,
 }
 
 const GYM_TRACKER_URL = 'https://docs.google.com/spreadsheets/d/1n55fCkjTbq4fRDdX-duE-72flZUlar5hGinjMlM436Y/view?usp=sharing'
