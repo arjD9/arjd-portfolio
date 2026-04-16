@@ -76,7 +76,11 @@ const WRITING_POST = {
   date: 'April 2026',
   cat: 'Reflection',
   // ADD YOUR WRITING HERE — plain paragraphs, separated by \n\n
-  content: `Reflecting on my 1A term`,
+  content: `Add your writing here. Each paragraph separated by a blank line will render as its own paragraph.
+
+You can write as much or as little as you want. This is your space to reflect on your first term at Waterloo — what surprised you, what you learned, what you're looking forward to.
+
+Come back to Claude and say "update my 1A term post to say..." and I'll update this content for you.`,
 }
 
 const GYM_TRACKER_URL = 'https://docs.google.com/spreadsheets/d/1n55fCkjTbq4fRDdX-duE-72flZUlar5hGinjMlM436Y/view?usp=sharing'
@@ -90,10 +94,9 @@ const RACES: { name:string; date:string; status:'upcoming'|'completed'; time?:st
 type Section = 'home'|'about'|'writing'|'projects'|'training'|'connect'
 
 /* ─── WAVE CANVAS ───────────────────────────────────────────── */
-// Multi-layer ocean swells covering the FULL screen, dramatic mouse response
 function WaveCanvas({ dark }: { dark:boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const mouse     = useRef({ x:0.5, y:0.5, tx:0.5, ty:0.5, vx:0, vy:0 })
+  const mouse     = useRef({ x:0.5, y:0.5, tx:0.5, ty:0.5 })
   const raf       = useRef<number>(0)
   const t         = useRef(0)
   const darkRef   = useRef(dark)
@@ -105,108 +108,55 @@ function WaveCanvas({ dark }: { dark:boolean }) {
     const resize = ()=>{ canvas.width=window.innerWidth; canvas.height=window.innerHeight }
     resize()
     window.addEventListener('resize', resize)
-
-    let lastX=0.5, lastY=0.5
-    const onMove = (e:MouseEvent)=>{
-      mouse.current.tx = e.clientX/canvas.width
-      mouse.current.ty = e.clientY/canvas.height
-      mouse.current.vx = mouse.current.tx - lastX
-      mouse.current.vy = mouse.current.ty - lastY
-      lastX = mouse.current.tx; lastY = mouse.current.ty
-    }
-    const onTouch = (e:TouchEvent)=>{
-      if(e.touches[0]){
-        mouse.current.tx=e.touches[0].clientX/canvas.width
-        mouse.current.ty=e.touches[0].clientY/canvas.height
-      }
-    }
+    const onMove  = (e:MouseEvent)=>{ mouse.current.tx=e.clientX/canvas.width; mouse.current.ty=e.clientY/canvas.height }
+    const onTouch = (e:TouchEvent)=>{ if(e.touches[0]){ mouse.current.tx=e.touches[0].clientX/canvas.width; mouse.current.ty=e.touches[0].clientY/canvas.height } }
     window.addEventListener('mousemove', onMove)
     window.addEventListener('touchmove', onTouch, {passive:true})
 
-    // 9 wave layers — from top to bottom, full screen coverage
-    // Each has slightly different freq/speed/phase so they never look the same
-    const WAVES = [
-      { yFrac:0.10, amp:45,  freq:0.0009, spd:0.0018, phase:0.0,  thick:0.6 },
-      { yFrac:0.22, amp:60,  freq:0.0011, spd:0.0022, phase:0.8,  thick:0.8 },
-      { yFrac:0.34, amp:78,  freq:0.0013, spd:0.0028, phase:1.6,  thick:0.9 },
-      { yFrac:0.45, amp:95,  freq:0.0015, spd:0.0033, phase:2.4,  thick:1.1 },
-      { yFrac:0.56, amp:108, freq:0.0017, spd:0.0038, phase:0.4,  thick:1.2 },
-      { yFrac:0.66, amp:90,  freq:0.0020, spd:0.0045, phase:1.2,  thick:1.0 },
-      { yFrac:0.75, amp:72,  freq:0.0024, spd:0.0052, phase:2.0,  thick:0.9 },
-      { yFrac:0.84, amp:55,  freq:0.0028, spd:0.0060, phase:0.6,  thick:0.8 },
-      { yFrac:0.93, amp:38,  freq:0.0034, spd:0.0070, phase:1.4,  thick:0.7 },
+    // 3 clean slow swells — understated, just enough
+    const SWELLS = [
+      { yFrac:0.42, amp:55, freq:0.00090, spd:0.0018, phase:0.0 },
+      { yFrac:0.62, amp:45, freq:0.00115, spd:0.0024, phase:1.8 },
+      { yFrac:0.80, amp:35, freq:0.00140, spd:0.0030, phase:3.4 },
     ]
 
     const draw = ()=>{
       const m = mouse.current
-      // Smooth eased lerp
-      m.x += (m.tx - m.x)*0.05
-      m.y += (m.ty - m.y)*0.05
-
+      m.x += (m.tx - m.x)*0.035
+      m.y += (m.ty - m.y)*0.035
       const W=canvas.width, H=canvas.height
       ctx.clearRect(0,0,W,H)
       const isDark = darkRef.current
 
-      // Velocity-based distortion — fast mouse = bigger ripple
-      const speed = Math.sqrt(m.vx*m.vx + m.vy*m.vy)
-      const ripplePower = Math.min(speed * 800, 120)
+      SWELLS.forEach((sw)=>{
+        const lift  = (m.y - 0.5) * 110
+        const yBase = H * sw.yFrac + lift
 
-      WAVES.forEach((wv, idx)=>{
-        // Mouse Y: entire field rises and falls dramatically
-        const lift = (m.y - 0.5) * 200
-        const yBase = H * wv.yFrac + lift
-
-        // Distance from this wave's Y position to cursor Y — closer = more distortion
-        const yDist = Math.abs(wv.yFrac - m.y)
-        const yProx = Math.exp(-yDist * yDist * 6) // Gaussian proximity
-
-        // Build point array
         const pts:[number,number][] = []
-        for(let x=0; x<=W; x+=4){
-          const nx = x/W
-          // Mouse X: Gaussian pull — cursor sucks waves toward it
-          const xDist  = Math.abs(nx - m.x)
-          const xProx  = Math.exp(-xDist*xDist*5)
-          const pull   = xProx * yProx * 160        // strong pull
-          const ripple = xProx * yProx * ripplePower * Math.sin(xDist*20 - t.current*0.3) // velocity ripple
-
-          const y = yBase
-            + Math.sin(x*wv.freq  + t.current*wv.spd  + wv.phase) * wv.amp
-            + Math.sin(x*wv.freq*2.1 + t.current*wv.spd*0.65 + wv.phase+1) * wv.amp*0.32
-            + Math.sin(x*wv.freq*0.45+ t.current*wv.spd*0.4 + wv.phase+2) * wv.amp*0.18
+        for(let x=0; x<=W; x+=5){
+          const nx   = x/W
+          const pull = Math.exp(-Math.pow(nx - m.x, 2)*8) * m.y * 70
+          const y    = yBase
+            + Math.sin(x*sw.freq + t.current*sw.spd + sw.phase)*sw.amp
+            + Math.sin(x*sw.freq*2.1 + t.current*sw.spd*0.6 + sw.phase)*sw.amp*0.28
             - pull
-            + ripple * 0.4
-
           pts.push([x,y])
         }
 
-        // Filled swell shape
+        // Filled swell — very faint
         ctx.beginPath()
-        ctx.moveTo(0, H)
-        pts.forEach(([x,y])=> ctx.lineTo(x,y))
-        ctx.lineTo(W, H)
-        ctx.closePath()
-
-        // Opacity: centre waves bolder, edges softer
-        const centreBoost = 1 - Math.abs(idx - 4)/4
-        const fillA = isDark
-          ? (0.028 + centreBoost*0.022)
-          : (0.022 + centreBoost*0.018)
-        ctx.fillStyle = isDark
-          ? `rgba(80,110,180,${fillA})`
-          : `rgba(140,110,60,${fillA})`
+        ctx.moveTo(0,H)
+        pts.forEach(([x,y])=>ctx.lineTo(x,y))
+        ctx.lineTo(W,H); ctx.closePath()
+        ctx.fillStyle = isDark ? 'rgba(90,115,175,0.028)' : 'rgba(130,100,55,0.022)'
         ctx.fill()
 
-        // Crest line — glows near cursor
+        // Single clean crest — one line, no noise
         ctx.beginPath()
         pts.forEach(([x,y],i)=> i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y))
-        const baseCA = isDark ? (0.12 + centreBoost*0.18) : (0.09 + centreBoost*0.14)
-        const glowBoost = yProx * 0.35
-        ctx.strokeStyle = isDark
-          ? `rgba(140,170,230,${Math.min(0.7, baseCA + glowBoost)})`
-          : `rgba(140,100,40,${Math.min(0.5, baseCA + glowBoost)})`
-        ctx.lineWidth = wv.thick + yProx*1.2  // line thickens near cursor
-        ctx.lineJoin = 'round'
+        ctx.strokeStyle = isDark ? 'rgba(150,175,225,0.18)' : 'rgba(120,90,45,0.15)'
+        ctx.lineWidth   = 1
+        ctx.lineJoin    = 'round'
         ctx.stroke()
       })
 
