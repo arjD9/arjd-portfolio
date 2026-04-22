@@ -27,36 +27,68 @@ const EXPERIENCES = [
   { id:'pratyin',  initials:'PI', title:'Software Development Intern', company:'Pratyin Infotech Consulting', location:'Toronto, ON',  date:'May 2025 – Aug 2025', tags:['Java','FastAPI','Python','Agile'],                      bullets:['Java + FastAPI integration syncing 5,000+ invoices with 99.7% accuracy.','Automated Python data pipelines processing 200,000 records/month, cutting manual work by 20%.','Shipped 2 production-ready features in 2 months, zero critical bugs deployed.'] },
 ]
 
+// ── HOW TO ADD PHOTOS & VIDEOS ──────────────────────────────
+// imgs: put your files in public/images/ then list them here.
+//       Add as many as you want — slideshow handles it automatically.
+//       First image is used as the card thumbnail.
+// video: YouTube embed URL, or null for no video.
+//   Get it: YouTube video → Share → Embed → copy the src value
+//   Looks like: 'https://www.youtube.com/embed/XXXXXXXXXXX'
+
 const PROJECTS = [
   {
     id:'vex', name:'Autonomous VEX Retrieval Bot',
     desc:'PID navigation + sensor fusion — 98% turn accuracy, 92% object retrieval. 8+ custom components, 15% weight reduction.',
     detail:'Built for a competitive robotics challenge. Implemented C++ PID loops with encoder feedback and ultrasonic sensor fusion. Designed and machined 8 custom aluminium and polycarbonate components to reduce system weight by 15% while maintaining structural integrity. Achieved 98% turn accuracy and 92% successful object retrievals over 50+ test runs, completing autonomous cycles in 40–45 seconds with ±1 second deviation.',
-    img:'/images/vex-bot.jpg', tags:['C++','PID','Sensor fusion','CAD'], stat:'98% accuracy', gallery:false,
+    imgs: [
+      '/images/vex-bot-1.jpg',
+      '/images/vex-bot-2.jpg',
+      // add more lines here for more photos
+    ],
+    video: null as string | null, // e.g. 'https://www.youtube.com/embed/XXXXXXXXXXX'
+    tags:['C++','PID','Sensor fusion','CAD'], stat:'98% accuracy', gallery:false,
   },
   {
     id:'cart', name:'Reverse Engineered Regress Cart',
     desc:'Redesigned 100+ kg production cart. Reduced part count via DFMA, coordinated waterjet fabrication with full GD&T drawings.',
     detail:'Reverse engineered an existing setup technician cart at Linamar. Applied DFMA principles to eliminate unnecessary fasteners and reduce part count. Generated a complete GD&T drawing package and coordinated waterjet fabrication directly with machinists. Assembled and load-validated the final 100+ kg cart, improving setup efficiency and reducing cycle time on the production floor.',
-    img:'/images/regress-cart.jpg', tags:['Siemens NX','SolidWorks','DFMA','GD&T'], stat:'100+ kg validated', gallery:false,
+    imgs: [
+      '/images/regress-cart-1.jpg',
+      '/images/regress-cart-2.jpg',
+    ],
+    video: null as string | null,
+    tags:['Siemens NX','SolidWorks','DFMA','GD&T'], stat:'100+ kg validated', gallery:false,
   },
   {
     id:'gauge', name:'Runout Gauge',
     desc:'Precision measurement tooling designed and fabricated for production. Validated against tight tolerance requirements.',
     detail:'Designed a custom runout gauge for in-process quality inspection on the shop floor at Linamar. Modelled in SolidWorks, rapid-prototyped in FDM for fit-check, then machined in aluminium. Validated measurement repeatability against coordinate measuring machine (CMM) data. Deployed into production use, reducing inspection time per part.',
-    img:'/images/runout-gauge.jpg', tags:['SolidWorks','FDM','Tolerance analysis'], stat:'Production-deployed', gallery:false,
+    imgs: [
+      '/images/runout-gauge-1.jpg',
+      '/images/runout-gauge-2.jpg',
+    ],
+    video: null as string | null,
+    tags:['SolidWorks','FDM','Tolerance analysis'], stat:'Production-deployed', gallery:false,
   },
   {
     id:'stairs', name:'Welded Stairs',
     desc:'Full steel staircase from raw stock — cut, fitted, and welded to spec. Structural design with load-bearing validation.',
     detail:'Designed, cut, fitted and welded a full steel staircase from raw stock. Laid out stringer geometry and tread brackets from first principles, cut members on a band saw, and MIG-welded the assembly. Performed load-bearing validation by test-loading above design spec. Finished with primer and paint. A hands-on project that sharpened both fabrication skills and structural intuition.',
-    img:'/images/welded-stairs.jpg', tags:['Welding','Fabrication','Structural','Steel'], stat:'Load-bearing built', gallery:false,
+    imgs: [
+      '/images/welded-stairs-1.jpg',
+    ],
+    video: null as string | null,
+    tags:['Welding','Fabrication','Structural','Steel'], stat:'Load-bearing built', gallery:false,
   },
   {
     id:'prints', name:'3D Printed & Manufactured Parts',
     desc:'A growing gallery of FDM/SLA and machined components. Tap to browse each part with its description.',
     detail:'An ongoing collection of parts designed and made across different projects — enclosures, jigs, brackets, and custom hardware. Materials range from PLA and ABS to engineering-grade PETG and SLA resin. Each part represents a specific design challenge: snap-fit tolerances, vibration resistance, or tight dimensional accuracy. Click the gallery button to browse individual pieces.',
-    img:'/images/3dprints.jpg', tags:['FDM','SLA','CNC','Fabrication'], stat:'Growing library', gallery:true,
+    imgs: [
+      '/images/3dprints-1.jpg',
+    ],
+    video: null as string | null,
+    tags:['FDM','SLA','CNC','Fabrication'], stat:'Growing library', gallery:true,
   },
 ]
 
@@ -576,8 +608,19 @@ function PrintsGallery({dark,onClose}:{dark:boolean;onClose:()=>void}) {
   )
 }
 
-/* ─── PROJECT DETAIL MODAL ───────────────────────────────────── */
+/* ─── PROJECT DETAIL MODAL — slideshow + optional video ─────── */
 function ProjectModal({project,dark,onClose}:{project:typeof PROJECTS[0];dark:boolean;onClose:()=>void}) {
+  const [idx,setIdx] = useState(0)
+  const imgs = project.imgs ?? []
+  const hasImgs  = imgs.length > 0
+  const hasVideo = !!project.video
+
+  // Reset to first slide when a different project opens
+  useEffect(()=>{ setIdx(0) },[project.id])
+
+  const prev = (e:React.MouseEvent)=>{ e.stopPropagation(); setIdx(i=>(i-1+imgs.length)%imgs.length) }
+  const next = (e:React.MouseEvent)=>{ e.stopPropagation(); setIdx(i=>(i+1)%imgs.length) }
+
   return (
     <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}
       className="fixed inset-0 z-[200] flex items-center justify-center p-5 md:p-10"
@@ -586,20 +629,85 @@ function ProjectModal({project,dark,onClose}:{project:typeof PROJECTS[0];dark:bo
       <motion.div initial={{scale:0.92,opacity:0,y:20}} animate={{scale:1,opacity:1,y:0}} exit={{scale:0.92,opacity:0,y:10}}
         transition={{duration:0.35,ease:[0.23,1,0.32,1]}}
         onClick={e=>e.stopPropagation()}
-        className={`w-full max-w-xl rounded-2xl overflow-hidden ${dark?'bg-[#0d0f15] border border-slate-700':'bg-[#f5f0e8] border border-stone-200'}`}>
-        {/* Image */}
-        <div className={`h-52 md:h-64 overflow-hidden relative ${dark?'bg-slate-800':'bg-stone-100'}`}>
-          {/* <img src={project.img} alt={project.name} className="w-full h-full object-cover" /> */}
-          <div className={`w-full h-full flex flex-col items-center justify-center gap-2 ${dark?'text-slate-700':'text-stone-300'}`}>
-            <span className="text-3xl">◆</span>
-            <span className="text-[10px] tracking-widest uppercase font-body">Add photo</span>
+        className={`w-full max-w-xl rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto ${dark?'bg-[#0d0f15] border border-slate-700':'bg-[#f5f0e8] border border-stone-200'}`}>
+
+        {/* ── Photo slideshow ── */}
+        {hasImgs && (
+          <div className="relative bg-black" style={{aspectRatio:'16/9'}}>
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={idx}
+                src={imgs[idx]}
+                alt={`${project.name} ${idx+1}`}
+                initial={{opacity:0,x:24}}
+                animate={{opacity:1,x:0}}
+                exit={{opacity:0,x:-24}}
+                transition={{duration:0.22,ease:[0.23,1,0.32,1]}}
+                className="w-full h-full object-cover"
+              />
+            </AnimatePresence>
+
+            {/* Prev/Next arrows — only when more than 1 photo */}
+            {imgs.length > 1 && (<>
+              <button onClick={prev}
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white flex items-center justify-center text-base hover:bg-black/75 transition-colors">
+                ‹
+              </button>
+              <button onClick={next}
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white flex items-center justify-center text-base hover:bg-black/75 transition-colors">
+                ›
+              </button>
+
+              {/* Dot indicators */}
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                {imgs.map((_,i)=>(
+                  <button key={i} onClick={e=>{e.stopPropagation();setIdx(i)}}
+                    className={`rounded-full transition-all duration-200 ${i===idx?'w-4 h-1.5 bg-white':'w-1.5 h-1.5 bg-white/50 hover:bg-white/80'}`}/>
+                ))}
+              </div>
+
+              {/* Counter */}
+              <div className="absolute top-3 right-10 text-[10px] font-body text-white/70 bg-black/40 px-2 py-0.5 rounded-full">
+                {idx+1} / {imgs.length}
+              </div>
+            </>)}
+
+            {/* Close button */}
+            <button onClick={onClose}
+              className={`absolute top-3 right-3 w-7 h-7 rounded-full flex items-center justify-center text-sm transition-all ${dark?'bg-slate-700/80 text-slate-300 hover:bg-slate-600':'bg-white/80 text-stone-500 hover:bg-white'}`}>
+              ✕
+            </button>
           </div>
-          <button onClick={onClose}
-            className={`absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-sm transition-all ${dark?'bg-slate-700/80 text-slate-300 hover:bg-slate-600':'bg-white/80 text-stone-500 hover:bg-white'}`}>
-            ✕
-          </button>
-        </div>
-        {/* Content */}
+        )}
+
+        {/* No photos yet — placeholder */}
+        {!hasImgs && (
+          <div className={`relative h-52 md:h-64 overflow-hidden ${dark?'bg-slate-800':'bg-stone-100'}`}>
+            <div className={`w-full h-full flex flex-col items-center justify-center gap-2 ${dark?'text-slate-700':'text-stone-300'}`}>
+              <span className="text-3xl">◆</span>
+              <span className="text-[10px] tracking-widest uppercase font-body">Add photo</span>
+            </div>
+            <button onClick={onClose}
+              className={`absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-sm transition-all ${dark?'bg-slate-700/80 text-slate-300 hover:bg-slate-600':'bg-white/80 text-stone-500 hover:bg-white'}`}>
+              ✕
+            </button>
+          </div>
+        )}
+
+        {/* ── Video (shown below photos if present) ── */}
+        {hasVideo && (
+          <div style={{aspectRatio:'16/9'}}>
+            <iframe
+              src={project.video!}
+              className="w-full h-full"
+              style={{border:0}}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        )}
+
+        {/* ── Text content ── */}
         <div className="p-6 md:p-8">
           <div className="flex items-start justify-between gap-3 mb-4">
             <h2 className={`font-display text-xl md:text-2xl leading-tight ${dark?'text-slate-50':'text-stone-900'}`}>{project.name}</h2>
@@ -640,13 +748,29 @@ function ProjectsSection({dark}:{dark:boolean}) {
             <motion.div key={p.id} initial={{opacity:0,y:18}} animate={{opacity:1,y:0}} transition={{delay:i*0.09,duration:0.42,ease:[0.23,1,0.32,1] as any}}
               whileHover={{y:-3,scale:1.01}} data-hover onClick={()=>handleClick(p)}
               className={`rounded-xl border overflow-hidden cursor-pointer transition-colors duration-200 ${dark?'bg-slate-900 border-slate-800 hover:border-slate-500':'bg-white/80 border-stone-200 hover:border-stone-400'}`}>
-              <div className={`h-40 md:h-44 ${dark?'bg-slate-800':'bg-stone-100'}`}>
-                {/* <img src={p.img} alt={p.name} className="w-full h-full object-cover" /> */}
-                <div className={`w-full h-full flex flex-col items-center justify-center gap-2 font-body ${dark?'text-slate-700':'text-stone-300'}`}>
-                  <span className="text-xl">◆</span>
-                  <span className="text-[10px] tracking-widest uppercase">{p.gallery?'Tap to browse gallery':'Tap to read more'}</span>
-                </div>
+
+              {/* Card thumbnail — first image or placeholder */}
+              <div className={`relative h-40 md:h-44 overflow-hidden ${dark?'bg-slate-800':'bg-stone-100'}`}>
+                {p.imgs?.[0]
+                  ? <img src={p.imgs[0]} alt={p.name} className="w-full h-full object-cover"/>
+                  : <div className={`w-full h-full flex flex-col items-center justify-center gap-2 font-body ${dark?'text-slate-700':'text-stone-300'}`}>
+                      <span className="text-xl">◆</span>
+                      <span className="text-[10px] tracking-widest uppercase">{p.gallery?'Tap to browse gallery':'Tap to read more'}</span>
+                    </div>
+                }
+                {/* Badges */}
+                {p.imgs && p.imgs.length > 1 && (
+                  <span className="absolute top-2 left-2 text-[10px] font-body text-white bg-black/50 px-2 py-0.5 rounded-full">
+                    {p.imgs.length} photos
+                  </span>
+                )}
+                {p.video && (
+                  <span className="absolute top-2 right-2 text-[10px] font-body text-white bg-black/50 px-2 py-0.5 rounded-full">
+                    ▷ video
+                  </span>
+                )}
               </div>
+
               <div className="p-4 md:p-5">
                 <div className="flex items-start justify-between mb-2 gap-2">
                   <h3 className={`text-sm font-body leading-snug font-medium ${dark?'text-slate-100':'text-stone-900'}`}>{p.name}</h3>
