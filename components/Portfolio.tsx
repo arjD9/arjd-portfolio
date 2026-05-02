@@ -46,7 +46,7 @@ const PROJECTS = [
       '/images/vex-03.jpg',
       // add more lines here for more photos
     ],
-    video: null as string | null, // e.g. 'https://www.youtube.com/embed/XXXXXXXXXXX'
+    video: 'https://www.youtube.com/embed/U5MgGNN_4Jk?si=gar5LqpS8Pg7ZvK1',
     tags:['C++','PID','Sensor fusion','CAD'], stat:'98% accuracy', gallery:false,
   },
   {
@@ -59,7 +59,7 @@ const PROJECTS = [
       '/images/cart-03.jpg',
       '/images/cart-04.jpg',
     ],
-    video: null as string | null,
+    video: 'https://www.youtube.com/embed/2CA7vmuQ3vw',
     tags:['Siemens NX','SolidWorks','DFMA','GD&T'], stat:'100+ kg validated', gallery:false,
   },
   {
@@ -75,7 +75,7 @@ const PROJECTS = [
       '/images/runout-06.jpg',
       '/images/runout-07.jpg',
     ],
-    video: null as string | null,
+    video: 'https://www.youtube.com/embed/CsTB8vzFzGU',
     tags:['SolidWorks','FDM','Tolerance analysis'], stat:'Production-deployed', gallery:false,
   },
   {
