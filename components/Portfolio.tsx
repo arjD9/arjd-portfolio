@@ -504,7 +504,7 @@ function WritingSection({dark}:{dark:boolean}) {
     <Sec>
       <Eyebrow dark={dark}>Writing</Eyebrow>
       <h1 className={`font-display text-4xl md:text-5xl leading-[1.15] mb-10 ${dark?'text-slate-50':'text-stone-900'}`}>
-        Thinking <span className="italic">in public.</span>
+        Reflecting <span className="italic"></span>
       </h1>
 
       {/* Single real post */}
@@ -559,7 +559,7 @@ function WritingSection({dark}:{dark:boolean}) {
       </div>
 
       {/* More posts placeholder */}
-      <p className={`text-xs mt-8 font-body ${dark?'text-slate-700':'text-stone-300'}`}>More posts coming — check back soon.</p>
+      <p className={`text-xs mt-8 font-body ${dark?'text-slate-700':'text-stone-300'}`}></p>
     </Sec>
   )
 }
@@ -908,7 +908,7 @@ function ConnectSection({dark}:{dark:boolean}) {
   const handleSubmit = async (e:React.FormEvent)=>{
     e.preventDefault(); setStatus('sending')
     try {
-      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(form)})
+      const res = await fetch('https://formspree.io/f/mlgzgjon',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(form)})
       if(res.ok){ setStatus('sent'); setForm({name:'',email:'',message:''}) } else setStatus('error')
     } catch { window.location.href=`mailto:adindiga@uwaterloo.ca?subject=Message from ${form.name}&body=${form.message}`; setStatus('idle') }
   }
@@ -917,7 +917,7 @@ function ConnectSection({dark}:{dark:boolean}) {
     <Sec>
       <Eyebrow dark={dark}>Connect</Eyebrow>
       <h1 className={`font-display text-4xl md:text-5xl leading-[1.15] mb-4 ${dark?'text-slate-50':'text-stone-900'}`}>Let's <span className="italic">talk.</span></h1>
-      <p className={`text-sm leading-relaxed max-w-md mb-10 font-body ${dark?'text-slate-400':'text-stone-500'}`}>Whether it's a co-op opportunity, a collab, or just want to chat about robotics or golf — drop me a message or reach out directly.</p>
+      <p className={`text-sm leading-relaxed max-w-md mb-10 font-body ${dark?'text-slate-400':'text-stone-500'}`}>Feel free to reach out if you have any questions. I always stoked to talk to someone new</p>
       <div className="flex flex-wrap gap-3 mb-12">
         {[{label:'Email',href:'mailto:adindiga@uwaterloo.ca',icon:'✉'},{label:'LinkedIn',href:'https://www.linkedin.com/in/arjundindigal',icon:'↗'}].map(l=>(
           <a key={l.label} href={l.href} target="_blank" rel="noreferrer" data-hover
@@ -953,7 +953,6 @@ function ConnectSection({dark}:{dark:boolean}) {
           )}
         </Card>
       </motion.div>
-      <p className={`text-xs mt-4 font-body ${dark?'text-slate-700':'text-stone-300'}`}>To activate the form: sign up free at formspree.io, create a form, and replace YOUR_FORM_ID in Portfolio.tsx.</p>
     </Sec>
   )
 }
