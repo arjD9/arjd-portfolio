@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 /* ─── DATA ──────────────────────────────────────────────────── */
 
-// Skill → section mapping for click-to-navigate
 const SKILL_SECTIONS: Record<string, string> = {
   'SolidWorks':'projects','Siemens NX':'projects','Fusion 360':'projects',
   'FEA':'projects','GD&T':'projects','DFMA':'projects',
@@ -14,7 +13,6 @@ const SKILL_SECTIONS: Record<string, string> = {
   'CNC':'projects','FDM/SLA':'projects','Composites':'projects',
 }
 
-// Experience logos — add /images/ paths after uploading
 const EXP_LOGOS: Record<string, string> = {
   rocketry: '/images/logo-rocketry.png',
   linamar:  '/images/logo-linamar.png',
@@ -27,25 +25,12 @@ const EXPERIENCES = [
   { id:'pratyin',  initials:'PI', title:'Software Development Intern', company:'Pratyin Infotech Consulting', location:'Toronto, ON',  date:'May 2025 – Aug 2025', tags:['Java','FastAPI','Python','Agile'],                      bullets:['Java + FastAPI integration syncing 5,000+ invoices with 99.7% accuracy.','Automated Python data pipelines processing 200,000 records/month, cutting manual work by 20%.','Shipped 2 production-ready features in 2 months, zero critical bugs deployed.'] },
 ]
 
-// ── HOW TO ADD PHOTOS & VIDEOS ──────────────────────────────
-// imgs: put your files in public/images/ then list them here.
-//       Add as many as you want — slideshow handles it automatically.
-//       First image is used as the card thumbnail.
-// video: YouTube embed URL, or null for no video.
-//   Get it: YouTube video → Share → Embed → copy the src value
-//   Looks like: 'https://www.youtube.com/embed/XXXXXXXXXXX'
-
 const PROJECTS = [
   {
     id:'vex', name:'Autonomous VEX Retrieval Bot',
     desc:'PID navigation + sensor fusion — 98% turn accuracy, 92% object retrieval. 8+ custom components, 15% weight reduction.',
     detail:'Built for a competitive robotics challenge. Implemented C++ PID loops with encoder feedback and ultrasonic sensor fusion. Designed and machined 8 custom aluminium and polycarbonate components to reduce system weight by 15% while maintaining structural integrity. Achieved 98% turn accuracy and 92% successful object retrievals over 50+ test runs, completing autonomous cycles in 40–45 seconds with ±1 second deviation.',
-    imgs: [
-      '/images/vex-01.jpg',
-      '/images/vex-02.jpeg',
-      '/images/vex-03.jpeg',
-      // add more lines here for more photos
-    ],
+    imgs: ['/images/vex-01.jpg','/images/vex-02.jpg','/images/vex-03.jpg'],
     video: 'https://www.youtube.com/embed/U5MgGNN_4Jk?si=gar5LqpS8Pg7ZvK1',
     tags:['C++','PID','Sensor fusion','CAD'], stat:'98% accuracy', gallery:false,
   },
@@ -53,12 +38,7 @@ const PROJECTS = [
     id:'cart', name:'Reverse Engineered Regress Cart',
     desc:'Redesigned 100+ kg production cart. Reduced part count via DFMA, coordinated waterjet fabrication with full GD&T drawings.',
     detail:'Reverse engineered an existing setup technician cart at Linamar. Applied DFMA principles to eliminate unnecessary fasteners and reduce part count. Generated a complete GD&T drawing package and coordinated waterjet fabrication directly with machinists. Assembled and load-validated the final 100+ kg cart, improving setup efficiency and reducing cycle time on the production floor.',
-    imgs: [
-      '/images/cart-01.jpg',
-      '/images/cart-02.jpg',
-      '/images/cart-03.png',
-      '/images/cart-04.jpg',
-    ],
+    imgs: ['/images/cart-01.jpg','/images/cart-02.jpg','/images/cart-03.jpg','/images/cart-04.jpg'],
     video: 'https://www.youtube.com/embed/2CA7vmuQ3vw',
     tags:['Siemens NX','SolidWorks','DFMA','GD&T'], stat:'100+ kg validated', gallery:false,
   },
@@ -66,45 +46,23 @@ const PROJECTS = [
     id:'gauge', name:'Runout Gauge',
     desc:'Precision measurement tooling designed and fabricated for production. Validated against tight tolerance requirements.',
     detail:'Designed a custom runout gauge for in-process quality inspection on the shop floor at Linamar. Modelled in SolidWorks, rapid-prototyped in FDM for fit-check, then machined in aluminium. Validated measurement repeatability against coordinate measuring machine (CMM) data. Deployed into production use, reducing inspection time per part.',
-    imgs: [
-      '/images/runout-01.jpeg',
-      '/images/runout-02.jpeg',
-      '/images/runout-03.jpg',
-      '/images/runout-04.jpg',
-      '/images/runout-05.jpg',
-      '/images/runout-06.jpeg',
-      '/images/runout-07.jpeg',
-    ],
+    imgs: ['/images/runout-01.jpg','/images/runout-02.jpg','/images/runout-03.jpg','/images/runout-04.jpg','/images/runout-05.jpg','/images/runout-06.jpg','/images/runout-07.jpg'],
     video: 'https://www.youtube.com/embed/CsTB8vzFzGU',
     tags:['SolidWorks','FDM','Tolerance analysis'], stat:'Production-deployed', gallery:false,
   },
   {
     id:'stairs', name:'Welded Stairs',
     desc:'Full steel staircase from raw stock — cut, fitted, and welded to spec. Structural design with load-bearing validation.',
-    detail:'Designed, cut, fitted and welded a full steel staircase from raw stock. Laid out stringer geometry and tread brackets from first principles, cut members on a band saw, and MIG-welded the assembly. Performed load-bearing validation by test-loading above design spec. Finished with primer and paint. A hands-on project that sharpened both fabrication skills and structural intuition.',
-    imgs: [
-      '/images/stairs-01.jpg',
-      '/images/stairs-02.jpg',
-      '/images/stairs-03.jpg',
-      '/images/stairs-04.jpg',
-      '/images/stairs-05.jpg',
-      '/images/stairs-06.jpg',
-      '/images/stairs-07.jpg',
-      '/images/stairs-08.jpg',
-      '/images/stairs-09.jpg',
-      '/images/stairs-10.jpg',
-      '/images/stairs-11.jpg',
-    ],
+    detail:'Designed, cut, fitted and welded a full steel staircase from raw stock. Laid out stringer geometry and tread brackets from first principles, cut members on a band saw, and MIG-welded the assembly. Performed load-bearing validation by test-loading above design spec. Finished with primer and paint.',
+    imgs: ['/images/stairs-01.jpg','/images/stairs-02.jpg','/images/stairs-03.jpg','/images/stairs-04.jpg','/images/stairs-05.jpg','/images/stairs-06.jpg','/images/stairs-07.jpg','/images/stairs-08.jpg','/images/stairs-09.jpg','/images/stairs-10.jpg','/images/stairs-11.jpg'],
     video: null as string | null,
     tags:['Welding','Fabrication','Structural','Steel'], stat:'Load-bearing built', gallery:false,
   },
   {
     id:'prints', name:'3D Printed & Manufactured Parts',
     desc:'A growing gallery of FDM/SLA and machined components. Tap to browse each part with its description.',
-    detail:'An ongoing collection of parts designed and made across different projects — enclosures, jigs, brackets, and custom hardware. Materials range from PLA and ABS to engineering-grade PETG and SLA resin. Each part represents a specific design challenge: snap-fit tolerances, vibration resistance, or tight dimensional accuracy. Click the gallery button to browse individual pieces.',
-    imgs: [
-      '/images/3dprints-1.jpg',
-    ],
+    detail:'An ongoing collection of parts designed and made across different projects — enclosures, jigs, brackets, and custom hardware. Materials range from PLA and ABS to engineering-grade PETG and SLA resin.',
+    imgs: ['/images/3dprints-1.jpg'],
     video: null as string | null,
     tags:['FDM','SLA','CNC','Fabrication'], stat:'Growing library', gallery:true,
   },
@@ -119,13 +77,11 @@ const PRINTS = [
 
 const SKILLS = ['SolidWorks','Siemens NX','Fusion 360','FEA','GD&T','DFMA','C++','Python','MATLAB','ROS','RTOS','STM32','Arduino','Java','FastAPI','Git','CNC','FDM/SLA','Composites']
 
-// ONE real post — 1A term. Add your writing between the backtick markers.
 const WRITING_POST = {
   id: '1a',
   title: 'My 1A Term',
   date: 'April 2026',
   cat: 'Reflection',
-  // ADD YOUR WRITING HERE — plain paragraphs, separated by \n\n
   content: `Reflecting on my 1A Term`,
 }
 
@@ -139,7 +95,7 @@ const RACES: { name:string; date:string; status:'upcoming'|'completed'; time?:st
 
 type Section = 'home'|'about'|'writing'|'projects'|'training'|'connect'
 
-/* ─── WAVE CANVAS ───────────────────────────────────────────── */
+/* ─── WAVE CANVAS — barely there ────────────────────────────── */
 function WaveCanvas({ dark }: { dark:boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const mouse     = useRef({ x:0.5, y:0.5, tx:0.5, ty:0.5 })
@@ -159,48 +115,36 @@ function WaveCanvas({ dark }: { dark:boolean }) {
     window.addEventListener('mousemove', onMove)
     window.addEventListener('touchmove', onTouch, {passive:true})
 
-    // 3 clean slow swells — understated, just enough
+    // Two extremely subtle swells
     const SWELLS = [
-      { yFrac:0.42, amp:55, freq:0.00090, spd:0.0018, phase:0.0 },
-      { yFrac:0.62, amp:45, freq:0.00115, spd:0.0024, phase:1.8 },
-      { yFrac:0.80, amp:35, freq:0.00140, spd:0.0030, phase:3.4 },
+      { yFrac:0.55, amp:18, freq:0.00070, spd:0.0012, phase:0.0 },
+      { yFrac:0.75, amp:12, freq:0.00095, spd:0.0018, phase:2.2 },
     ]
 
     const draw = ()=>{
       const m = mouse.current
-      m.x += (m.tx - m.x)*0.035
-      m.y += (m.ty - m.y)*0.035
+      m.x += (m.tx - m.x)*0.025
+      m.y += (m.ty - m.y)*0.025
       const W=canvas.width, H=canvas.height
       ctx.clearRect(0,0,W,H)
       const isDark = darkRef.current
 
       SWELLS.forEach((sw)=>{
-        const lift  = (m.y - 0.5) * 110
+        const lift  = (m.y - 0.5) * 30
         const yBase = H * sw.yFrac + lift
-
         const pts:[number,number][] = []
-        for(let x=0; x<=W; x+=5){
+        for(let x=0; x<=W; x+=8){
           const nx   = x/W
-          const pull = Math.exp(-Math.pow(nx - m.x, 2)*8) * m.y * 70
+          const pull = Math.exp(-Math.pow(nx - m.x, 2)*12) * m.y * 20
           const y    = yBase
             + Math.sin(x*sw.freq + t.current*sw.spd + sw.phase)*sw.amp
-            + Math.sin(x*sw.freq*2.1 + t.current*sw.spd*0.6 + sw.phase)*sw.amp*0.28
+            + Math.sin(x*sw.freq*1.8 + t.current*sw.spd*0.5 + sw.phase)*sw.amp*0.2
             - pull
           pts.push([x,y])
         }
-
-        // Filled swell — very faint
-        ctx.beginPath()
-        ctx.moveTo(0,H)
-        pts.forEach(([x,y])=>ctx.lineTo(x,y))
-        ctx.lineTo(W,H); ctx.closePath()
-        ctx.fillStyle = isDark ? 'rgba(90,115,175,0.028)' : 'rgba(130,100,55,0.022)'
-        ctx.fill()
-
-        // Single clean crest — one line, no noise
         ctx.beginPath()
         pts.forEach(([x,y],i)=> i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y))
-        ctx.strokeStyle = isDark ? 'rgba(150,175,225,0.18)' : 'rgba(120,90,45,0.15)'
+        ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.04)'
         ctx.lineWidth   = 1
         ctx.lineJoin    = 'round'
         ctx.stroke()
@@ -233,13 +177,13 @@ function Cursor({ dark }:{ dark:boolean }) {
     window.addEventListener('mousemove',onMove)
     const tick=()=>{
       const p=pos.current; p.rx+=(p.x-p.rx)*0.14; p.ry+=(p.y-p.ry)*0.14
-      if(dotRef.current)  dotRef.current.style.transform =`translate(${p.x-4}px,${p.y-4}px)`
-      if(ringRef.current){ ringRef.current.style.transform=`translate(${p.rx-18}px,${p.ry-18}px)`; ringRef.current.classList.toggle('hovered',hov.current) }
+      if(dotRef.current)  dotRef.current.style.transform =`translate(${p.x-3}px,${p.y-3}px)`
+      if(ringRef.current){ ringRef.current.style.transform=`translate(${p.rx-16}px,${p.ry-16}px)`; ringRef.current.classList.toggle('hovered',hov.current) }
       raf.current=requestAnimationFrame(tick)
     }; tick()
     return ()=>{ window.removeEventListener('mousemove',onMove); cancelAnimationFrame(raf.current) }
   },[])
-  const c = dark?'#c8c4bc':'#2a2520'
+  const c = dark?'#ffffff':'#0a0a0a'
   return (<><div ref={dotRef} className="cursor-dot hidden md:block" style={{background:c}}/><div ref={ringRef} className="cursor-ring hidden md:block" style={{borderColor:c}}/></>)
 }
 
@@ -254,55 +198,50 @@ function Nav({active,onNav,dark,onToggleDark}:{active:Section;onNav:(s:Section)=
   const [menuOpen,setMenuOpen] = useState(false)
   useEffect(()=>{ const h=()=>setScrolled(window.scrollY>20); window.addEventListener('scroll',h); return ()=>window.removeEventListener('scroll',h) },[])
   const go=(id:Section)=>{ onNav(id); setMenuOpen(false) }
-  const bg = scrolled||menuOpen ? (dark?'bg-[#0d0f15]/92 backdrop-blur-md':'bg-[#f5f0e8]/92 backdrop-blur-md') : 'bg-transparent'
+  const bg = scrolled||menuOpen
+    ? (dark?'bg-[#080808]/95 backdrop-blur-sm border-b border-white/5':'bg-[#f8f7f4]/95 backdrop-blur-sm border-b border-black/5')
+    : 'bg-transparent'
   return (
-    <motion.nav initial={{y:-20,opacity:0}} animate={{y:0,opacity:1}} transition={{duration:0.6,ease:[0.23,1,0.32,1]}}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${bg}`}>
-      <div className="max-w-[920px] mx-auto px-5 md:px-8 flex items-center justify-between py-5 md:py-6">
-        <button onClick={()=>go('home')} data-hover className={`font-display text-lg tracking-wide transition-opacity hover:opacity-50 ${dark?'text-slate-100':'text-stone-900'}`}>AD</button>
-        <div className="hidden md:flex items-center gap-5">
+    <motion.nav initial={{y:-20,opacity:0}} animate={{y:0,opacity:1}} transition={{duration:0.5,ease:[0.23,1,0.32,1]}}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${bg}`}>
+      <div className="max-w-[960px] mx-auto px-6 md:px-10 flex items-center justify-between py-5 md:py-6">
+        <button onClick={()=>go('home')} data-hover
+          className={`font-mono text-sm tracking-[0.15em] uppercase transition-opacity hover:opacity-40 ${dark?'text-white':'text-black'}`}>
+          AD
+        </button>
+        <div className="hidden md:flex items-center gap-8">
           {NAVITEMS.map(n=>(
             <button key={n.id} data-hover onClick={()=>go(n.id)}
-              className={`nav-underline text-[11px] tracking-[0.12em] uppercase font-body transition-colors duration-200 ${active===n.id?(dark?'text-slate-100 active':'text-stone-900 active'):(dark?'text-slate-500 hover:text-slate-200':'text-stone-400 hover:text-stone-700')}`}>
+              className={`text-[11px] tracking-[0.14em] uppercase font-mono transition-all duration-150 ${active===n.id?(dark?'text-white':'text-black'):(dark?'text-white/30 hover:text-white/70':'text-black/30 hover:text-black/70')}`}>
               {n.label}
             </button>
           ))}
           <button data-hover onClick={onToggleDark}
-            className={`text-[11px] tracking-[0.1em] uppercase border rounded-full px-4 py-1.5 transition-all duration-300 ${dark?'border-slate-700 text-slate-400 hover:text-slate-100 hover:border-slate-400':'border-stone-300 text-stone-500 hover:text-stone-800 hover:border-stone-600'}`}>
+            className={`text-[10px] tracking-[0.12em] uppercase font-mono transition-all duration-150 ${dark?'text-white/25 hover:text-white/60':'text-black/25 hover:text-black/60'}`}>
             {dark?'Light':'Dark'}
           </button>
         </div>
-        <div className="flex md:hidden items-center gap-3">
-          <button onClick={onToggleDark} className={`text-[10px] tracking-[0.1em] uppercase border rounded-full px-3 py-1.5 ${dark?'border-slate-600 text-slate-300 bg-slate-900/60':'border-stone-400 text-stone-600 bg-white/60'}`}>
-            {dark?'Light':'Dark'}
+        <div className="flex md:hidden items-center gap-4">
+          <button onClick={onToggleDark} className={`text-[10px] tracking-[0.12em] uppercase font-mono ${dark?'text-white/30':'text-black/30'}`}>
+            {dark?'L':'D'}
           </button>
           <button onClick={()=>setMenuOpen(o=>!o)} aria-label="Menu"
-            className={`relative w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 ${menuOpen?(dark?'border-slate-400 bg-slate-800':'border-stone-500 bg-stone-100'):(dark?'border-slate-600 bg-slate-900/60':'border-stone-300 bg-white/60')}`}>
-            {[{o:{x:-1,y:-1,r:45},c:{x:-3.5,y:-3.5}},{o:{x:1,y:-1,r:-45},c:{x:3.5,y:-3.5}},{o:{x:-1,y:1,r:-45},c:{x:-3.5,y:3.5}},{o:{x:1,y:1,r:45},c:{x:3.5,y:3.5}}].map((dot,i)=>(
-              <motion.span key={i} animate={menuOpen?{x:dot.o.x*5.5,y:dot.o.y*5.5,rotate:dot.o.r,scale:1.15}:{x:dot.c.x,y:dot.c.y,rotate:0,scale:1}} transition={{duration:0.35,ease:[0.23,1,0.32,1],delay:i*0.03}}
-                className={`absolute w-1.5 h-1.5 rounded-full ${menuOpen?(dark?'bg-slate-200':'bg-stone-700'):(dark?'bg-slate-400':'bg-stone-500')}`}/>
-            ))}
+            className={`text-[11px] tracking-[0.12em] uppercase font-mono ${dark?'text-white/50':'text-black/50'}`}>
+            {menuOpen?'Close':'Menu'}
           </button>
         </div>
       </div>
       <AnimatePresence>
         {menuOpen&&(
-          <motion.div initial={{opacity:0,y:-8}} animate={{opacity:1,y:0}} exit={{opacity:0,y:-8}} transition={{duration:0.28,ease:[0.23,1,0.32,1]}}
-            className={`md:hidden border-t ${dark?'border-slate-700 bg-[#0d0f15]':'border-stone-200 bg-[#f5f0e8]'}`}
-            style={{boxShadow:dark?'0 8px 32px rgba(0,0,0,0.6)':'0 8px 32px rgba(0,0,0,0.08)'}}>
-            <div className="px-4 py-3 flex flex-col">
+          <motion.div initial={{opacity:0,y:-4}} animate={{opacity:1,y:0}} exit={{opacity:0,y:-4}} transition={{duration:0.2}}
+            className={`md:hidden border-t ${dark?'border-white/5 bg-[#080808]':'border-black/5 bg-[#f8f7f4]'}`}>
+            <div className="px-6 py-4 flex flex-col gap-1">
               {NAVITEMS.map((n,i)=>(
-                <motion.button key={n.id} initial={{opacity:0,x:-10}} animate={{opacity:1,x:0}} transition={{delay:i*0.04,duration:0.22}} onClick={()=>go(n.id)}
-                  className={`flex items-center justify-between py-3.5 px-3 rounded-xl transition-all duration-150 group ${active===n.id?(dark?'bg-slate-800 text-slate-50':'bg-stone-200 text-stone-900'):(dark?'text-slate-300 hover:bg-slate-800/70 hover:text-slate-100':'text-stone-600 hover:bg-stone-100 hover:text-stone-900')}`}>
-                  <span className="text-sm tracking-[0.1em] uppercase font-body">{n.label}</span>
-                  <span className={`text-xs transition-transform duration-200 group-hover:translate-x-1 ${dark?'text-slate-600':'text-stone-400'}`}>→</span>
+                <motion.button key={n.id} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:i*0.03}} onClick={()=>go(n.id)}
+                  className={`text-left py-3 text-sm tracking-[0.1em] uppercase font-mono border-b transition-all duration-150 ${active===n.id?(dark?'text-white border-white/10':'text-black border-black/10'):(dark?'text-white/30 border-white/5 hover:text-white/70':'text-black/30 border-black/5 hover:text-black/70')}`}>
+                  {n.label}
                 </motion.button>
               ))}
-              <div className={`mt-2 pt-3 border-t flex items-center justify-between px-3 ${dark?'border-slate-800':'border-stone-200'}`}>
-                <span className={`text-[10px] tracking-[0.12em] uppercase font-body ${dark?'text-slate-600':'text-stone-400'}`}>Theme</span>
-                <button onClick={onToggleDark} className={`text-[10px] tracking-[0.1em] uppercase border rounded-full px-4 py-1.5 font-body ${dark?'border-slate-600 text-slate-300':'border-stone-300 text-stone-500'}`}>{dark?'☀ Light':'◑ Dark'}</button>
-              </div>
-              <div className="h-3"/>
             </div>
           </motion.div>
         )}
@@ -314,106 +253,111 @@ function Nav({active,onNav,dark,onToggleDark}:{active:Section;onNav:(s:Section)=
 /* ─── HELPERS ───────────────────────────────────────────────── */
 function Sec({children}:{children:React.ReactNode}) {
   return (
-    <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} exit={{opacity:0,y:-12}} transition={{duration:0.45,ease:[0.23,1,0.32,1]}}
-      className="max-w-[760px] mx-auto px-5 md:px-8 pt-28 md:pt-36 pb-24 min-h-screen">
+    <motion.div initial={{opacity:0,y:16}} animate={{opacity:1,y:0}} exit={{opacity:0,y:-8}} transition={{duration:0.4,ease:[0.23,1,0.32,1]}}
+      className="max-w-[800px] mx-auto px-6 md:px-10 pt-28 md:pt-36 pb-24 min-h-screen">
       {children}
     </motion.div>
   )
 }
-function Eyebrow({children,dark}:{children:React.ReactNode;dark:boolean}) {
-  return <p className={`text-[11px] tracking-[0.18em] uppercase font-body mb-6 ${dark?'text-slate-500':'text-stone-400'}`}>{children}</p>
+function Label({children,dark}:{children:React.ReactNode;dark:boolean}) {
+  return <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-8 ${dark?'text-white/25':'text-black/25'}`}>{children}</p>
 }
-function Tag({children,dark}:{children:React.ReactNode;dark:boolean}) {
-  return <span className={`text-[9px] tracking-[0.07em] uppercase px-2 py-0.5 rounded-full border font-body whitespace-nowrap ${dark?'border-slate-700 text-slate-500':'border-stone-200 text-stone-400'}`}>{children}</span>
-}
-function Card({children,dark,className=''}:{children:React.ReactNode;dark:boolean;className?:string}) {
-  return <div className={`rounded-xl border p-4 md:p-5 ${dark?'bg-slate-900 border-slate-800':'bg-white/80 border-stone-200'} ${className}`}>{children}</div>
+function Divider({dark}:{dark:boolean}) {
+  return <div className={`w-full h-px mb-10 ${dark?'bg-white/8':'bg-black/8'}`}/>
 }
 
 /* ─── HOME ──────────────────────────────────────────────────── */
 function HomeSection({dark,onNav}:{dark:boolean;onNav:(s:Section)=>void}) {
   const [openId,setOpenId] = useState<string|null>(null)
-  const s=(i:number)=>({initial:{opacity:0,y:18},animate:{opacity:1,y:0},transition:{duration:0.55,delay:i*0.09,ease:[0.23,1,0.32,1] as any}})
-
-  const handleSkillClick = (skill:string)=>{
-    const target = SKILL_SECTIONS[skill]
-    if(target) onNav(target as Section)
-  }
+  const s=(i:number)=>({initial:{opacity:0,y:14},animate:{opacity:1,y:0},transition:{duration:0.5,delay:i*0.08,ease:[0.23,1,0.32,1] as any}})
 
   return (
     <Sec>
-      <motion.div {...s(0)}>
-        <div className="flex items-center gap-2.5 mb-5">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-slow flex-shrink-0"/>
-          <span className={`text-xs tracking-[0.07em] font-body ${dark?'text-slate-500':'text-stone-400'}`}>Mechatronics Engineering · University of Waterloo</span>
-        </div>
-        <Eyebrow dark={dark}>Engineer &amp; Athlete</Eyebrow>
+      {/* Status */}
+      <motion.div {...s(0)} className="flex items-center gap-2.5 mb-12">
+        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"/>
+        <span className={`text-[11px] tracking-[0.12em] uppercase font-mono ${dark?'text-white/30':'text-black/30'}`}>
+          Mechatronics Engineering · University of Waterloo · Seeking Fall 2026
+        </span>
       </motion.div>
 
-      <motion.h1 {...s(1)} className={`font-display text-4xl sm:text-5xl md:text-6xl leading-[1.1] mb-5 ${dark?'text-slate-50':'text-stone-900'}`}>
-        Arjun Dindigal.<br/>
-        <span className={`italic ${dark?'text-slate-400':'text-stone-400'}`}>Always Building.</span><br/>
-        Exploring Fall 2026<br/>opportunities.
+      {/* Hero */}
+      <motion.h1 {...s(1)} className={`font-mono text-3xl sm:text-4xl md:text-[42px] leading-[1.15] mb-6 tracking-tight ${dark?'text-white':'text-black'}`}>
+        Arjun Dindigal
       </motion.h1>
 
-      <motion.p {...s(2)} className={`text-sm leading-relaxed max-w-md mb-10 font-body ${dark?'text-slate-400':'text-stone-500'}`}>
-        Focused on robotics, mechanical systems, perception, and how intelligent systems interact
-        with the physical world. Outside of work, I'm training for an Ironman 70.3, building
-        consistency in the gym, and golfing regardless of the season.
+      <motion.p {...s(2)} className={`text-sm leading-relaxed max-w-sm mb-16 font-mono ${dark?'text-white/40':'text-black/40'}`}>
+        Mechatronics engineer focused on robotics, mechanical systems, and perception.
+        Building the intersection of intelligent software and physical hardware.
       </motion.p>
 
-      {/* Skills — clickable, navigate to relevant section */}
-      <motion.div {...s(3)} className="mb-3">
-        <p className={`text-[10px] tracking-[0.12em] uppercase mb-3 font-body ${dark?'text-slate-600':'text-stone-400'}`}>Skills — tap to explore</p>
-        <div className="flex flex-wrap gap-2 mb-14">
-          {SKILLS.map((sk,i)=>(
-            <motion.button key={sk} initial={{opacity:0,scale:0.88}} animate={{opacity:1,scale:1}} transition={{delay:0.28+i*0.025,duration:0.28}}
-              onClick={()=>handleSkillClick(sk)}
-              title={`View ${sk} in Projects`}
-              className={`shimmer-tag text-[10px] tracking-[0.08em] uppercase px-3 py-1.5 rounded-full border font-body transition-all duration-200 cursor-pointer ${dark?'border-slate-700 text-slate-500 hover:text-slate-100 hover:border-slate-400 hover:bg-slate-800':'border-stone-200 text-stone-400 hover:text-stone-800 hover:border-stone-500 hover:bg-stone-100'}`}>
+      {/* Skills */}
+      <motion.div {...s(3)} className="mb-20">
+        <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-4 ${dark?'text-white/20':'text-black/20'}`}>Skills</p>
+        <div className="flex flex-wrap gap-x-4 gap-y-2">
+          {SKILLS.map((sk)=>(
+            <button key={sk} onClick={()=>onNav('projects')}
+              className={`text-[11px] tracking-[0.06em] font-mono transition-all duration-150 ${dark?'text-white/30 hover:text-white/80':'text-black/30 hover:text-black/80'}`}>
               {sk}
-            </motion.button>
+            </button>
           ))}
         </div>
       </motion.div>
 
-      {/* Experience — with real logos */}
+      {/* Experience — prominent table layout */}
       <motion.div {...s(4)}>
-        <div className="flex items-center gap-3 mb-6">
-          <p className={`text-[11px] tracking-[0.18em] uppercase font-body ${dark?'text-slate-500':'text-stone-400'}`}>Experience</p>
-          <div className={`flex-1 h-px ${dark?'bg-slate-800':'bg-stone-200'}`}/>
-        </div>
-        <div className="space-y-3">
+        <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-6 ${dark?'text-white/25':'text-black/25'}`}>Experience</p>
+        <div className={`border-t ${dark?'border-white/8':'border-black/8'}`}>
           {EXPERIENCES.map((exp,i)=>(
-            <motion.div key={exp.id} initial={{opacity:0,x:-10}} animate={{opacity:1,x:0}} transition={{delay:0.45+i*0.1,duration:0.38}}>
-              <button data-hover onClick={()=>setOpenId(openId===exp.id?null:exp.id)}
-                className={`w-full rounded-xl border px-4 py-4 text-left transition-all duration-200 ${openId===exp.id?(dark?'bg-slate-800 border-slate-600':'bg-white border-stone-300'):(dark?'bg-slate-900/80 border-slate-800 hover:border-slate-600 hover:bg-slate-800/60':'bg-white/60 border-stone-200 hover:border-stone-300 hover:bg-white/90')}`}>
-                <div className="flex items-center gap-3">
-                  {/* Company logo */}
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 border overflow-hidden ${dark?'bg-white border-slate-700':'bg-white border-stone-200'}`}>
-                    <img src={EXP_LOGOS[exp.id]} alt={exp.company} className="w-8 h-8 object-contain"/>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between gap-2">
-                      <div className={`text-sm font-body font-medium ${dark?'text-slate-200':'text-stone-800'}`}>{exp.title}</div>
-                      <span className={`text-xs flex-shrink-0 transition-transform duration-300 ${openId===exp.id?'rotate-180':''} ${dark?'text-slate-600':'text-stone-400'}`}>&#8964;</span>
+            <motion.div key={exp.id} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.3+i*0.08}}>
+              <button onClick={()=>setOpenId(openId===exp.id?null:exp.id)} data-hover
+                className={`w-full border-b text-left transition-all duration-150 ${dark?'border-white/8 hover:bg-white/2':'border-black/8 hover:bg-black/2'}`}>
+                <div className="py-5 flex items-start justify-between gap-6">
+                  {/* Left: logo + role */}
+                  <div className="flex items-center gap-4 min-w-0">
+                    <div className={`w-8 h-8 flex-shrink-0 flex items-center justify-center overflow-hidden ${dark?'bg-white/5':'bg-black/5'}`}>
+                      <img
+                        src={EXP_LOGOS[exp.id]}
+                        alt={exp.company}
+                        className="w-6 h-6 object-contain"
+                        onError={e=>{
+                          const el=e.currentTarget; el.style.display='none'
+                          const p=el.parentElement!
+                          p.innerHTML=`<span style="font-size:9px;font-family:monospace;letter-spacing:0.05em;color:${dark?'rgba(255,255,255,0.3)':'rgba(0,0,0,0.3)'}">${exp.initials}</span>`
+                        }}
+                      />
                     </div>
-                    <div className={`text-xs mt-0.5 font-body ${dark?'text-slate-500':'text-stone-400'}`}>{exp.company} · {exp.location}</div>
-                    <div className="flex flex-wrap gap-1.5 mt-2">{exp.tags.map(tg=><Tag key={tg} dark={dark}>{tg}</Tag>)}</div>
+                    <div className="min-w-0">
+                      <p className={`text-sm font-mono ${dark?'text-white':'text-black'}`}>{exp.title}</p>
+                      <p className={`text-[11px] font-mono mt-0.5 ${dark?'text-white/35':'text-black/35'}`}>{exp.company}</p>
+                    </div>
                   </div>
+                  {/* Right: date + location */}
+                  <div className="text-right flex-shrink-0 hidden sm:block">
+                    <p className={`text-[11px] font-mono ${dark?'text-white/25':'text-black/25'}`}>{exp.date}</p>
+                    <p className={`text-[11px] font-mono mt-0.5 ${dark?'text-white/20':'text-black/20'}`}>{exp.location}</p>
+                  </div>
+                  <span className={`text-xs flex-shrink-0 mt-1 transition-transform duration-200 ${openId===exp.id?'rotate-180':''} ${dark?'text-white/20':'text-black/20'}`}>↓</span>
                 </div>
               </button>
+
+              {/* Expanded bullets */}
               <div className={`drawer ${openId===exp.id?'open':''}`}>
                 <div className="drawer-inner">
-                  <div className={`mx-1 mt-1 rounded-xl border px-5 py-4 ${dark?'bg-slate-900 border-slate-800':'bg-stone-50 border-stone-200'}`}>
-                    <ul className="space-y-2">
+                  <div className={`py-5 px-12 border-b ${dark?'border-white/5':'border-black/5'}`}>
+                    <ul className="space-y-2.5">
                       {exp.bullets.map((b,bi)=>(
-                        <li key={bi} className={`text-[12.5px] leading-relaxed flex gap-2.5 font-body ${dark?'text-slate-400':'text-stone-500'}`}>
-                          <span className={`mt-2 w-1 h-1 rounded-full flex-shrink-0 ${dark?'bg-slate-600':'bg-stone-300'}`}/>{b}
+                        <li key={bi} className={`text-[12px] leading-relaxed font-mono flex gap-3 ${dark?'text-white/40':'text-black/40'}`}>
+                          <span className="flex-shrink-0 mt-[6px] w-1 h-1 bg-current rounded-full opacity-40"/>
+                          {b}
                         </li>
                       ))}
-                      <li className={`text-[11px] tracking-wide mt-1 font-body ${dark?'text-slate-600':'text-stone-400'}`}>{exp.date}</li>
                     </ul>
+                    <div className="flex flex-wrap gap-3 mt-4">
+                      {exp.tags.map(tg=>(
+                        <span key={tg} className={`text-[9px] tracking-[0.1em] uppercase font-mono ${dark?'text-white/20':'text-black/20'}`}>{tg}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -428,66 +372,68 @@ function HomeSection({dark,onNav}:{dark:boolean;onNav:(s:Section)=>void}) {
 /* ─── ABOUT ─────────────────────────────────────────────────── */
 function AboutSection({dark}:{dark:boolean}) {
   const cards = [
-    {label:'Education',value:'B.A.Sc. Mechatronics Engineering',sub:'University of Waterloo · 2025–2030'},
-    {label:'Location', value:'Waterloo / Toronto, ON',          sub:'Open to co-op & internships'},
-    {label:'Contact',  value:'adindiga@uwaterloo.ca',           sub:'905-519-3823'},
-    {label:'Standing', value:'Excellent Academic Standing',     sub:'DSA · Mechatronics · Materials · Circuits'},
+    {label:'Education', value:'B.A.Sc. Mechatronics Engineering', sub:'University of Waterloo · 2025–2030'},
+    {label:'Location',  value:'Waterloo / Toronto, ON',           sub:'Open to co-op & internships'},
+    {label:'Contact',   value:'adindiga@uwaterloo.ca',            sub:'905-519-3823'},
+    {label:'Standing',  value:'Excellent Academic Standing',      sub:'DSA · Mechatronics · Materials · Circuits'},
   ]
   const interests = ['Robotics','Rocketry','Manufacturing','3D printing','Control systems','Triathlon','Ironman','Photography','Design','Running','Lifting','Golf']
   return (
     <Sec>
-      <Eyebrow dark={dark}>About</Eyebrow>
-      <h1 className={`font-display text-4xl md:text-5xl leading-[1.15] mb-3 ${dark?'text-slate-50':'text-stone-900'}`}>
-        "What I cannot create,<br/><span className="italic">I do not understand."</span>
+      <Label dark={dark}>About</Label>
+      <h1 className={`font-mono text-3xl md:text-4xl leading-[1.2] mb-3 ${dark?'text-white':'text-black'}`}>
+        "What I cannot create,<br/>I do not understand."
       </h1>
-      <p className={`text-[11px] tracking-wide mb-8 font-body ${dark?'text-slate-600':'text-stone-400'}`}>— Richard Feynman</p>
-      <p className={`text-sm leading-relaxed max-w-lg mb-10 font-body ${dark?'text-slate-400':'text-stone-500'}`}>
-        I'm a Mechatronics Engineering student focused on R&D in robotics systems, with interests spanning
-        mechanical design, electromechanics, perception, and software. I've built my foundation through
-        self-directed learning and hands-on co-ops, driven by curiosity for how complex systems are engineered end-to-end.
+      <p className={`text-[11px] tracking-wide mb-10 font-mono ${dark?'text-white/20':'text-black/20'}`}>— Richard Feynman</p>
+      <Divider dark={dark}/>
+      <p className={`text-sm leading-relaxed max-w-lg mb-14 font-mono ${dark?'text-white/45':'text-black/45'}`}>
+        Mechatronics Engineering student focused on R&D in robotics systems, with interests spanning
+        mechanical design, electromechanics, perception, and software. Built my foundation through
+        self-directed learning and hands-on co-ops, driven by curiosity for how complex systems are
+        engineered end-to-end.
         <br/><br/>
-        My approach is rooted in experimentation and iteration — breaking problems down from first principles,
-        building working prototypes, and refining through testing and failure. I'm interested in R&D environments
-        where ideas are rapidly translated into tangible systems.
+        My approach is rooted in experimentation and iteration — breaking problems down from first
+        principles, building working prototypes, and refining through testing and failure.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
+
+      {/* Info rows */}
+      <div className={`border-t ${dark?'border-white/8':'border-black/8'} mb-14`}>
         {cards.map((c,i)=>(
-          <motion.div key={c.label} initial={{opacity:0,y:14}} animate={{opacity:1,y:0}} transition={{delay:i*0.07}}>
-            <Card dark={dark}>
-              <p className={`text-[10px] tracking-[0.12em] uppercase mb-2 font-body ${dark?'text-slate-600':'text-stone-400'}`}>{c.label}</p>
-              <p className={`text-sm font-body ${dark?'text-slate-200':'text-stone-800'}`}>{c.value}</p>
-              <p className={`text-xs mt-0.5 font-body ${dark?'text-slate-600':'text-stone-400'}`}>{c.sub}</p>
-            </Card>
+          <motion.div key={c.label} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:i*0.06}}
+            className={`flex items-start justify-between py-4 border-b ${dark?'border-white/8':'border-black/8'}`}>
+            <span className={`text-[10px] tracking-[0.15em] uppercase font-mono w-28 flex-shrink-0 ${dark?'text-white/25':'text-black/25'}`}>{c.label}</span>
+            <div className="flex-1 min-w-0">
+              <p className={`text-sm font-mono ${dark?'text-white':'text-black'}`}>{c.value}</p>
+              <p className={`text-[11px] font-mono mt-0.5 ${dark?'text-white/30':'text-black/30'}`}>{c.sub}</p>
+            </div>
           </motion.div>
         ))}
-        <motion.div initial={{opacity:0,y:14}} animate={{opacity:1,y:0}} transition={{delay:0.28}} className="sm:col-span-2">
-          <Card dark={dark}>
-            <p className={`text-[10px] tracking-[0.12em] uppercase mb-2 font-body ${dark?'text-slate-600':'text-stone-400'}`}>Full Toolkit</p>
-            <p className={`text-xs leading-relaxed font-body ${dark?'text-slate-400':'text-stone-500'}`}>
-              SolidWorks · Siemens NX · Fusion 360 · FEA · GD&T · DFMA · C++ · Python · MATLAB · ROS · RTOS · STM32 · Arduino · Java · FastAPI · Git · CNC (mill/lathe) · FDM/SLA · Composites
-            </p>
-          </Card>
-        </motion.div>
+        <div className={`flex items-start py-4 border-b ${dark?'border-white/8':'border-black/8'}`}>
+          <span className={`text-[10px] tracking-[0.15em] uppercase font-mono w-28 flex-shrink-0 ${dark?'text-white/25':'text-black/25'}`}>Toolkit</span>
+          <p className={`text-[11px] leading-relaxed font-mono flex-1 ${dark?'text-white/40':'text-black/40'}`}>
+            SolidWorks · Siemens NX · Fusion 360 · FEA · GD&T · DFMA · C++ · Python · MATLAB · ROS · RTOS · STM32 · Arduino · Java · FastAPI · Git · CNC · FDM/SLA · Composites
+          </p>
+        </div>
       </div>
-      <div className="mb-10">
-        <p className={`text-[11px] tracking-[0.16em] uppercase mb-4 font-body ${dark?'text-slate-600':'text-stone-400'}`}>Photos</p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+
+      {/* Photos */}
+      <div className="mb-14">
+        <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-5 ${dark?'text-white/20':'text-black/20'}`}>Photos</p>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
           {[1,2,3,4,5,6].map(n=>(
-            <div key={n} className={`aspect-square rounded-xl overflow-hidden border ${dark?'bg-slate-800 border-slate-700':'bg-stone-100 border-stone-200'}`}>
-              {/* Replace with: <img src={`/images/photo${n}.jpg`} alt="" className="w-full h-full object-cover" /> */}
-              <div className={`w-full h-full flex items-center justify-center text-[10px] tracking-widest uppercase font-body ${dark?'text-slate-700':'text-stone-300'}`}>Photo {n}</div>
+            <div key={n} className={`aspect-square overflow-hidden ${dark?'bg-white/4':'bg-black/4'}`}>
+              <div className={`w-full h-full flex items-center justify-center text-[9px] tracking-widest uppercase font-mono ${dark?'text-white/15':'text-black/15'}`}>Photo {n}</div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Interests */}
       <div>
-        <p className={`text-[11px] tracking-[0.16em] uppercase mb-3 font-body ${dark?'text-slate-600':'text-stone-400'}`}>Interests</p>
-        <div className="flex flex-wrap gap-2">
-          {interests.map((item,i)=>(
-            <motion.span key={item} initial={{opacity:0,scale:0.9}} animate={{opacity:1,scale:1}} transition={{delay:i*0.04}}
-              className={`text-xs px-3 py-1.5 rounded-full border font-body ${dark?'bg-slate-800 border-slate-700 text-slate-400':'bg-stone-100 border-stone-200 text-stone-500'}`}>
-              {item}
-            </motion.span>
+        <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-4 ${dark?'text-white/20':'text-black/20'}`}>Interests</p>
+        <div className="flex flex-wrap gap-x-5 gap-y-2">
+          {interests.map((item)=>(
+            <span key={item} className={`text-[11px] font-mono ${dark?'text-white/35':'text-black/35'}`}>{item}</span>
           ))}
         </div>
       </div>
@@ -499,67 +445,45 @@ function AboutSection({dark}:{dark:boolean}) {
 function WritingSection({dark}:{dark:boolean}) {
   const [open, setOpen] = useState(false)
   const paragraphs = WRITING_POST.content.split('\n\n').filter(Boolean)
-
   return (
     <Sec>
-      <Eyebrow dark={dark}>Writing</Eyebrow>
-      <h1 className={`font-display text-4xl md:text-5xl leading-[1.15] mb-10 ${dark?'text-slate-50':'text-stone-900'}`}>
-        Reflecting <span className="italic"></span>
-      </h1>
-
-      {/* Single real post */}
-      <div className={`border-t ${dark?'border-slate-800':'border-stone-200'}`}>
-        <motion.div initial={{opacity:0,y:10}} animate={{opacity:1,y:0}}>
-          {/* Post header — clickable to expand */}
+      <Label dark={dark}>Writing</Label>
+      <h1 className={`font-mono text-3xl md:text-4xl leading-[1.2] mb-14 ${dark?'text-white':'text-black'}`}>Reflecting</h1>
+      <div className={`border-t ${dark?'border-white/8':'border-black/8'}`}>
+        <motion.div initial={{opacity:0,y:8}} animate={{opacity:1,y:0}}>
           <button data-hover onClick={()=>setOpen(o=>!o)}
-            className={`w-full border-b text-left py-8 group transition-all duration-200 rounded-sm ${open?(dark?'border-slate-700':'border-stone-300'):(dark?'border-slate-800 hover:bg-slate-900/40':'border-stone-200 hover:bg-stone-50/60')}`}>
+            className={`w-full border-b text-left py-7 transition-all duration-150 ${dark?'border-white/8 hover:bg-white/2':'border-black/8 hover:bg-black/2'}`}>
             <div className="flex items-start justify-between gap-4">
               <div className="flex-1">
-                <div className="flex items-center gap-3 mb-3 flex-wrap">
-                  <span className={`text-[10px] tracking-[0.1em] uppercase font-body ${dark?'text-slate-600':'text-stone-400'}`}>{WRITING_POST.date}</span>
-                  <span className={`text-[9px] tracking-[0.08em] uppercase px-2.5 py-0.5 rounded-full border font-body ${dark?'border-slate-700 text-slate-600':'border-stone-200 text-stone-400'}`}>{WRITING_POST.cat}</span>
+                <div className="flex items-center gap-4 mb-3">
+                  <span className={`text-[10px] tracking-[0.15em] uppercase font-mono ${dark?'text-white/25':'text-black/25'}`}>{WRITING_POST.date}</span>
+                  <span className={`text-[10px] tracking-[0.1em] uppercase font-mono ${dark?'text-white/20':'text-black/20'}`}>{WRITING_POST.cat}</span>
                 </div>
-                <h2 className={`font-display text-2xl md:text-3xl transition-all duration-200 ${open?'':(dark?'group-hover:text-slate-100':'group-hover:text-stone-800')} ${dark?'text-slate-100':'text-stone-900'}`}>
-                  {WRITING_POST.title}
-                </h2>
+                <h2 className={`font-mono text-xl md:text-2xl ${dark?'text-white':'text-black'}`}>{WRITING_POST.title}</h2>
                 {!open && (
-                  <p className={`text-sm mt-2 font-body ${dark?'text-slate-500':'text-stone-400'}`}>
-                    {paragraphs[0]?.slice(0, 120)}…
+                  <p className={`text-sm mt-2 font-mono ${dark?'text-white/30':'text-black/30'}`}>
+                    {paragraphs[0]?.slice(0, 100)}…
                   </p>
                 )}
               </div>
-              <motion.span animate={{rotate: open?180:0}} transition={{duration:0.3}}
-                className={`text-lg flex-shrink-0 mt-1 ${dark?'text-slate-600':'text-stone-400'}`}>
-                &#8964;
-              </motion.span>
+              <motion.span animate={{rotate:open?180:0}} transition={{duration:0.25}}
+                className={`text-sm flex-shrink-0 mt-1 font-mono ${dark?'text-white/20':'text-black/20'}`}>↓</motion.span>
             </div>
           </button>
-
-          {/* Post body — expands inline */}
           <AnimatePresence>
             {open && (
-              <motion.div
-                initial={{opacity:0,height:0}} animate={{opacity:1,height:'auto'}} exit={{opacity:0,height:0}}
-                transition={{duration:0.4,ease:[0.23,1,0.32,1]}}
-                className="overflow-hidden"
-              >
-                <div className={`py-8 px-1 space-y-5 border-b ${dark?'border-slate-800':'border-stone-200'}`}>
+              <motion.div initial={{opacity:0,height:0}} animate={{opacity:1,height:'auto'}} exit={{opacity:0,height:0}} transition={{duration:0.35,ease:[0.23,1,0.32,1]}} className="overflow-hidden">
+                <div className={`py-7 space-y-5 border-b ${dark?'border-white/8':'border-black/8'}`}>
                   {paragraphs.map((para,i)=>(
-                    <p key={i} className={`text-sm leading-relaxed font-body ${dark?'text-slate-300':'text-stone-600'}`}>{para}</p>
+                    <p key={i} className={`text-sm leading-relaxed font-mono ${dark?'text-white/50':'text-black/50'}`}>{para}</p>
                   ))}
-                  <button onClick={()=>setOpen(false)}
-                    className={`text-[11px] tracking-[0.1em] uppercase font-body mt-4 ${dark?'text-slate-600 hover:text-slate-300':'text-stone-400 hover:text-stone-600'}`}>
-                    ↑ Collapse
-                  </button>
+                  <button onClick={()=>setOpen(false)} className={`text-[10px] tracking-[0.12em] uppercase font-mono mt-2 ${dark?'text-white/20 hover:text-white/50':'text-black/20 hover:text-black/50'}`}>↑ Collapse</button>
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
         </motion.div>
       </div>
-
-      {/* More posts placeholder */}
-      <p className={`text-xs mt-8 font-body ${dark?'text-slate-700':'text-stone-300'}`}></p>
     </Sec>
   )
 }
@@ -570,53 +494,49 @@ function PrintsGallery({dark,onClose}:{dark:boolean;onClose:()=>void}) {
   return (
     <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}
       className="fixed inset-0 z-[200] overflow-y-auto"
-      style={{background:dark?'rgba(13,15,21,0.97)':'rgba(245,240,232,0.97)',backdropFilter:'blur(16px)'}}>
-      <div className="max-w-[860px] mx-auto px-5 md:px-8 py-12 md:py-16">
-        <div className="flex items-start justify-between mb-10 gap-4">
+      style={{background:dark?'rgba(8,8,8,0.98)':'rgba(248,247,244,0.98)',backdropFilter:'blur(20px)'}}>
+      <div className="max-w-[860px] mx-auto px-6 md:px-10 py-14">
+        <div className="flex items-start justify-between mb-12 gap-4">
           <div>
-            <p className={`text-[11px] tracking-[0.16em] uppercase font-body mb-2 ${dark?'text-slate-500':'text-stone-400'}`}>Gallery</p>
-            <h2 className={`font-display text-3xl md:text-4xl ${dark?'text-slate-50':'text-stone-900'}`}>3D Printed <span className="italic">&amp; Made</span></h2>
+            <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-3 ${dark?'text-white/25':'text-black/25'}`}>Gallery</p>
+            <h2 className={`font-mono text-3xl ${dark?'text-white':'text-black'}`}>3D Printed & Made</h2>
           </div>
-          <button data-hover onClick={onClose} className={`flex-shrink-0 text-[11px] tracking-[0.12em] uppercase font-body border rounded-full px-4 py-2 transition-all duration-200 ${dark?'border-slate-700 text-slate-400 hover:text-slate-100 hover:border-slate-400':'border-stone-300 text-stone-500 hover:text-stone-800 hover:border-stone-600'}`}>← Back</button>
+          <button data-hover onClick={onClose} className={`text-[10px] tracking-[0.15em] uppercase font-mono transition-all duration-150 ${dark?'text-white/30 hover:text-white/70':'text-black/30 hover:text-black/70'}`}>← Back</button>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
           {PRINTS.map((pr,i)=>(
-            <motion.div key={pr.id} initial={{opacity:0,y:14}} animate={{opacity:1,y:0}} transition={{delay:i*0.06}}
+            <motion.div key={pr.id} initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:i*0.05}}
               data-hover onClick={()=>setSelected(pr)}
-              className={`rounded-xl border overflow-hidden cursor-pointer transition-all duration-200 group ${dark?'bg-slate-900 border-slate-800 hover:border-slate-500':'bg-white border-stone-200 hover:border-stone-400'}`}>
-              <div className={`h-36 md:h-40 overflow-hidden ${dark?'bg-slate-800':'bg-stone-100'}`}>
-                {/* <img src={pr.img} alt={pr.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" /> */}
-                <div className={`w-full h-full flex flex-col items-center justify-center gap-2 ${dark?'text-slate-700':'text-stone-300'}`}><span className="text-xl">◆</span><span className="text-[9px] tracking-widest uppercase font-body">Add photo</span></div>
+              className={`cursor-pointer group transition-all duration-150 ${dark?'hover:bg-white/3':'hover:bg-black/3'}`}>
+              <div className={`aspect-[4/3] overflow-hidden mb-3 ${dark?'bg-white/4':'bg-black/4'}`}>
+                <div className={`w-full h-full flex items-center justify-center ${dark?'text-white/15':'text-black/15'}`}>
+                  <span className="text-[10px] tracking-widest uppercase font-mono">Add photo</span>
+                </div>
               </div>
-              <div className="p-4">
-                <p className={`text-sm font-body mb-1 ${dark?'text-slate-200':'text-stone-800'}`}>{pr.name}</p>
-                <p className={`text-[10px] tracking-[0.06em] uppercase font-body ${dark?'text-slate-600':'text-stone-400'}`}>{pr.material}</p>
-              </div>
+              <p className={`text-sm font-mono mb-1 ${dark?'text-white':'text-black'}`}>{pr.name}</p>
+              <p className={`text-[10px] tracking-[0.08em] uppercase font-mono ${dark?'text-white/25':'text-black/25'}`}>{pr.material}</p>
             </motion.div>
           ))}
-          <div className={`rounded-xl border border-dashed flex flex-col items-center justify-center h-[176px] ${dark?'border-slate-700 text-slate-700':'border-stone-300 text-stone-300'}`}>
-            <span className="text-xl mb-2">+</span><span className="text-[10px] tracking-widest uppercase font-body">Add part</span>
-          </div>
         </div>
       </div>
       <AnimatePresence>
         {selected&&(
           <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}
-            className="fixed inset-0 z-[300] flex items-center justify-center p-5 md:p-8"
-            style={{background:'rgba(0,0,0,0.8)',backdropFilter:'blur(8px)'}} onClick={()=>setSelected(null)}>
-            <motion.div initial={{scale:0.94,opacity:0}} animate={{scale:1,opacity:1}} exit={{scale:0.94,opacity:0}}
+            className="fixed inset-0 z-[300] flex items-center justify-center p-6"
+            style={{background:'rgba(0,0,0,0.85)',backdropFilter:'blur(8px)'}} onClick={()=>setSelected(null)}>
+            <motion.div initial={{scale:0.96,opacity:0}} animate={{scale:1,opacity:1}} exit={{scale:0.96,opacity:0}}
               onClick={e=>e.stopPropagation()}
-              className={`max-w-lg w-full rounded-2xl overflow-hidden ${dark?'bg-slate-900 border border-slate-700':'bg-white border border-stone-200'}`}>
-              <div className={`h-48 md:h-56 ${dark?'bg-slate-800':'bg-stone-100'}`}>
-                <div className={`w-full h-full flex items-center justify-center ${dark?'text-slate-700':'text-stone-300'}`}><span className="text-3xl">◆</span></div>
+              className={`max-w-md w-full overflow-hidden ${dark?'bg-[#0a0a0a] border border-white/8':'bg-[#f8f7f4] border border-black/8'}`}>
+              <div className={`aspect-[4/3] ${dark?'bg-white/4':'bg-black/4'}`}>
+                <div className={`w-full h-full flex items-center justify-center ${dark?'text-white/15':'text-black/15'}`}>◆</div>
               </div>
-              <div className="p-6 md:p-7">
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className={`font-display text-xl md:text-2xl ${dark?'text-slate-50':'text-stone-900'}`}>{selected.name}</h3>
-                  <button data-hover onClick={()=>setSelected(null)} className={`text-lg ml-4 mt-0.5 flex-shrink-0 ${dark?'text-slate-600 hover:text-slate-300':'text-stone-300 hover:text-stone-600'}`}>✕</button>
+              <div className="p-6">
+                <div className="flex items-start justify-between mb-2">
+                  <h3 className={`font-mono text-lg ${dark?'text-white':'text-black'}`}>{selected.name}</h3>
+                  <button data-hover onClick={()=>setSelected(null)} className={`text-sm ml-4 font-mono ${dark?'text-white/25 hover:text-white/60':'text-black/25 hover:text-black/60'}`}>✕</button>
                 </div>
-                <p className={`text-[10px] tracking-[0.1em] uppercase font-body mb-4 ${dark?'text-slate-500':'text-stone-400'}`}>{selected.material}</p>
-                <p className={`text-sm leading-relaxed font-body ${dark?'text-slate-400':'text-stone-500'}`}>{selected.desc}</p>
+                <p className={`text-[10px] tracking-[0.1em] uppercase font-mono mb-4 ${dark?'text-white/25':'text-black/25'}`}>{selected.material}</p>
+                <p className={`text-sm leading-relaxed font-mono ${dark?'text-white/45':'text-black/45'}`}>{selected.desc}</p>
               </div>
             </motion.div>
           </motion.div>
@@ -626,14 +546,15 @@ function PrintsGallery({dark,onClose}:{dark:boolean;onClose:()=>void}) {
   )
 }
 
+/* ─── PROJECT MODAL ─────────────────────────────────────────── */
 function ProjectModal({project,dark,onClose}:{project:typeof PROJECTS[0];dark:boolean;onClose:()=>void}) {
-  const [idx,setIdx] = useState(0)
-  const [failedImgs, setFailedImgs] = useState<Set<number>>(new Set())
-  const imgs = project.imgs ?? []
-  const hasImgs  = imgs.length > 0
-  const hasVideo = !!project.video
+  const [idx,setIdx]           = useState(0)
+  const [failedImgs,setFailed] = useState<Set<number>>(new Set())
+  const imgs    = project.imgs ?? []
+  const hasImgs = imgs.length > 0
+  const hasVideo= !!project.video
 
-  useEffect(()=>{ setIdx(0); setFailedImgs(new Set()) },[project.id])
+  useEffect(()=>{ setIdx(0); setFailed(new Set()) },[project.id])
 
   const prev = (e:React.MouseEvent)=>{ e.stopPropagation(); setIdx(i=>(i-1+imgs.length)%imgs.length) }
   const next = (e:React.MouseEvent)=>{ e.stopPropagation(); setIdx(i=>(i+1)%imgs.length) }
@@ -641,12 +562,12 @@ function ProjectModal({project,dark,onClose}:{project:typeof PROJECTS[0];dark:bo
   return (
     <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}
       className="fixed inset-0 z-[200] flex items-center justify-center p-5 md:p-10"
-      style={{background:'rgba(0,0,0,0.75)',backdropFilter:'blur(10px)'}}
+      style={{background:'rgba(0,0,0,0.8)',backdropFilter:'blur(12px)'}}
       onClick={onClose}>
-      <motion.div initial={{scale:0.92,opacity:0,y:20}} animate={{scale:1,opacity:1,y:0}} exit={{scale:0.92,opacity:0,y:10}}
-        transition={{duration:0.35,ease:[0.23,1,0.32,1]}}
+      <motion.div initial={{scale:0.94,opacity:0,y:16}} animate={{scale:1,opacity:1,y:0}} exit={{scale:0.94,opacity:0,y:8}}
+        transition={{duration:0.3,ease:[0.23,1,0.32,1]}}
         onClick={e=>e.stopPropagation()}
-        className={`w-full max-w-xl rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto ${dark?'bg-[#0d0f15] border border-slate-700':'bg-[#f5f0e8] border border-stone-200'}`}>
+        className={`w-full max-w-xl overflow-hidden max-h-[90vh] overflow-y-auto ${dark?'bg-[#0a0a0a] border border-white/8':'bg-[#f8f7f4] border border-black/8'}`}>
 
         {hasImgs && (
           <div className="relative bg-black" style={{aspectRatio:'16/9'}}>
@@ -655,86 +576,58 @@ function ProjectModal({project,dark,onClose}:{project:typeof PROJECTS[0];dark:bo
                 <motion.div key={`fallback-${idx}`}
                   initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}
                   className="w-full h-full flex flex-col items-center justify-center gap-2"
-                  style={{color:'#475569'}}>
-                  <span style={{fontSize:24}}>◆</span>
-                  <span style={{fontSize:10,letterSpacing:'0.12em',textTransform:'uppercase'}}>Photo not found</span>
+                  style={{color:'rgba(255,255,255,0.15)'}}>
+                  <span className="text-lg font-mono">◆</span>
+                  <span className="text-[9px] tracking-[0.15em] uppercase font-mono">Photo not found</span>
                 </motion.div>
               ) : (
-                <motion.img
-                  key={idx}
-                  src={imgs[idx]}
-                  alt={`${project.name} ${idx+1}`}
-                  initial={{opacity:0,x:24}}
-                  animate={{opacity:1,x:0}}
-                  exit={{opacity:0,x:-24}}
-                  transition={{duration:0.22,ease:[0.23,1,0.32,1]}}
+                <motion.img key={idx} src={imgs[idx]} alt={`${project.name} ${idx+1}`}
+                  initial={{opacity:0,x:20}} animate={{opacity:1,x:0}} exit={{opacity:0,x:-20}}
+                  transition={{duration:0.2,ease:[0.23,1,0.32,1]}}
                   className="w-full h-full object-cover"
-                  onError={()=> setFailedImgs(prev => new Set(prev).add(idx))}
+                  onError={()=>setFailed(prev=>new Set(prev).add(idx))}
                 />
               )}
             </AnimatePresence>
-
-            {imgs.length > 1 && (<>
-              <button onClick={prev}
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white flex items-center justify-center text-base hover:bg-black/75 transition-colors">‹</button>
-              <button onClick={next}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white flex items-center justify-center text-base hover:bg-black/75 transition-colors">›</button>
+            {imgs.length>1&&(<>
+              <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/60 text-white flex items-center justify-center text-sm hover:bg-black/80 transition-colors font-mono">‹</button>
+              <button onClick={next} className="absolute right-10 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/60 text-white flex items-center justify-center text-sm hover:bg-black/80 transition-colors font-mono">›</button>
               <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
                 {imgs.map((_,i)=>(
                   <button key={i} onClick={e=>{e.stopPropagation();setIdx(i)}}
-                    className={`rounded-full transition-all duration-200 ${i===idx?'w-4 h-1.5 bg-white':'w-1.5 h-1.5 bg-white/50 hover:bg-white/80'}`}/>
+                    className={`rounded-full transition-all duration-200 ${i===idx?'w-4 h-1 bg-white':'w-1 h-1 bg-white/40 hover:bg-white/70'}`}/>
                 ))}
               </div>
-              <div className="absolute top-3 right-10 text-[10px] font-body text-white/70 bg-black/40 px-2 py-0.5 rounded-full">
-                {idx+1} / {imgs.length}
-              </div>
+              <div className="absolute top-3 right-10 text-[9px] font-mono text-white/50 bg-black/50 px-2 py-0.5">{idx+1}/{imgs.length}</div>
             </>)}
-
-            <button onClick={onClose}
-              className={`absolute top-3 right-3 w-7 h-7 rounded-full flex items-center justify-center text-sm transition-all ${dark?'bg-slate-700/80 text-slate-300 hover:bg-slate-600':'bg-white/80 text-stone-500 hover:bg-white'}`}>✕</button>
+            <button onClick={onClose} className="absolute top-3 right-3 w-7 h-7 flex items-center justify-center text-xs font-mono text-white/50 hover:text-white bg-black/50 transition-colors">✕</button>
           </div>
         )}
 
-        {/* No photos yet — placeholder */}
         {!hasImgs && (
-          <div className={`relative h-52 md:h-64 overflow-hidden ${dark?'bg-slate-800':'bg-stone-100'}`}>
-            <div className={`w-full h-full flex flex-col items-center justify-center gap-2 ${dark?'text-slate-700':'text-stone-300'}`}>
-              <span className="text-3xl">◆</span>
-              <span className="text-[10px] tracking-widest uppercase font-body">Add photo</span>
-            </div>
-            <button onClick={onClose}
-              className={`absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-sm transition-all ${dark?'bg-slate-700/80 text-slate-300 hover:bg-slate-600':'bg-white/80 text-stone-500 hover:bg-white'}`}>
-              ✕
-            </button>
+          <div className={`relative h-48 flex flex-col items-center justify-center gap-2 ${dark?'bg-white/3':'bg-black/3'}`}>
+            <span className={`text-lg font-mono ${dark?'text-white/15':'text-black/15'}`}>◆</span>
+            <span className={`text-[9px] tracking-widest uppercase font-mono ${dark?'text-white/15':'text-black/15'}`}>Add photo</span>
+            <button onClick={onClose} className="absolute top-3 right-3 text-xs font-mono text-white/40 hover:text-white/70">✕</button>
           </div>
         )}
 
-        {/* ── Video (shown below photos if present) ── */}
         {hasVideo && (
           <div style={{aspectRatio:'16/9'}}>
-            <iframe
-              src={project.video!}
-              className="w-full h-full"
-              style={{border:0}}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+            <iframe src={project.video!} className="w-full h-full" style={{border:0}}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen/>
           </div>
         )}
 
-        {/* ── Text content ── */}
         <div className="p-6 md:p-8">
-          <div className="flex items-start justify-between gap-3 mb-4">
-            <h2 className={`font-display text-xl md:text-2xl leading-tight ${dark?'text-slate-50':'text-stone-900'}`}>{project.name}</h2>
-            <span className={`text-[10px] tracking-[0.08em] uppercase px-2.5 py-1 rounded-full border flex-shrink-0 font-body mt-1 ${dark?'border-slate-600 text-slate-400':'border-stone-300 text-stone-500'}`}>{project.stat}</span>
+          <div className="flex items-start justify-between gap-3 mb-3">
+            <h2 className={`font-mono text-xl leading-tight ${dark?'text-white':'text-black'}`}>{project.name}</h2>
+            <span className={`text-[9px] tracking-[0.1em] uppercase font-mono flex-shrink-0 mt-1 ${dark?'text-white/25':'text-black/25'}`}>{project.stat}</span>
           </div>
-          <div className="flex flex-wrap gap-1.5 mb-5">
-            {project.tags.map(tg=><span key={tg} className={`text-[9px] tracking-[0.06em] uppercase px-2 py-0.5 rounded font-body ${dark?'bg-slate-800 text-slate-400':'bg-stone-200 text-stone-500'}`}>{tg}</span>)}
+          <div className="flex flex-wrap gap-3 mb-5">
+            {project.tags.map(tg=><span key={tg} className={`text-[9px] tracking-[0.1em] uppercase font-mono ${dark?'text-white/25':'text-black/25'}`}>{tg}</span>)}
           </div>
-          <p className={`text-sm leading-relaxed font-body ${dark?'text-slate-300':'text-stone-600'}`}>{project.detail}</p>
-          {project.gallery && (
-            <p className={`text-xs mt-4 font-body ${dark?'text-slate-500':'text-stone-400'}`}>↑ Close and tap the card again to open the parts gallery.</p>
-          )}
+          <p className={`text-sm leading-relaxed font-mono ${dark?'text-white/50':'text-black/50'}`}>{project.detail}</p>
         </div>
       </motion.div>
     </motion.div>
@@ -745,57 +638,43 @@ function ProjectModal({project,dark,onClose}:{project:typeof PROJECTS[0];dark:bo
 function ProjectsSection({dark}:{dark:boolean}) {
   const [showGallery,setShowGallery] = useState(false)
   const [selected,setSelected]       = useState<typeof PROJECTS[0]|null>(null)
-
-  const handleClick=(p:typeof PROJECTS[0])=>{
-    if(p.gallery){ setShowGallery(true) } else { setSelected(p) }
-  }
+  const handleClick=(p:typeof PROJECTS[0])=>{ if(p.gallery){ setShowGallery(true) } else { setSelected(p) } }
 
   return (
     <>
       <AnimatePresence>{showGallery&&<PrintsGallery dark={dark} onClose={()=>setShowGallery(false)}/>}</AnimatePresence>
       <AnimatePresence>{selected&&<ProjectModal project={selected} dark={dark} onClose={()=>setSelected(null)}/>}</AnimatePresence>
       <Sec>
-        <Eyebrow dark={dark}>Projects</Eyebrow>
-        <h1 className={`font-display text-4xl md:text-5xl leading-[1.15] mb-4 ${dark?'text-slate-50':'text-stone-900'}`}>Things I've <span className="italic">made.</span></h1>
-        <p className={`text-sm mb-10 font-body ${dark?'text-slate-500':'text-stone-400'}`}>Tap any project to expand and read more.</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <Label dark={dark}>Projects</Label>
+        <h1 className={`font-mono text-3xl md:text-4xl leading-[1.2] mb-14 ${dark?'text-white':'text-black'}`}>Things I've made.</h1>
+
+        {/* Table-style project list */}
+        <div className={`border-t ${dark?'border-white/8':'border-black/8'}`}>
           {PROJECTS.map((p,i)=>(
-            <motion.div key={p.id} initial={{opacity:0,y:18}} animate={{opacity:1,y:0}} transition={{delay:i*0.09,duration:0.42,ease:[0.23,1,0.32,1] as any}}
-              whileHover={{y:-3,scale:1.01}} data-hover onClick={()=>handleClick(p)}
-              className={`rounded-xl border overflow-hidden cursor-pointer transition-colors duration-200 ${dark?'bg-slate-900 border-slate-800 hover:border-slate-500':'bg-white/80 border-stone-200 hover:border-stone-400'}`}>
-
-              {/* Card thumbnail — first image or placeholder */}
-              <div className={`relative h-40 md:h-44 overflow-hidden ${dark?'bg-slate-800':'bg-stone-100'}`}>
-                {p.imgs?.[0]
-                  ? <img src={p.imgs[0]} alt={p.name} className="w-full h-full object-cover"/>
-                  : <div className={`w-full h-full flex flex-col items-center justify-center gap-2 font-body ${dark?'text-slate-700':'text-stone-300'}`}>
-                      <span className="text-xl">◆</span>
-                      <span className="text-[10px] tracking-widest uppercase">{p.gallery?'Tap to browse gallery':'Tap to read more'}</span>
-                    </div>
-                }
-                {/* Badges */}
-                {p.imgs && p.imgs.length > 1 && (
-                  <span className="absolute top-2 left-2 text-[10px] font-body text-white bg-black/50 px-2 py-0.5 rounded-full">
-                    {p.imgs.length} photos
-                  </span>
-                )}
-                {p.video && (
-                  <span className="absolute top-2 right-2 text-[10px] font-body text-white bg-black/50 px-2 py-0.5 rounded-full">
-                    ▷ video
-                  </span>
-                )}
-              </div>
-
-              <div className="p-4 md:p-5">
-                <div className="flex items-start justify-between mb-2 gap-2">
-                  <h3 className={`text-sm font-body leading-snug font-medium ${dark?'text-slate-100':'text-stone-900'}`}>{p.name}</h3>
-                  <span className={`text-[9px] tracking-wide uppercase font-body flex-shrink-0 mt-0.5 ${dark?'text-slate-600':'text-stone-400'}`}>{p.gallery?'⊞':'↗'}</span>
+            <motion.div key={p.id} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:i*0.07}}
+              data-hover onClick={()=>handleClick(p)}
+              className={`border-b cursor-pointer transition-all duration-150 group ${dark?'border-white/8 hover:bg-white/2':'border-black/8 hover:bg-black/2'}`}>
+              <div className="py-5 flex items-center gap-5">
+                {/* Thumbnail */}
+                <div className={`w-16 h-12 flex-shrink-0 overflow-hidden ${dark?'bg-white/5':'bg-black/5'}`}>
+                  {p.imgs?.[0]
+                    ? <img src={p.imgs[0]} alt={p.name} className="w-full h-full object-cover"
+                        onError={e=>{const el=e.currentTarget;el.style.display='none'}}/>
+                    : <div className={`w-full h-full flex items-center justify-center ${dark?'text-white/15':'text-black/15'}`}><span className="text-xs font-mono">◆</span></div>
+                  }
                 </div>
-                <p className={`text-xs leading-relaxed mb-3 font-body ${dark?'text-slate-500':'text-stone-400'}`}>{p.desc}</p>
-                <div className="flex flex-wrap gap-1.5 mb-2">
-                  {p.tags.map(tg=><span key={tg} className={`text-[9px] tracking-[0.06em] uppercase px-2 py-0.5 rounded font-body ${dark?'bg-slate-800 text-slate-500':'bg-stone-100 text-stone-400'}`}>{tg}</span>)}
+                {/* Info */}
+                <div className="flex-1 min-w-0">
+                  <p className={`text-sm font-mono mb-1 ${dark?'text-white':'text-black'}`}>{p.name}</p>
+                  <p className={`text-[11px] font-mono leading-snug ${dark?'text-white/30':'text-black/30'}`}>{p.desc}</p>
                 </div>
-                <p className={`text-[10px] tracking-[0.08em] uppercase font-mono ${dark?'text-slate-600':'text-stone-400'}`}>{p.stat}</p>
+                {/* Meta */}
+                <div className="hidden sm:flex flex-col items-end gap-1.5 flex-shrink-0">
+                  <span className={`text-[10px] tracking-[0.08em] uppercase font-mono ${dark?'text-white/20':'text-black/20'}`}>{p.stat}</span>
+                  {p.video && <span className={`text-[9px] font-mono ${dark?'text-white/20':'text-black/20'}`}>▷ video</span>}
+                  {p.imgs && p.imgs.length>1 && <span className={`text-[9px] font-mono ${dark?'text-white/20':'text-black/20'}`}>{p.imgs.length} photos</span>}
+                </div>
+                <span className={`text-xs font-mono flex-shrink-0 transition-transform duration-150 group-hover:translate-x-1 ${dark?'text-white/20':'text-black/20'}`}>→</span>
               </div>
             </motion.div>
           ))}
@@ -808,86 +687,84 @@ function ProjectsSection({dark}:{dark:boolean}) {
 /* ─── TRAINING ──────────────────────────────────────────────── */
 function TrainingSection({dark}:{dark:boolean}) {
   const disciplines = [
-    {label:'Swim',     icon:'◌',desc:'Open water & pool sessions'},
-    {label:'Bike',     icon:'◎',desc:'Long road rides & mountain biking'},
-    {label:'Run',      icon:'◉',desc:'Base building & brick runs'},
-    {label:'Strength', icon:'◆',desc:'Full Body twice a week'},
+    {label:'Swim',     desc:'Open water & pool sessions'},
+    {label:'Bike',     desc:'Long road rides & mountain biking'},
+    {label:'Run',      desc:'Base building & brick runs'},
+    {label:'Strength', desc:'Full body twice a week'},
   ]
   const externalLinks = [
-    {label:'Training Tracker',  sub:'Full workout log',      href:GYM_TRACKER_URL, icon:'⊞'},
-    {label:'Strava',            sub:'Run & ride activity',   href:STRAVA_URL,      icon:'◉'},
-    {label:'Garmin Connect',    sub:'GPS & health data',     href:GARMIN_URL,      icon:'◎'},
-    {label:'Spotify',           sub:"What I'm listening to", href:SPOTIFY_URL,     icon:'♪'},
+    {label:'Training Tracker', sub:'Full workout log',      href:GYM_TRACKER_URL},
+    {label:'Strava',           sub:'Run & ride activity',   href:STRAVA_URL},
+    {label:'Garmin Connect',   sub:'GPS & health data',     href:GARMIN_URL},
+    {label:'Spotify',          sub:"What I'm listening to", href:SPOTIFY_URL},
   ]
   return (
     <Sec>
-      <Eyebrow dark={dark}>Training</Eyebrow>
-      <h1 className={`font-display text-4xl md:text-5xl leading-[1.15] mb-4 ${dark?'text-slate-50':'text-stone-900'}`}>Gym, Golf &amp; <span className="italic">Ironman.</span></h1>
-      <p className={`text-sm leading-relaxed max-w-md mb-10 font-body ${dark?'text-slate-400':'text-stone-500'}`}>
-        Outside of engineering I'm either at the gym, on a golf course, or convincing myself that
-        training for races is a reasonable use of time. I'm obsessed with constantly improving —
-        it keeps my headspace level in the middle of school, job applications, and building a career.
+      <Label dark={dark}>Training</Label>
+      <h1 className={`font-mono text-3xl md:text-4xl leading-[1.2] mb-4 ${dark?'text-white':'text-black'}`}>Gym, Golf & Ironman.</h1>
+      <p className={`text-sm leading-relaxed max-w-md mb-14 font-mono ${dark?'text-white/40':'text-black/40'}`}>
+        Outside of engineering I'm either at the gym, on a golf course, or training for races.
+        Obsessed with constant improvement — it keeps my headspace level.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-14">
+
+      {/* Links as rows */}
+      <div className={`border-t mb-14 ${dark?'border-white/8':'border-black/8'}`}>
         {externalLinks.map((l,i)=>(
-          <motion.a key={l.label} href={l.href} target="_blank" rel="noreferrer" initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:0.1+i*0.07}} data-hover
-            className={`flex items-center gap-3 px-5 py-4 rounded-xl border transition-all duration-200 group ${dark?'bg-slate-900 border-slate-700 hover:border-slate-500':'bg-white/80 border-stone-200 hover:border-stone-400'}`}>
-            <span className={`text-base flex-shrink-0 ${dark?'text-slate-400':'text-stone-400'}`}>{l.icon}</span>
-            <div className="flex-1 min-w-0">
-              <p className={`text-sm font-body ${dark?'text-slate-200':'text-stone-800'}`}>{l.label}</p>
-              <p className={`text-[11px] font-body ${dark?'text-slate-500':'text-stone-400'}`}>{l.sub}</p>
+          <motion.a key={l.label} href={l.href} target="_blank" rel="noreferrer" initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.1+i*0.06}} data-hover
+            className={`flex items-center justify-between py-4 border-b group transition-all duration-150 ${dark?'border-white/8 hover:bg-white/2':'border-black/8 hover:bg-black/2'}`}>
+            <div>
+              <p className={`text-sm font-mono ${dark?'text-white':'text-black'}`}>{l.label}</p>
+              <p className={`text-[11px] font-mono ${dark?'text-white/30':'text-black/30'}`}>{l.sub}</p>
             </div>
-            <span className={`text-sm flex-shrink-0 transition-transform duration-200 group-hover:translate-x-1 ${dark?'text-slate-600':'text-stone-400'}`}>→</span>
+            <span className={`text-xs font-mono transition-transform duration-150 group-hover:translate-x-1 ${dark?'text-white/20':'text-black/20'}`}>→</span>
           </motion.a>
         ))}
       </div>
+
+      {/* Golf */}
       <div className="mb-14">
-        <p className={`text-[11px] tracking-[0.16em] uppercase mb-5 font-body ${dark?'text-slate-600':'text-stone-400'}`}>Golf</p>
-        <div className="flex items-start gap-4 mb-6 flex-wrap">
-          <motion.div initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:0.1}}>
-            <Card dark={dark} className="flex-shrink-0">
-              <p className={`text-[10px] tracking-[0.12em] uppercase mb-1 font-body ${dark?'text-slate-600':'text-stone-400'}`}>Handicap</p>
-              <p className={`font-display text-4xl ${dark?'text-slate-50':'text-stone-900'}`}>8.6</p>
-            </Card>
-          </motion.div>
-          <motion.div initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:0.16}} className="flex-1 min-w-[180px]">
-            <Card dark={dark}>
-              <p className={`text-[10px] tracking-[0.12em] uppercase mb-2 font-body ${dark?'text-slate-600':'text-stone-400'}`}>About my game</p>
-              <p className={`text-xs leading-relaxed font-body ${dark?'text-slate-400':'text-stone-500'}`}>Been playing consistently for 2 years and fell in love quickly. Great way to take the load off and compete with buddies. Easily one of my favourite hobbies.</p>
-            </Card>
-          </motion.div>
-        </div>
-        <motion.div initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:0.22}} className={`rounded-xl border overflow-hidden ${dark?'bg-slate-900 border-slate-800':'bg-white/80 border-stone-200'}`}>
-          <div className="aspect-video w-full">
-            <iframe src="https://www.youtube.com/embed/iriOazO32T0" className="w-full h-full" style={{border:0}} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen/>
+        <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-6 ${dark?'text-white/20':'text-black/20'}`}>Golf</p>
+        <div className="flex items-start gap-8 mb-8 flex-wrap">
+          <div>
+            <p className={`text-[10px] tracking-[0.15em] uppercase font-mono mb-1 ${dark?'text-white/25':'text-black/25'}`}>Handicap</p>
+            <p className={`font-mono text-5xl ${dark?'text-white':'text-black'}`}>8.6</p>
           </div>
-        </motion.div>
+          <p className={`text-sm leading-relaxed font-mono flex-1 min-w-[200px] ${dark?'text-white/40':'text-black/40'}`}>
+            Been playing consistently for 2 years. Great way to take the load off and compete with buddies. Easily one of my favourite hobbies.
+          </p>
+        </div>
+        <div className={`overflow-hidden ${dark?'bg-black':'bg-black'}`} style={{aspectRatio:'16/9'}}>
+          <iframe src="https://www.youtube.com/embed/iriOazO32T0" className="w-full h-full" style={{border:0}}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen/>
+        </div>
       </div>
+
+      {/* Ironman */}
       <div className="mb-14">
-        <p className={`text-[11px] tracking-[0.16em] uppercase mb-5 font-body ${dark?'text-slate-600':'text-stone-400'}`}>Ironman Training</p>
-        <div className="grid grid-cols-2 gap-3">
+        <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-6 ${dark?'text-white/20':'text-black/20'}`}>Ironman Training</p>
+        <div className={`border-t ${dark?'border-white/8':'border-black/8'}`}>
           {disciplines.map((d,i)=>(
-            <motion.div key={d.label} initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:0.18+i*0.07}}>
-              <Card dark={dark}>
-                <span className={`text-lg mb-3 block ${dark?'text-slate-500':'text-stone-300'}`}>{d.icon}</span>
-                <p className={`text-sm font-body mb-1 ${dark?'text-slate-200':'text-stone-800'}`}>{d.label}</p>
-                <p className={`text-xs font-body ${dark?'text-slate-500':'text-stone-400'}`}>{d.desc}</p>
-              </Card>
+            <motion.div key={d.label} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.15+i*0.06}}
+              className={`flex items-center justify-between py-4 border-b ${dark?'border-white/8':'border-black/8'}`}>
+              <p className={`text-sm font-mono ${dark?'text-white':'text-black'}`}>{d.label}</p>
+              <p className={`text-[11px] font-mono ${dark?'text-white/30':'text-black/30'}`}>{d.desc}</p>
             </motion.div>
           ))}
         </div>
       </div>
+
+      {/* Races */}
       <div>
-        <p className={`text-[11px] tracking-[0.16em] uppercase mb-4 font-body ${dark?'text-slate-600':'text-stone-400'}`}>Races</p>
-        <div className={`border-t ${dark?'border-slate-800':'border-stone-200'}`}>
+        <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-6 ${dark?'text-white/20':'text-black/20'}`}>Races</p>
+        <div className={`border-t ${dark?'border-white/8':'border-black/8'}`}>
           {RACES.map((r,i)=>(
-            <motion.div key={i} initial={{opacity:0,x:-6}} animate={{opacity:1,x:0}} transition={{delay:0.28+i*0.08}}
-              className={`flex items-center justify-between py-4 border-b gap-3 ${dark?'border-slate-800':'border-stone-200'}`}>
-              <div className="min-w-0">
-                <p className={`text-sm font-body truncate ${dark?'text-slate-200':'text-stone-800'}`}>{r.name}</p>
-                <p className={`text-xs mt-0.5 font-body ${dark?'text-slate-600':'text-stone-400'}`}>{r.date}</p>
+            <motion.div key={i} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.2+i*0.06}}
+              className={`flex items-center justify-between py-4 border-b ${dark?'border-white/8':'border-black/8'}`}>
+              <div>
+                <p className={`text-sm font-mono ${dark?'text-white':'text-black'}`}>{r.name}</p>
+                <p className={`text-[11px] font-mono mt-0.5 ${dark?'text-white/30':'text-black/30'}`}>{r.date}</p>
               </div>
-              <span className={`text-[10px] tracking-[0.1em] uppercase px-2.5 py-1 rounded-full border flex-shrink-0 ${r.status==='completed'?(dark?'border-emerald-800 text-emerald-500':'border-emerald-300 text-emerald-600'):(dark?'border-slate-700 text-slate-500':'border-stone-200 text-stone-400')}`}>
+              <span className={`text-[9px] tracking-[0.12em] uppercase font-mono ${r.status==='completed'?(dark?'text-emerald-400':'text-emerald-600'):(dark?'text-white/20':'text-black/20')}`}>
                 {r.status==='completed'?(r.time??'Finished'):'Upcoming'}
               </span>
             </motion.div>
@@ -909,46 +786,46 @@ function ConnectSection({dark}:{dark:boolean}) {
       if(res.ok){ setStatus('sent'); setForm({name:'',email:'',message:''}) } else setStatus('error')
     } catch { window.location.href=`mailto:adindiga@uwaterloo.ca?subject=Message from ${form.name}&body=${form.message}`; setStatus('idle') }
   }
-  const inp=`w-full rounded-xl border px-4 py-3 text-sm font-body outline-none transition-all duration-200 ${dark?'bg-slate-900 border-slate-700 text-slate-200 placeholder-slate-600 focus:border-slate-500':'bg-white/80 border-stone-200 text-stone-800 placeholder-stone-300 focus:border-stone-400'}`
+  const inp=`w-full border-b px-0 py-3 text-sm font-mono outline-none transition-all duration-150 bg-transparent ${dark?'border-white/10 text-white placeholder-white/20 focus:border-white/40':'border-black/10 text-black placeholder-black/20 focus:border-black/40'}`
   return (
     <Sec>
-      <Eyebrow dark={dark}>Connect</Eyebrow>
-      <h1 className={`font-display text-4xl md:text-5xl leading-[1.15] mb-4 ${dark?'text-slate-50':'text-stone-900'}`}>Let's <span className="italic">talk.</span></h1>
-      <p className={`text-sm leading-relaxed max-w-md mb-10 font-body ${dark?'text-slate-400':'text-stone-500'}`}>Feel free to reach out if you have any questions. I always stoked to talk to someone new</p>
-      <div className="flex flex-wrap gap-3 mb-12">
-        {[{label:'Email',href:'mailto:adindiga@uwaterloo.ca',icon:'✉'},{label:'LinkedIn',href:'https://www.linkedin.com/in/arjundindigal',icon:'↗'}].map(l=>(
+      <Label dark={dark}>Connect</Label>
+      <h1 className={`font-mono text-3xl md:text-4xl leading-[1.2] mb-4 ${dark?'text-white':'text-black'}`}>Let's talk.</h1>
+      <p className={`text-sm leading-relaxed max-w-sm mb-14 font-mono ${dark?'text-white/40':'text-black/40'}`}>
+        Feel free to reach out. Always stoked to talk to someone new.
+      </p>
+      <div className="flex gap-6 mb-16">
+        {[{label:'Email',href:'mailto:adindiga@uwaterloo.ca'},{label:'LinkedIn',href:'https://www.linkedin.com/in/arjundindigal'}].map(l=>(
           <a key={l.label} href={l.href} target="_blank" rel="noreferrer" data-hover
-            className={`flex items-center gap-2 px-5 py-3 rounded-xl border text-sm font-body transition-all duration-200 group ${dark?'border-slate-700 text-slate-300 hover:border-slate-500 hover:text-slate-100':'border-stone-200 text-stone-600 hover:border-stone-400 hover:text-stone-900'}`}>
-            <span>{l.icon}</span>{l.label}<span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+            className={`text-sm font-mono transition-all duration-150 group flex items-center gap-1.5 ${dark?'text-white/40 hover:text-white':'text-black/40 hover:text-black'}`}>
+            {l.label}<span className="transition-transform duration-150 group-hover:translate-x-0.5">→</span>
           </a>
         ))}
       </div>
-      <motion.div initial={{opacity:0,y:16}} animate={{opacity:1,y:0}} transition={{delay:0.15}}>
-        <Card dark={dark} className="!p-6 md:!p-8">
-          <p className={`text-[10px] tracking-[0.14em] uppercase mb-6 font-body ${dark?'text-slate-600':'text-stone-400'}`}>Send a message</p>
-          {status==='sent'?(
-            <div className="py-8 text-center">
-              <p className={`font-display text-2xl mb-2 ${dark?'text-slate-50':'text-stone-900'}`}>Sent.</p>
-              <p className={`text-sm font-body ${dark?'text-slate-400':'text-stone-500'}`}>I'll get back to you soon.</p>
-              <button onClick={()=>setStatus('idle')} className={`mt-6 text-[11px] tracking-[0.1em] uppercase font-body ${dark?'text-slate-500 hover:text-slate-300':'text-stone-400 hover:text-stone-600'}`}>Send another →</button>
+      <motion.div initial={{opacity:0,y:12}} animate={{opacity:1,y:0}} transition={{delay:0.15}}>
+        {status==='sent'?(
+          <div className="py-12">
+            <p className={`font-mono text-2xl mb-2 ${dark?'text-white':'text-black'}`}>Sent.</p>
+            <p className={`text-sm font-mono ${dark?'text-white/40':'text-black/40'}`}>I'll get back to you soon.</p>
+            <button onClick={()=>setStatus('idle')} className={`mt-6 text-[10px] tracking-[0.12em] uppercase font-mono ${dark?'text-white/25 hover:text-white/60':'text-black/25 hover:text-black/60'}`}>Send another →</button>
+          </div>
+        ):(
+          <form onSubmit={handleSubmit} className="space-y-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 sm:gap-8">
+              <input required placeholder="Name" value={form.name} onChange={e=>setForm(f=>({...f,name:e.target.value}))} className={inp}/>
+              <input required type="email" placeholder="Email" value={form.email} onChange={e=>setForm(f=>({...f,email:e.target.value}))} className={inp}/>
             </div>
-          ):(
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input required placeholder="Your name" value={form.name} onChange={e=>setForm(f=>({...f,name:e.target.value}))} className={inp}/>
-                <input required type="email" placeholder="Email address" value={form.email} onChange={e=>setForm(f=>({...f,email:e.target.value}))} className={inp}/>
-              </div>
-              <textarea required rows={5} placeholder="What's on your mind?" value={form.message} onChange={e=>setForm(f=>({...f,message:e.target.value}))} className={`${inp} resize-none`}/>
-              <div className="flex items-center justify-between gap-4">
-                {status==='error'&&<p className="text-xs text-red-400 font-body">Something went wrong — try emailing directly.</p>}
-                <div className="flex-1"/>
-                <button type="submit" disabled={status==='sending'} data-hover className={`px-6 py-3 rounded-xl text-[11px] tracking-[0.1em] uppercase font-body border transition-all duration-200 ${dark?'border-slate-600 text-slate-200 hover:bg-slate-800 disabled:opacity-40':'border-stone-300 text-stone-700 hover:bg-stone-100 disabled:opacity-40'}`}>
-                  {status==='sending'?'Sending…':'Send →'}
-                </button>
-              </div>
-            </form>
-          )}
-        </Card>
+            <textarea required rows={5} placeholder="Message" value={form.message} onChange={e=>setForm(f=>({...f,message:e.target.value}))} className={`${inp} resize-none mt-0`}/>
+            <div className="flex items-center justify-between pt-6">
+              {status==='error'&&<p className="text-xs font-mono text-red-400">Something went wrong.</p>}
+              <div className="flex-1"/>
+              <button type="submit" disabled={status==='sending'} data-hover
+                className={`text-[10px] tracking-[0.15em] uppercase font-mono transition-all duration-150 ${dark?'text-white/40 hover:text-white disabled:opacity-20':'text-black/40 hover:text-black disabled:opacity-20'}`}>
+                {status==='sending'?'Sending…':'Send →'}
+              </button>
+            </div>
+          </form>
+        )}
       </motion.div>
     </Sec>
   )
@@ -957,13 +834,13 @@ function ConnectSection({dark}:{dark:boolean}) {
 /* ─── FOOTER ────────────────────────────────────────────────── */
 function Footer({dark}:{dark:boolean}) {
   return (
-    <div className={`border-t ${dark?'border-slate-800':'border-stone-200'}`}>
-      <div className="max-w-[760px] mx-auto px-5 md:px-8 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <span className={`text-[11px] tracking-[0.1em] uppercase font-body ${dark?'text-slate-600':'text-stone-400'}`}>Arjun Dindigal · 2026</span>
-        <div className="flex gap-5 flex-wrap">
+    <div className={`border-t ${dark?'border-white/5':'border-black/5'}`}>
+      <div className="max-w-[800px] mx-auto px-6 md:px-10 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <span className={`text-[10px] tracking-[0.12em] uppercase font-mono ${dark?'text-white/15':'text-black/15'}`}>Arjun Dindigal · 2026</span>
+        <div className="flex gap-6">
           {[{label:'LinkedIn',href:'https://www.linkedin.com/in/arjundindigal'},{label:'Resume',href:'/resume.pdf'},{label:'Email',href:'mailto:adindiga@uwaterloo.ca'}].map(l=>(
             <a key={l.label} href={l.href} target={l.href.startsWith('http')?'_blank':undefined} rel="noreferrer" data-hover
-              className={`text-[11px] tracking-[0.1em] uppercase font-body nav-underline transition-colors duration-200 ${dark?'text-slate-600 hover:text-slate-300':'text-stone-400 hover:text-stone-700'}`}>{l.label}</a>
+              className={`text-[10px] tracking-[0.12em] uppercase font-mono transition-all duration-150 ${dark?'text-white/20 hover:text-white/60':'text-black/20 hover:text-black/60'}`}>{l.label}</a>
           ))}
         </div>
       </div>
@@ -985,7 +862,7 @@ export default function Portfolio() {
     setDark(d=>{ const next=!d; localStorage.setItem('theme',next?'dark':'light'); document.documentElement.classList.toggle('dark',next); return next })
   },[])
   return (
-    <div className={`min-h-screen transition-colors duration-500 ${dark?'bg-[#0d0f15] text-slate-100':'bg-[#f5f0e8] text-stone-900'}`}>
+    <div className={`min-h-screen transition-colors duration-400 ${dark?'bg-[#080808] text-white':'bg-[#f8f7f4] text-black'}`}>
       <Cursor dark={dark}/>
       <WaveCanvas dark={dark}/>
       <Nav active={section} onNav={setSection} dark={dark} onToggleDark={toggleDark}/>
