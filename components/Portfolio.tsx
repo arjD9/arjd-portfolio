@@ -419,17 +419,27 @@ function AboutSection({dark}:{dark:boolean}) {
         </div>
       </div>
 
-      {/* Photos */}
-      <div className="mb-14">
-        <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-5 ${dark?'text-white/20':'text-black/20'}`}>Photos</p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-          {[1,2,3,4,5,6].map(n=>(
-            <div key={n} className={`aspect-square overflow-hidden ${dark?'bg-white/4':'bg-black/4'}`}>
-              <div className={`w-full h-full flex items-center justify-center text-[9px] tracking-widest uppercase font-mono ${dark?'text-white/15':'text-black/15'}`}>Photo {n}</div>
-            </div>
-          ))}
-        </div>
+     {/* Photos */}
+<div className="mb-14">
+  <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-5 ${dark?'text-white/20':'text-black/20'}`}>
+    Photos
+  </p>
+
+  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+    {[1,2,3,4,5,6].map(n => (
+      <div
+        key={n}
+        className={`aspect-square overflow-hidden ${dark?'bg-white/4':'bg-black/4'}`}
+      >
+        <img
+          src={`/images/photo${n}.jpg`}
+          alt={`Photo ${n}`}
+          className="w-full h-full object-cover"
+        />
       </div>
+    ))}
+  </div>
+</div>
 
       {/* Interests */}
       <div>
