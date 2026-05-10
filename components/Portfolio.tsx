@@ -42,8 +42,8 @@ const PROJECTS = [
     detail:'Built for a competitive robotics challenge. Implemented C++ PID loops with encoder feedback and ultrasonic sensor fusion. Designed and machined 8 custom aluminium and polycarbonate components to reduce system weight by 15% while maintaining structural integrity. Achieved 98% turn accuracy and 92% successful object retrievals over 50+ test runs, completing autonomous cycles in 40–45 seconds with ±1 second deviation.',
     imgs: [
       '/images/vex-01.jpg',
-      '/images/vex-02.jpg',
-      '/images/vex-03.jpg',
+      '/images/vex-02.jpeg',
+      '/images/vex-03.jpeg',
       // add more lines here for more photos
     ],
     video: 'https://www.youtube.com/embed/U5MgGNN_4Jk?si=gar5LqpS8Pg7ZvK1',
