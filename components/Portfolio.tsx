@@ -90,7 +90,10 @@ const STRAVA_URL      = 'https://www.strava.com/athletes/arjundindigal'
 const GARMIN_URL      = 'https://connect.garmin.com'
 const SPOTIFY_URL     = 'https://open.spotify.com/user/arjundindigal?si=d149e66474c34a82'
 const RACES: { name:string; date:string; status:'upcoming'|'completed'; time?:string }[] = [
-  { name:'Ironman 70.3 — goal race', date:'TBD', status:'upcoming' },
+ { name:'Honda Waterfront Half Marathon', date:'June 7th 2026', status:'upcoming' },
+  { name:'Ironman 70.3 — Unoffical', date:'August 26th 2026', status:'upcoming' },
+   { name:'Niagara Falls International Marathon', date:'October 25th 2026', status:'upcoming' },
+   { name:'Ironman 140.6 Ottawa - End Goal', date:'2027', status:'upcoming' }
 ]
 
 type Section = 'home'|'about'|'writing'|'projects'|'training'|'connect'
@@ -687,10 +690,10 @@ function ProjectsSection({dark}:{dark:boolean}) {
 /* ─── TRAINING ──────────────────────────────────────────────── */
 function TrainingSection({dark}:{dark:boolean}) {
   const disciplines = [
-    {label:'Swim',     desc:'Open water & pool sessions'},
-    {label:'Bike',     desc:'Long road rides & mountain biking'},
-    {label:'Run',      desc:'Base building & brick runs'},
-    {label:'Strength', desc:'Full body twice a week'},
+    {label:'Swim',     desc:'Form swims, Aerobic swims, All out Hard swims'},
+    {label:'Bike',     desc:'Indoor Zone 2 bikes, Outdoor race pace bikes, and VO2 Max Threshold Bikes'},
+    {label:'Run',      desc:'Interval, Tempo, and easy Runs'},
+    {label:'Strength', desc:'Anterior, Posterior, Upper'},
   ]
   const externalLinks = [
     {label:'Training Tracker', sub:'Full workout log',      href:GYM_TRACKER_URL},
