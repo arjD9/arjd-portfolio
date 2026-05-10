@@ -626,15 +626,14 @@ function PrintsGallery({dark,onClose}:{dark:boolean;onClose:()=>void}) {
   )
 }
 
-/* ─── PROJECT DETAIL MODAL — slideshow + optional video ─────── */
 function ProjectModal({project,dark,onClose}:{project:typeof PROJECTS[0];dark:boolean;onClose:()=>void}) {
   const [idx,setIdx] = useState(0)
+  const [failedImgs, setFailedImgs] = useState<Set<number>>(new Set())
   const imgs = project.imgs ?? []
   const hasImgs  = imgs.length > 0
   const hasVideo = !!project.video
 
-  // Reset to first slide when a different project opens
-  useEffect(()=>{ setIdx(0) },[project.id])
+  useEffect(()=>{ setIdx(0); setFailedImgs(new Set()) },[project.id])
 
   const prev = (e:React.MouseEvent)=>{ e.stopPropagation(); setIdx(i=>(i-1+imgs.length)%imgs.length) }
   const next = (e:React.MouseEvent)=>{ e.stopPropagation(); setIdx(i=>(i+1)%imgs.length) }
@@ -649,52 +648,50 @@ function ProjectModal({project,dark,onClose}:{project:typeof PROJECTS[0];dark:bo
         onClick={e=>e.stopPropagation()}
         className={`w-full max-w-xl rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto ${dark?'bg-[#0d0f15] border border-slate-700':'bg-[#f5f0e8] border border-stone-200'}`}>
 
-        {/* ── Photo slideshow ── */}
         {hasImgs && (
           <div className="relative bg-black" style={{aspectRatio:'16/9'}}>
             <AnimatePresence mode="wait">
-              <motion.img
-                key={idx}
-                src={imgs[idx]}
-                alt={`${project.name} ${idx+1}`}
-                initial={{opacity:0,x:24}}
-                animate={{opacity:1,x:0}}
-                exit={{opacity:0,x:-24}}
-                transition={{duration:0.22,ease:[0.23,1,0.32,1]}}
-                className="w-full h-full object-cover"
-              />
+              {failedImgs.has(idx) ? (
+                <motion.div key={`fallback-${idx}`}
+                  initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}
+                  className="w-full h-full flex flex-col items-center justify-center gap-2"
+                  style={{color:'#475569'}}>
+                  <span style={{fontSize:24}}>◆</span>
+                  <span style={{fontSize:10,letterSpacing:'0.12em',textTransform:'uppercase'}}>Photo not found</span>
+                </motion.div>
+              ) : (
+                <motion.img
+                  key={idx}
+                  src={imgs[idx]}
+                  alt={`${project.name} ${idx+1}`}
+                  initial={{opacity:0,x:24}}
+                  animate={{opacity:1,x:0}}
+                  exit={{opacity:0,x:-24}}
+                  transition={{duration:0.22,ease:[0.23,1,0.32,1]}}
+                  className="w-full h-full object-cover"
+                  onError={()=> setFailedImgs(prev => new Set(prev).add(idx))}
+                />
+              )}
             </AnimatePresence>
 
-            {/* Prev/Next arrows — only when more than 1 photo */}
             {imgs.length > 1 && (<>
               <button onClick={prev}
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white flex items-center justify-center text-base hover:bg-black/75 transition-colors">
-                ‹
-              </button>
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white flex items-center justify-center text-base hover:bg-black/75 transition-colors">‹</button>
               <button onClick={next}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white flex items-center justify-center text-base hover:bg-black/75 transition-colors">
-                ›
-              </button>
-
-              {/* Dot indicators */}
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white flex items-center justify-center text-base hover:bg-black/75 transition-colors">›</button>
               <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
                 {imgs.map((_,i)=>(
                   <button key={i} onClick={e=>{e.stopPropagation();setIdx(i)}}
                     className={`rounded-full transition-all duration-200 ${i===idx?'w-4 h-1.5 bg-white':'w-1.5 h-1.5 bg-white/50 hover:bg-white/80'}`}/>
                 ))}
               </div>
-
-              {/* Counter */}
               <div className="absolute top-3 right-10 text-[10px] font-body text-white/70 bg-black/40 px-2 py-0.5 rounded-full">
                 {idx+1} / {imgs.length}
               </div>
             </>)}
 
-            {/* Close button */}
             <button onClick={onClose}
-              className={`absolute top-3 right-3 w-7 h-7 rounded-full flex items-center justify-center text-sm transition-all ${dark?'bg-slate-700/80 text-slate-300 hover:bg-slate-600':'bg-white/80 text-stone-500 hover:bg-white'}`}>
-              ✕
-            </button>
+              className={`absolute top-3 right-3 w-7 h-7 rounded-full flex items-center justify-center text-sm transition-all ${dark?'bg-slate-700/80 text-slate-300 hover:bg-slate-600':'bg-white/80 text-stone-500 hover:bg-white'}`}>✕</button>
           </div>
         )}
 
