@@ -30,7 +30,7 @@ const PROJECTS = [
     id:'vex', name:'Autonomous VEX Retrieval Bot',
     desc:'PID navigation + sensor fusion — 98% turn accuracy, 92% object retrieval. 8+ custom components, 15% weight reduction.',
     detail:'Built for a competitive robotics challenge. Implemented C++ PID loops with encoder feedback and ultrasonic sensor fusion. Designed and machined 8 custom aluminium and polycarbonate components to reduce system weight by 15% while maintaining structural integrity. Achieved 98% turn accuracy and 92% successful object retrievals over 50+ test runs, completing autonomous cycles in 40–45 seconds with ±1 second deviation.',
-    imgs: ['/images/vex-01.jpg','/images/vex-02.jpg','/images/vex-03.jpg'],
+    imgs: ['/images/vex-01.jpg','/images/vex-02.jpeg','/images/vex-03.jpeg'],
     video: 'https://www.youtube.com/embed/U5MgGNN_4Jk?si=gar5LqpS8Pg7ZvK1',
     tags:['C++','PID','Sensor fusion','CAD'], stat:'98% accuracy', gallery:false,
   },
@@ -38,7 +38,7 @@ const PROJECTS = [
     id:'cart', name:'Reverse Engineered Regress Cart',
     desc:'Redesigned 100+ kg production cart. Reduced part count via DFMA, coordinated waterjet fabrication with full GD&T drawings.',
     detail:'Reverse engineered an existing setup technician cart at Linamar. Applied DFMA principles to eliminate unnecessary fasteners and reduce part count. Generated a complete GD&T drawing package and coordinated waterjet fabrication directly with machinists. Assembled and load-validated the final 100+ kg cart, improving setup efficiency and reducing cycle time on the production floor.',
-    imgs: ['/images/cart-01.jpg','/images/cart-02.jpg','/images/cart-03.jpg','/images/cart-04.jpg'],
+    imgs: ['/images/cart-01.jpg','/images/cart-02.jpg','/images/cart-03.png','/images/cart-04.jpg'],
     video: 'https://www.youtube.com/embed/2CA7vmuQ3vw',
     tags:['Siemens NX','SolidWorks','DFMA','GD&T'], stat:'100+ kg validated', gallery:false,
   },
@@ -46,7 +46,7 @@ const PROJECTS = [
     id:'gauge', name:'Runout Gauge',
     desc:'Precision measurement tooling designed and fabricated for production. Validated against tight tolerance requirements.',
     detail:'Designed a custom runout gauge for in-process quality inspection on the shop floor at Linamar. Modelled in SolidWorks, rapid-prototyped in FDM for fit-check, then machined in aluminium. Validated measurement repeatability against coordinate measuring machine (CMM) data. Deployed into production use, reducing inspection time per part.',
-    imgs: ['/images/runout-01.jpg','/images/runout-02.jpg','/images/runout-03.jpg','/images/runout-04.jpg','/images/runout-05.jpg','/images/runout-06.jpg','/images/runout-07.jpg'],
+    imgs: ['/images/runout-01.jpeg','/images/runout-02.jpeg','/images/runout-03.jpg','/images/runout-04.jpg','/images/runout-05.jpg','/images/runout-06.jpeg','/images/runout-07.jpeg'],
     video: 'https://www.youtube.com/embed/CsTB8vzFzGU',
     tags:['SolidWorks','FDM','Tolerance analysis'], stat:'Production-deployed', gallery:false,
   },
@@ -277,7 +277,7 @@ function HomeSection({dark,onNav}:{dark:boolean;onNav:(s:Section)=>void}) {
       <motion.div {...s(0)} className="flex items-center gap-2.5 mb-12">
         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"/>
         <span className={`text-[11px] tracking-[0.12em] uppercase font-mono ${dark?'text-white/30':'text-black/30'}`}>
-          Mechatronics Engineering · University of Waterloo · Seeking Fall 2026
+          Mechatronics Engineering · University of Waterloo · Seeking Fall 2026 Oppurtunities
         </span>
       </motion.div>
 
