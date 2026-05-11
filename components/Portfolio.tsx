@@ -20,52 +20,9 @@ const EXP_LOGOS: Record<string, string> = {
 }
 
 const EXPERIENCES = [
-  {
-    id:'linamar',
-    initials:'LN',
-    title:'Mechanical Design Engineer',
-    company:'Linamar Corporation',
-    location:'Guelph, ON',
-    date:'Jan 2026 – May 2026',
-    tags:['SolidWorks','GD&T','DFMA','FEA','FDM/SLA'],
-    bullets:[
-      'Designed & validated 10+ production fixtures using SolidWorks with GD&T and DFMA principles.',
-      'Cut cycle times 20–40 s/op through fixture & ergonomics redesigns with machinists.',
-      'Reverse engineered failed robotic components; produced CAD models and fabricated replacements.',
-      'Reduced defective parts by 10%+ through fixture redesigns and optimised part handling.',
-      'Full concept → CAD → fabrication → validation ownership deployed on shop floor.'
-    ]
-  },
-
-  {
-    id:'rocketry',
-    initials:'WR',
-    title:'Mechanical Engineer',
-    company:'Waterloo Rocketry',
-    location:'Waterloo, ON',
-    date:'Aug 2025 – Jan 2026',
-    tags:['Test fixtures','3D printing','Propulsion','Telemetry'],
-    bullets:[
-      'Built test fixtures and camera systems for 10+ static engine tests with real-time telemetry.',
-      'Designed 3D-printed enclosures and support structures for harsh testing environments.',
-      'Assembled and calibrated propulsion systems within 5% of predicted thrust.'
-    ]
-  },
-
-  {
-    id:'pratyin',
-    initials:'PI',
-    title:'Software Development Intern',
-    company:'Pratyin Infotech Consulting',
-    location:'Toronto, ON',
-    date:'May 2025 – Aug 2025',
-    tags:['Java','FastAPI','Python','Agile'],
-    bullets:[
-      'Java + FastAPI integration syncing 5,000+ invoices with 99.7% accuracy.',
-      'Automated Python data pipelines processing 200,000 records/month, cutting manual work by 20%.',
-      'Shipped 2 production-ready features in 2 months, zero critical bugs deployed.'
-    ]
-  }
+  { id:'rocketry', initials:'WR', title:'Mechanical Engineer',         company:'Waterloo Rocketry',           location:'Waterloo, ON', date:'Aug 2025 – Present',  tags:['Test fixtures','3D printing','Propulsion','Telemetry'], bullets:['Built test fixtures and camera systems for 10+ static engine tests with real-time telemetry.','Designed 3D-printed enclosures and support structures for harsh testing environments.','Assembled and calibrated propulsion systems within 5% of predicted thrust.'] },
+  { id:'linamar',  initials:'LN', title:'Mechanical Design Engineer',  company:'Linamar Corporation',         location:'Guelph, ON',   date:'Jan 2026 – May 2026', tags:['SolidWorks','GD&T','DFMA','FEA','FDM/SLA'],            bullets:['Designed & validated 10+ production fixtures using SolidWorks with GD&T and DFMA principles.','Cut cycle times 20–40 s/op through fixture & ergonomics redesigns with machinists.','Reverse engineered failed robotic components; produced CAD models and fabricated replacements.','Reduced defective parts by 10%+ through fixture redesigns and optimised part handling.','Full concept → CAD → fabrication → validation ownership deployed on shop floor.'] },
+  { id:'pratyin',  initials:'PI', title:'Software Development Intern', company:'Pratyin Infotech Consulting', location:'Toronto, ON',  date:'May 2025 – Aug 2025', tags:['Java','FastAPI','Python','Agile'],                      bullets:['Java + FastAPI integration syncing 5,000+ invoices with 99.7% accuracy.','Automated Python data pipelines processing 200,000 records/month, cutting manual work by 20%.','Shipped 2 production-ready features in 2 months, zero critical bugs deployed.'] },
 ]
 
 const PROJECTS = [
