@@ -77,13 +77,37 @@ const PRINTS = [
 
 const SKILLS = ['SolidWorks','Siemens NX','Fusion 360','FEA','GD&T','DFMA','C++','Python','MATLAB','ROS','RTOS','STM32','Arduino','Java','FastAPI','Git','CNC','FDM/SLA','Composites']
 
-const WRITING_POST = {
-  id: '1a',
-  title: 'My 1A Term',
-  date: 'April 2026',
-  cat: 'Reflection',
-  content: `Reflecting on my 1A Term`,
-}
+const WRITING_POSTS = [
+  {
+    id: 'g9',
+    title: 'Grade 9',
+    date: '2019',
+    cat: 'Reflection',
+    content: `Write your Grade 9 reflection here.`,
+  },
+  {
+    id: 'g10',
+    title: 'Grade 10',
+    date: '2020',
+    cat: 'Reflection',
+    content: `Write your Grade 10 reflection here.`,
+  },
+  {
+    id: 'g11',
+    title: 'Grade 11',
+    date: '2021',
+    cat: 'Reflection',
+    content: `Write your Grade 11 reflection here.`,
+  },
+  {
+    id: 'g12',
+    title: 'Grade 12',
+    date: '2022',
+    cat: 'Reflection',
+    content: `Write your Grade 12 reflection here.`,
+  },
+]
+
 
 const GYM_TRACKER_URL = 'https://docs.google.com/spreadsheets/d/1n55fCkjTbq4fRDdX-duE-72flZUlar5hGinjMlM436Y/view?usp=sharing'
 const STRAVA_URL      = 'https://www.strava.com/athletes/arjundindigal'
@@ -456,46 +480,122 @@ function AboutSection({dark}:{dark:boolean}) {
 
 /* ─── WRITING ───────────────────────────────────────────────── */
 function WritingSection({dark}:{dark:boolean}) {
-  const [open, setOpen] = useState(false)
-  const paragraphs = WRITING_POST.content.split('\n\n').filter(Boolean)
+  const [openId, setOpenId] = useState<string | null>(null)
+
   return (
     <Sec>
       <Label dark={dark}>Writing</Label>
-      <h1 className={`font-mono text-3xl md:text-4xl leading-[1.2] mb-14 ${dark?'text-white':'text-black'}`}>Reflecting</h1>
+
+      <h1 className={`font-mono text-3xl md:text-4xl leading-[1.2] mb-14 ${
+        dark ? 'text-white' : 'text-black'
+      }`}>
+        Reflecting
+      </h1>
+
       <div className={`border-t ${dark?'border-white/8':'border-black/8'}`}>
-        <motion.div initial={{opacity:0,y:8}} animate={{opacity:1,y:0}}>
-          <button data-hover onClick={()=>setOpen(o=>!o)}
-            className={`w-full border-b text-left py-7 transition-all duration-150 ${dark?'border-white/8 hover:bg-white/2':'border-black/8 hover:bg-black/2'}`}>
-            <div className="flex items-start justify-between gap-4">
-              <div className="flex-1">
-                <div className="flex items-center gap-4 mb-3">
-                  <span className={`text-[10px] tracking-[0.15em] uppercase font-mono ${dark?'text-white/25':'text-black/25'}`}>{WRITING_POST.date}</span>
-                  <span className={`text-[10px] tracking-[0.1em] uppercase font-mono ${dark?'text-white/20':'text-black/20'}`}>{WRITING_POST.cat}</span>
+        {WRITING_POSTS.map((post, index) => {
+          const open = openId === post.id
+          const paragraphs = post.content.split('\n\n').filter(Boolean)
+
+          return (
+            <motion.div
+              key={post.id}
+              initial={{opacity:0,y:8}}
+              animate={{opacity:1,y:0}}
+              transition={{delay:index * 0.05}}
+            >
+              <button
+                data-hover
+                onClick={() => setOpenId(open ? null : post.id)}
+                className={`w-full border-b text-left py-7 transition-all duration-150 ${
+                  dark
+                    ? 'border-white/8 hover:bg-white/2'
+                    : 'border-black/8 hover:bg-black/2'
+                }`}
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-4 mb-3">
+                      <span className={`text-[10px] tracking-[0.15em] uppercase font-mono ${
+                        dark ? 'text-white/25' : 'text-black/25'
+                      }`}>
+                        {post.date}
+                      </span>
+
+                      <span className={`text-[10px] tracking-[0.1em] uppercase font-mono ${
+                        dark ? 'text-white/20' : 'text-black/20'
+                      }`}>
+                        {post.cat}
+                      </span>
+                    </div>
+
+                    <h2 className={`font-mono text-xl md:text-2xl ${
+                      dark ? 'text-white' : 'text-black'
+                    }`}>
+                      {post.title}
+                    </h2>
+
+                    {!open && (
+                      <p className={`text-sm mt-2 font-mono ${
+                        dark ? 'text-white/30' : 'text-black/30'
+                      }`}>
+                        {paragraphs[0]?.slice(0, 100)}…
+                      </p>
+                    )}
+                  </div>
+
+                  <motion.span
+                    animate={{rotate:open?180:0}}
+                    transition={{duration:0.25}}
+                    className={`text-sm flex-shrink-0 mt-1 font-mono ${
+                      dark ? 'text-white/20' : 'text-black/20'
+                    }`}
+                  >
+                    ↓
+                  </motion.span>
                 </div>
-                <h2 className={`font-mono text-xl md:text-2xl ${dark?'text-white':'text-black'}`}>{WRITING_POST.title}</h2>
-                {!open && (
-                  <p className={`text-sm mt-2 font-mono ${dark?'text-white/30':'text-black/30'}`}>
-                    {paragraphs[0]?.slice(0, 100)}…
-                  </p>
+              </button>
+
+              <AnimatePresence>
+                {open && (
+                  <motion.div
+                    initial={{opacity:0,height:0}}
+                    animate={{opacity:1,height:'auto'}}
+                    exit={{opacity:0,height:0}}
+                    transition={{duration:0.35,ease:[0.23,1,0.32,1]}}
+                    className="overflow-hidden"
+                  >
+                    <div className={`py-7 space-y-5 border-b ${
+                      dark ? 'border-white/8' : 'border-black/8'
+                    }`}>
+                      {paragraphs.map((para,i)=>(
+                        <p
+                          key={i}
+                          className={`text-sm leading-relaxed font-mono ${
+                            dark ? 'text-white/50' : 'text-black/50'
+                          }`}
+                        >
+                          {para}
+                        </p>
+                      ))}
+
+                      <button
+                        onClick={()=>setOpenId(null)}
+                        className={`text-[10px] tracking-[0.12em] uppercase font-mono mt-2 ${
+                          dark
+                            ? 'text-white/20 hover:text-white/50'
+                            : 'text-black/20 hover:text-black/50'
+                        }`}
+                      >
+                        ↑ Collapse
+                      </button>
+                    </div>
+                  </motion.div>
                 )}
-              </div>
-              <motion.span animate={{rotate:open?180:0}} transition={{duration:0.25}}
-                className={`text-sm flex-shrink-0 mt-1 font-mono ${dark?'text-white/20':'text-black/20'}`}>↓</motion.span>
-            </div>
-          </button>
-          <AnimatePresence>
-            {open && (
-              <motion.div initial={{opacity:0,height:0}} animate={{opacity:1,height:'auto'}} exit={{opacity:0,height:0}} transition={{duration:0.35,ease:[0.23,1,0.32,1]}} className="overflow-hidden">
-                <div className={`py-7 space-y-5 border-b ${dark?'border-white/8':'border-black/8'}`}>
-                  {paragraphs.map((para,i)=>(
-                    <p key={i} className={`text-sm leading-relaxed font-mono ${dark?'text-white/50':'text-black/50'}`}>{para}</p>
-                  ))}
-                  <button onClick={()=>setOpen(false)} className={`text-[10px] tracking-[0.12em] uppercase font-mono mt-2 ${dark?'text-white/20 hover:text-white/50':'text-black/20 hover:text-black/50'}`}>↑ Collapse</button>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
+              </AnimatePresence>
+            </motion.div>
+          )
+        })}
       </div>
     </Sec>
   )
