@@ -30,7 +30,7 @@ const PROJECTS = [
     id:'vex', name:'Autonomous VEX Retrieval Bot',
     desc:'Developed an autonomous robot using PID control and sensor fusion, achieving 98% turn accuracy, 92% object retrieval success, and 15% weight reduction through optimized mechanical design and system integration.',
     detail: 'Designed and built an autonomous robotic system for a school engineering project focused on solving a structured object retrieval scenario under constrained time and performance conditions. Led the mechanical design of the robot including a custom chassis, drivetrain architecture, and a mechanically actuated elevator system used for lifting and placing objects. Engineered gear ratios, torque transmission paths, and structural supports to ensure stable and repeatable motion during autonomous operation. Manufactured and assembled 8+ custom CAD-designed components, iterating on weight distribution, rigidity, and system layout to improve efficiency and reliability. Achieved 15% overall weight reduction through structural optimization while maintaining mechanical strength. Autonomous performance was supported through PID control and sensor fusion algorithms, resulting in 98% turn accuracy and 92% object retrieval success, with consistent performance across repeated test runs.',
-    imgs: ['/images/vex-01.jpg','/images/vex-02.jpeg','/images/vex-03.jpeg'],
+    imgs: ['/images/vex-01.jpg','/images/vex-02.jpeg','/images/vex-03.jpeg','/images/vex-04.jpg','/images/vex-05.jpg','/images/vex-06.jpg','/images/vex-07.jpg','/images/vex-08.jpg','/images/vex-09.jpg'],
     video: 'https://www.youtube.com/embed/U5MgGNN_4Jk?si=gar5LqpS8Pg7ZvK1',
     tags:['C++','PID','Sensor fusion','CAD'], stat:'98% accuracy', gallery:false,
   },
