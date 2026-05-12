@@ -68,11 +68,148 @@ const PROJECTS = [
   },
 ]
 
+// ─── ADD NEW PRINTED/MANUFACTURED PARTS HERE ─────────────────
+// To add a new part:
+// 1. Drop your photos into /public/images/prints/
+// 2. Copy one of the objects below and paste it at the end of the array
+// 3. Update id (increment), name, desc, imgs, and material
+// 4. Save — done. The gallery updates automatically.
 const PRINTS = [
-  { id:'p1', name:'Custom Enclosure',  desc:'FDM-printed ABS enclosure for an electronics board. Snap-fit assembly with ventilation slots and cable routing.', img:'/images/prints/enclosure.jpg',  material:'ABS · FDM'   },
-  { id:'p2', name:'Bracket Assembly',  desc:'Structural PETG bracket holding a camera rig on the rocketry test stand under vibration loads.',                  img:'/images/prints/bracket.jpg',    material:'PETG · FDM'  },
-  { id:'p3', name:'Test Fixture Jig',  desc:'SLA-printed jig for precise alignment during assembly. Toleranced to ±0.1 mm.',                                    img:'/images/prints/jig.jpg',        material:'Resin · SLA' },
-  { id:'p4', name:'Prototype Part',    desc:'Rapid prototype for a production redesign — 3 iterations before the final design was CNC machined.',               img:'/images/prints/prototype.jpg',  material:'PLA · FDM'   },
+  {
+    id: 'p1',
+    name: 'Custom Keychain',
+    desc: 'Designed and manufactured a custom aluminum keychain assembly from concept to production by developing detailed CAD models and engineering drawings, then machining the components using manual mill and lathe operations. Applied GD&T principles, precision drilling, tapping, deburring, and assembly techniques while maintaining dimensional accuracy, manufacturability, and high-quality surface finishes throughout the fabrication process.',
+    imgs: [
+      '/images/prints/keychain-01.jpeg',
+      '/images/prints/keychain-02.jpeg',
+      '/images/prints/keychain-03.png',
+      '/images/prints/keychain-04.png',
+      '/images/prints/keychain-05.png',
+      '/images/prints/keychain-06.png',
+      '/images/prints/keychain-07.png',
+    ],
+    material: 'Aluminum · Plastic',
+  },
+  {
+    id: 'p2',
+    name: 'Spring holder ',
+    desc: 'Designed a wall-mounted spring holder assembly in SolidWorks to improve operator accessibility and reduce production cycle time by enabling faster spring retrieval at the workstation. Developed a two-component design with threaded fastening features and coordinated with the tool room on manufacturing tolerances, fitment, and fabrication considerations to ensure reliable assembly, durability, and manufacturability in a production environment.',
+    imgs: [
+      '/images/prints/springholder-01.jpg',
+      '/images/prints/springholder-02.jpg',
+      '/images/prints/springholder-03.jpg',
+      '/images/prints/springholder-04.jpg',
+    ],
+    material: 'Aluminum · Plastic',
+  },
+  {
+    id: 'p3',
+    name: 'Shaft holder',
+    desc: 'Designed and developed a wall-mounted shaft holder to improve workplace organization and operator efficiency by keeping critical components directly at the workstation. Modeled the assembly in SolidWorks and manufactured it using PETG 3D printing, optimizing the design for durability, ease of installation, and practical use within a production environment.',
+    imgs: [
+      '/images/prints/shaftholder-01.jpg',
+      '/images/prints/shaftholder-02.jpg',
+      '/images/prints/shaftholder-03.jpg',
+    ],
+    material: 'PETG',
+  },
+  {
+    id: 'p4',
+    name: 'Sanding Ring',
+    desc: 'Designed and developed a protective sanding ring fixture to prevent damage to welded shaft assemblies during post-weld finishing operations. Identified a recurring production issue where operators were scratching parts while sanding weld overlap areas, leading to scrap and increased costs. Iterated through 4–5 design revisions using rapid PETG 3D-printed prototypes before finalizing a production-ready solution that improved protection, usability, and overall manufacturing efficiency while reducing part damage and associated losses.',
+    imgs: [
+      '/images/prints/pturing-01.jpg',
+      '/images/prints/pturing-02.jpg',
+      '/images/prints/pturing-03.jpg',
+      '/images/prints/pturing-04.jpg',
+    ],
+    material: 'PETG · Heat Treated 4140 Steel',
+  },
+  {
+    id: 'p5',
+    name: 'Chuck holder',
+    desc: 'Designed and manufactured a dedicated chuck key holder to improve workplace organization and accessibility within the shop environment. Created the model in SolidWorks and produced the final part using high-infill PLA 3D printing to ensure durability and reliable daily use, eliminating clutter and preventing chuck keys from being misplaced or falling around the workstation.',
+    imgs: [
+      '/images/prints/chuckholder-01.jpg',
+      '/images/prints/chuckholder-02.jpg',
+    ],
+    material: 'PLA',
+  },
+  {
+    id: 'p6',
+    name: 'Guage holder',
+    desc: 'Designed a customizable gauge holder in SolidWorks to reduce tool loss and damage caused by operators frequently dropping or misplacing gauges on the production floor. Developed a parameterized design with adjustable gauge spacing based on total length requirements, allowing the model to be quickly modified and 3D printed in carbon fiber PLA for different gauge sizes while improving durability, organization, and manufacturing efficiency.',
+    imgs: [
+      '/images/prints/guageholder-01.jpg',
+    ],
+    material: 'Carbon Fibre PLA',
+  },
+  {
+    id: 'p7',
+    name: 'Reverse Engineered Robotic Gripper',
+    desc: 'Reverse engineered a robotic arm gripper by taking precise measurements using vernier calipers and recreating the full assembly in SolidWorks to match existing geometry and functionality. Designed and manufactured a replacement gripper in aluminum using milling and machining processes to restore functionality while waiting for an official replacement, ensuring minimal downtime in production and maintaining operational continuity.',
+    imgs: [
+      '/images/prints/arm-01.jpg',
+      '/images/prints/arm-02.jpeg',
+    ],
+    material: 'Steel',
+  },
+  {
+    id: 'p8',
+    name: 'Temperature Sensor Holder',
+    desc: 'Collaborated with a quality engineer to address an issue where temperature sensors were being improperly stored, causing washers to fall off and leading to inefficiencies and material loss. Measured the operation and sensor assembly using precision tools, then designed a universal temperature sensor holder in SolidWorks. Manufactured the solution using carbon fiber PLA 3D printing with over 25 slots to accommodate multiple sensor types, improving organization, reducing part loss, saving operator time, and providing a standardized storage solution for future use.',
+    imgs: [
+      '/images/prints/tempsensor-01.jpg',
+      '/images/prints/tempsensor-02.jpg',
+      
+    ],
+    material: 'PLA · FDM',
+  },
+  {
+    id: 'p9',
+    name: 'Reverse Engineered Nozzle',
+    desc: 'A weld nozzle on a production line failed and the original drawing had incomplete dimensions, so I reverse engineered the part by taking measurements, performing calculations, and reconstructing the full geometry in SolidWorks. I then optimized the design to slightly reduce material usage while maintaining functionality, created a complete manufacturing drawing for the machine shop, and coordinated fabrication. The replacement weld nozzle was produced and returned to service within one day, minimizing downtime and restoring production quickly.',
+    imgs: [
+      '/images/prints/nozzle-01.jpg',
+      '/images/prints/nozzle-02.jpg',
+    ],
+    material: 'Copper',
+  },
+  {
+    id: 'p10',
+    name: 'Chuck Key Organization Plate',
+    desc: 'Identified an organization issue on a weld line where chuck keys for different operations were frequently misplaced, leading to downtime and inefficiency. Designed and 3D printed carbon fiber PLA organization plates for three distinct operations, incorporating engraved labels for clear identification and structured storage. The solution improved tool organization, reduced lost equipment, and made it easier for operators to quickly return chuck keys to the correct location, increasing overall workflow efficiency.',
+    imgs: [
+      '/images/prints/organization-01.jpg',
+      '/images/prints/organization-02.jpg',
+      '/images/prints/organization-03.jpg',
+      '/images/prints/organization-04.jpg',
+    ],
+    material: 'Carbon Fibre PLA',
+  },
+  {
+    id: 'p11',
+    name: 'Pinion Housing',
+    desc: 'Designed a pinion holder in SolidWorks and manufactured it from Delrin to improve the safe handling and transportation of pinions on the shop floor. The holder was integrated onto a cart-based system to allow operators to move multiple pinions efficiently between workstations while preventing damage, improving organization, and reducing handling time during production.',
+    imgs: [
+      '/images/prints/pinionholder-01.jpeg',
+      '/images/prints/pinionholder-02.jpeg',
+      '/images/prints/pinionholder-03.jpeg',
+    ],
+    material: 'Delrin',
+  },
+  {
+    id: 'p12',
+    name: 'Ring Gear Housing',
+    desc: 'Designed and 3D printed ABS holders for two different ring gear challenge parts to improve organization and handling on the weld machine. The holders were engineered to fit precisely within an existing enclosure and included a sliding, snug-fit geometry to securely locate the ring gears during operation. ABS was selected for its heat resistance due to elevated part temperatures during production, reducing scattering, improving workflow efficiency, and ensuring consistent, repeatable part placement on the machine.',
+    imgs: [
+      '/images/prints/rdmptuholder-01.jpg',
+      '/images/prints/rdmptuholder-02.jpg',
+      '/images/prints/rdmptuholder-03.jpg',
+      '/images/prints/rdmptuholder-04.jpg',
+    ],
+    material: 'ABS',
+  },
 ]
 
 const SKILLS = ['SolidWorks','Siemens NX','Fusion 360','FEA','GD&T','DFMA','C++','Python','MATLAB','ROS','RTOS','STM32','Arduino','Java','FastAPI','Git','CNC','FDM/SLA','Composites']
@@ -122,21 +259,20 @@ const WRITING_POSTS = [
   },
 ]
 
-
 const GYM_TRACKER_URL = 'https://docs.google.com/spreadsheets/d/1n55fCkjTbq4fRDdX-duE-72flZUlar5hGinjMlM436Y/view?usp=sharing'
 const STRAVA_URL      = 'https://www.strava.com/athletes/arjundindigal'
 const GARMIN_URL      = 'https://connect.garmin.com'
 const SPOTIFY_URL     = 'https://open.spotify.com/user/arjundindigal?si=d149e66474c34a82'
 const RACES: { name:string; date:string; status:'upcoming'|'completed'; time?:string }[] = [
- { name:'Honda Waterfront Half Marathon', date:'June 7th 2026', status:'upcoming' },
+  { name:'Honda Waterfront Half Marathon', date:'June 7th 2026', status:'upcoming' },
   { name:'Ironman 70.3 — Unoffical', date:'August 26th 2026', status:'upcoming' },
-   { name:'Niagara Falls International Marathon', date:'October 25th 2026', status:'upcoming' },
-   { name:'Ironman 140.6 Ottawa - End Goal', date:'2027', status:'upcoming' }
+  { name:'Niagara Falls International Marathon', date:'October 25th 2026', status:'upcoming' },
+  { name:'Ironman 140.6 Ottawa - End Goal', date:'2027', status:'upcoming' }
 ]
 
 type Section = 'home'|'about'|'writing'|'projects'|'training'|'connect'
 
-/* ─── WAVE CANVAS — barely there ────────────────────────────── */
+/* ─── WAVE CANVAS ────────────────────────────────────────────── */
 function WaveCanvas({ dark }: { dark:boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const mouse     = useRef({ x:0.5, y:0.5, tx:0.5, ty:0.5 })
@@ -156,7 +292,6 @@ function WaveCanvas({ dark }: { dark:boolean }) {
     window.addEventListener('mousemove', onMove)
     window.addEventListener('touchmove', onTouch, {passive:true})
 
-    // Two extremely subtle swells
     const SWELLS = [
       { yFrac:0.55, amp:18, freq:0.00070, spd:0.0012, phase:0.0 },
       { yFrac:0.75, amp:12, freq:0.00095, spd:0.0018, phase:2.2 },
@@ -314,7 +449,6 @@ function HomeSection({dark,onNav}:{dark:boolean;onNav:(s:Section)=>void}) {
 
   return (
     <Sec>
-      {/* Status */}
       <motion.div {...s(0)} className="flex items-center gap-2.5 mb-12">
         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"/>
         <span className={`text-[11px] tracking-[0.12em] uppercase font-mono ${dark?'text-white/30':'text-black/30'}`}>
@@ -322,7 +456,6 @@ function HomeSection({dark,onNav}:{dark:boolean;onNav:(s:Section)=>void}) {
         </span>
       </motion.div>
 
-      {/* Hero */}
       <motion.h1 {...s(1)} className={`font-mono text-3xl sm:text-4xl md:text-[42px] leading-[1.15] mb-6 tracking-tight ${dark?'text-white':'text-black'}`}>
         Arjun Dindigal
       </motion.h1>
@@ -332,7 +465,6 @@ function HomeSection({dark,onNav}:{dark:boolean;onNav:(s:Section)=>void}) {
         Building the intersection of intelligent software and physical hardware.
       </motion.p>
 
-      {/* Skills */}
       <motion.div {...s(3)} className="mb-20">
         <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-4 ${dark?'text-white/20':'text-black/20'}`}>Skills</p>
         <div className="flex flex-wrap gap-x-4 gap-y-2">
@@ -345,7 +477,6 @@ function HomeSection({dark,onNav}:{dark:boolean;onNav:(s:Section)=>void}) {
         </div>
       </motion.div>
 
-      {/* Experience — prominent table layout */}
       <motion.div {...s(4)}>
         <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-6 ${dark?'text-white/25':'text-black/25'}`}>Experience</p>
         <div className={`border-t ${dark?'border-white/8':'border-black/8'}`}>
@@ -354,7 +485,6 @@ function HomeSection({dark,onNav}:{dark:boolean;onNav:(s:Section)=>void}) {
               <button onClick={()=>setOpenId(openId===exp.id?null:exp.id)} data-hover
                 className={`w-full border-b text-left transition-all duration-150 ${dark?'border-white/8 hover:bg-white/2':'border-black/8 hover:bg-black/2'}`}>
                 <div className="py-5 flex items-start justify-between gap-6">
-                  {/* Left: logo + role */}
                   <div className="flex items-center gap-4 min-w-0">
                     <div className={`w-8 h-8 flex-shrink-0 flex items-center justify-center overflow-hidden ${dark?'bg-white/5':'bg-black/5'}`}>
                       <img
@@ -373,7 +503,6 @@ function HomeSection({dark,onNav}:{dark:boolean;onNav:(s:Section)=>void}) {
                       <p className={`text-[11px] font-mono mt-0.5 ${dark?'text-white/35':'text-black/35'}`}>{exp.company}</p>
                     </div>
                   </div>
-                  {/* Right: date + location */}
                   <div className="text-right flex-shrink-0 hidden sm:block">
                     <p className={`text-[11px] font-mono ${dark?'text-white/25':'text-black/25'}`}>{exp.date}</p>
                     <p className={`text-[11px] font-mono mt-0.5 ${dark?'text-white/20':'text-black/20'}`}>{exp.location}</p>
@@ -382,7 +511,6 @@ function HomeSection({dark,onNav}:{dark:boolean;onNav:(s:Section)=>void}) {
                 </div>
               </button>
 
-              {/* Expanded bullets */}
               <div className={`drawer ${openId===exp.id?'open':''}`}>
                 <div className="drawer-inner">
                   <div className={`py-5 px-12 border-b ${dark?'border-white/5':'border-black/5'}`}>
@@ -437,7 +565,6 @@ function AboutSection({dark}:{dark:boolean}) {
         principles, building working prototypes, and refining through testing and failure.
       </p>
 
-      {/* Info rows */}
       <div className={`border-t ${dark?'border-white/8':'border-black/8'} mb-14`}>
         {cards.map((c,i)=>(
           <motion.div key={c.label} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:i*0.06}}
@@ -457,29 +584,19 @@ function AboutSection({dark}:{dark:boolean}) {
         </div>
       </div>
 
-     {/* Photos */}
-<div className="mb-14">
-  <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-5 ${dark?'text-white/20':'text-black/20'}`}>
-    Photos
-  </p>
-
-  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-    {[1,2,3,4,5,6].map(n => (
-      <div
-        key={n}
-        className={`aspect-square overflow-hidden ${dark?'bg-white/4':'bg-black/4'}`}
-      >
-        <img
-          src={`/images/photo${n}.jpg`}
-          alt={`Photo ${n}`}
-          className="w-full h-full object-cover"
-        />
+      <div className="mb-14">
+        <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-5 ${dark?'text-white/20':'text-black/20'}`}>
+          Photos
+        </p>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+          {[1,2,3,4,5,6].map(n => (
+            <div key={n} className={`aspect-square overflow-hidden ${dark?'bg-white/4':'bg-black/4'}`}>
+              <img src={`/images/photo${n}.jpg`} alt={`Photo ${n}`} className="w-full h-full object-cover"/>
+            </div>
+          ))}
+        </div>
       </div>
-    ))}
-  </div>
-</div>
 
-      {/* Interests */}
       <div>
         <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-4 ${dark?'text-white/20':'text-black/20'}`}>Interests</p>
         <div className="flex flex-wrap gap-x-5 gap-y-2">
@@ -499,108 +616,44 @@ function WritingSection({dark}:{dark:boolean}) {
   return (
     <Sec>
       <Label dark={dark}>Writing</Label>
-
-      <h1 className={`font-mono text-3xl md:text-4xl leading-[1.2] mb-14 ${
-        dark ? 'text-white' : 'text-black'
-      }`}>
+      <h1 className={`font-mono text-3xl md:text-4xl leading-[1.2] mb-14 ${dark ? 'text-white' : 'text-black'}`}>
         Reflecting
       </h1>
-
       <div className={`border-t ${dark?'border-white/8':'border-black/8'}`}>
         {WRITING_POSTS.map((post, index) => {
           const open = openId === post.id
           const paragraphs = post.content.split('\n\n').filter(Boolean)
-
           return (
-            <motion.div
-              key={post.id}
-              initial={{opacity:0,y:8}}
-              animate={{opacity:1,y:0}}
-              transition={{delay:index * 0.05}}
-            >
-              <button
-                data-hover
-                onClick={() => setOpenId(open ? null : post.id)}
-                className={`w-full border-b text-left py-7 transition-all duration-150 ${
-                  dark
-                    ? 'border-white/8 hover:bg-white/2'
-                    : 'border-black/8 hover:bg-black/2'
-                }`}
-              >
+            <motion.div key={post.id} initial={{opacity:0,y:8}} animate={{opacity:1,y:0}} transition={{delay:index * 0.05}}>
+              <button data-hover onClick={() => setOpenId(open ? null : post.id)}
+                className={`w-full border-b text-left py-7 transition-all duration-150 ${dark?'border-white/8 hover:bg-white/2':'border-black/8 hover:bg-black/2'}`}>
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-4 mb-3">
-                      <span className={`text-[10px] tracking-[0.15em] uppercase font-mono ${
-                        dark ? 'text-white/25' : 'text-black/25'
-                      }`}>
-                        {post.date}
-                      </span>
-
-                      <span className={`text-[10px] tracking-[0.1em] uppercase font-mono ${
-                        dark ? 'text-white/20' : 'text-black/20'
-                      }`}>
-                        {post.cat}
-                      </span>
+                      <span className={`text-[10px] tracking-[0.15em] uppercase font-mono ${dark?'text-white/25':'text-black/25'}`}>{post.date}</span>
+                      <span className={`text-[10px] tracking-[0.1em] uppercase font-mono ${dark?'text-white/20':'text-black/20'}`}>{post.cat}</span>
                     </div>
-
-                    <h2 className={`font-mono text-xl md:text-2xl ${
-                      dark ? 'text-white' : 'text-black'
-                    }`}>
-                      {post.title}
-                    </h2>
-
+                    <h2 className={`font-mono text-xl md:text-2xl ${dark?'text-white':'text-black'}`}>{post.title}</h2>
                     {!open && (
-                      <p className={`text-sm mt-2 font-mono ${
-                        dark ? 'text-white/30' : 'text-black/30'
-                      }`}>
+                      <p className={`text-sm mt-2 font-mono ${dark?'text-white/30':'text-black/30'}`}>
                         {paragraphs[0]?.slice(0, 100)}…
                       </p>
                     )}
                   </div>
-
-                  <motion.span
-                    animate={{rotate:open?180:0}}
-                    transition={{duration:0.25}}
-                    className={`text-sm flex-shrink-0 mt-1 font-mono ${
-                      dark ? 'text-white/20' : 'text-black/20'
-                    }`}
-                  >
-                    ↓
-                  </motion.span>
+                  <motion.span animate={{rotate:open?180:0}} transition={{duration:0.25}}
+                    className={`text-sm flex-shrink-0 mt-1 font-mono ${dark?'text-white/20':'text-black/20'}`}>↓</motion.span>
                 </div>
               </button>
-
               <AnimatePresence>
                 {open && (
-                  <motion.div
-                    initial={{opacity:0,height:0}}
-                    animate={{opacity:1,height:'auto'}}
-                    exit={{opacity:0,height:0}}
-                    transition={{duration:0.35,ease:[0.23,1,0.32,1]}}
-                    className="overflow-hidden"
-                  >
-                    <div className={`py-7 space-y-5 border-b ${
-                      dark ? 'border-white/8' : 'border-black/8'
-                    }`}>
+                  <motion.div initial={{opacity:0,height:0}} animate={{opacity:1,height:'auto'}} exit={{opacity:0,height:0}}
+                    transition={{duration:0.35,ease:[0.23,1,0.32,1]}} className="overflow-hidden">
+                    <div className={`py-7 space-y-5 border-b ${dark?'border-white/8':'border-black/8'}`}>
                       {paragraphs.map((para,i)=>(
-                        <p
-                          key={i}
-                          className={`text-sm leading-relaxed font-mono ${
-                            dark ? 'text-white/50' : 'text-black/50'
-                          }`}
-                        >
-                          {para}
-                        </p>
+                        <p key={i} className={`text-sm leading-relaxed font-mono ${dark?'text-white/50':'text-black/50'}`}>{para}</p>
                       ))}
-
-                      <button
-                        onClick={()=>setOpenId(null)}
-                        className={`text-[10px] tracking-[0.12em] uppercase font-mono mt-2 ${
-                          dark
-                            ? 'text-white/20 hover:text-white/50'
-                            : 'text-black/20 hover:text-black/50'
-                        }`}
-                      >
+                      <button onClick={()=>setOpenId(null)}
+                        className={`text-[10px] tracking-[0.12em] uppercase font-mono mt-2 ${dark?'text-white/20 hover:text-white/50':'text-black/20 hover:text-black/50'}`}>
                         ↑ Collapse
                       </button>
                     </div>
@@ -616,54 +669,174 @@ function WritingSection({dark}:{dark:boolean}) {
 }
 
 /* ─── 3D PRINTS GALLERY ─────────────────────────────────────── */
-function PrintsGallery({dark,onClose}:{dark:boolean;onClose:()=>void}) {
-  const [selected,setSelected] = useState<typeof PRINTS[0]|null>(null)
+function PrintsGallery({ dark, onClose }: { dark: boolean; onClose: () => void }) {
+  const [selected, setSelected] = useState<typeof PRINTS[0] | null>(null)
+  const [imgIdx, setImgIdx] = useState(0)
+  const [failedImgs, setFailed] = useState<Set<number>>(new Set())
+
+  const openPart = (pr: typeof PRINTS[0]) => {
+    setSelected(pr)
+    setImgIdx(0)
+    setFailed(new Set())
+  }
+
+  const closePart = () => setSelected(null)
+
+  const prev = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    if (!selected) return
+    setImgIdx(i => (i - 1 + selected.imgs.length) % selected.imgs.length)
+  }
+
+  const next = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    if (!selected) return
+    setImgIdx(i => (i + 1) % selected.imgs.length)
+  }
+
   return (
-    <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       className="fixed inset-0 z-[200] overflow-y-auto"
-      style={{background:dark?'rgba(8,8,8,0.98)':'rgba(248,247,244,0.98)',backdropFilter:'blur(20px)'}}>
+      style={{ background: dark ? 'rgba(8,8,8,0.98)' : 'rgba(248,247,244,0.98)', backdropFilter: 'blur(20px)' }}
+    >
       <div className="max-w-[860px] mx-auto px-6 md:px-10 py-14">
         <div className="flex items-start justify-between mb-12 gap-4">
           <div>
-            <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-3 ${dark?'text-white/25':'text-black/25'}`}>Gallery</p>
-            <h2 className={`font-mono text-3xl ${dark?'text-white':'text-black'}`}>3D Printed & Made</h2>
+            <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-3 ${dark ? 'text-white/25' : 'text-black/25'}`}>Gallery</p>
+            <h2 className={`font-mono text-3xl ${dark ? 'text-white' : 'text-black'}`}>3D Printed & Made</h2>
           </div>
-          <button data-hover onClick={onClose} className={`text-[10px] tracking-[0.15em] uppercase font-mono transition-all duration-150 ${dark?'text-white/30 hover:text-white/70':'text-black/30 hover:text-black/70'}`}>← Back</button>
+          <button
+            data-hover
+            onClick={onClose}
+            className={`text-[10px] tracking-[0.15em] uppercase font-mono transition-all duration-150 ${dark ? 'text-white/30 hover:text-white/70' : 'text-black/30 hover:text-black/70'}`}
+          >
+            ← Back
+          </button>
         </div>
+
+        {/* Grid of parts */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-          {PRINTS.map((pr,i)=>(
-            <motion.div key={pr.id} initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:i*0.05}}
-              data-hover onClick={()=>setSelected(pr)}
-              className={`cursor-pointer group transition-all duration-150 ${dark?'hover:bg-white/3':'hover:bg-black/3'}`}>
-              <div className={`aspect-[4/3] overflow-hidden mb-3 ${dark?'bg-white/4':'bg-black/4'}`}>
-                <div className={`w-full h-full flex items-center justify-center ${dark?'text-white/15':'text-black/15'}`}>
-                  <span className="text-[10px] tracking-widest uppercase font-mono">Add photo</span>
-                </div>
+          {PRINTS.map((pr, i) => (
+            <motion.div
+              key={pr.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.05 }}
+              data-hover
+              onClick={() => openPart(pr)}
+              className={`cursor-pointer group transition-all duration-150 ${dark ? 'hover:bg-white/3' : 'hover:bg-black/3'}`}
+            >
+              <div className={`aspect-[4/3] overflow-hidden mb-3 relative ${dark ? 'bg-white/4' : 'bg-black/4'}`}>
+                {pr.imgs[0] ? (
+                  <img
+                    src={pr.imgs[0]}
+                    alt={pr.name}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                    onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
+                  />
+                ) : (
+                  <div className={`w-full h-full flex items-center justify-center ${dark ? 'text-white/15' : 'text-black/15'}`}>
+                    <span className="text-[10px] tracking-widest uppercase font-mono">Add photo</span>
+                  </div>
+                )}
+                {pr.imgs.length > 1 && (
+                  <span className={`absolute bottom-2 right-2 text-[9px] font-mono px-1.5 py-0.5 ${dark ? 'bg-black/60 text-white/50' : 'bg-white/70 text-black/50'}`}>
+                    {pr.imgs.length} photos
+                  </span>
+                )}
               </div>
-              <p className={`text-sm font-mono mb-1 ${dark?'text-white':'text-black'}`}>{pr.name}</p>
-              <p className={`text-[10px] tracking-[0.08em] uppercase font-mono ${dark?'text-white/25':'text-black/25'}`}>{pr.material}</p>
+              <p className={`text-sm font-mono mb-1 ${dark ? 'text-white' : 'text-black'}`}>{pr.name}</p>
+              <p className={`text-[10px] tracking-[0.08em] uppercase font-mono ${dark ? 'text-white/25' : 'text-black/25'}`}>{pr.material}</p>
             </motion.div>
           ))}
         </div>
       </div>
+
+      {/* Detail modal with slideshow */}
       <AnimatePresence>
-        {selected&&(
-          <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}
+        {selected && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             className="fixed inset-0 z-[300] flex items-center justify-center p-6"
-            style={{background:'rgba(0,0,0,0.85)',backdropFilter:'blur(8px)'}} onClick={()=>setSelected(null)}>
-            <motion.div initial={{scale:0.96,opacity:0}} animate={{scale:1,opacity:1}} exit={{scale:0.96,opacity:0}}
-              onClick={e=>e.stopPropagation()}
-              className={`max-w-md w-full overflow-hidden ${dark?'bg-[#0a0a0a] border border-white/8':'bg-[#f8f7f4] border border-black/8'}`}>
-              <div className={`aspect-[4/3] ${dark?'bg-white/4':'bg-black/4'}`}>
-                <div className={`w-full h-full flex items-center justify-center ${dark?'text-white/15':'text-black/15'}`}>◆</div>
+            style={{ background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(8px)' }}
+            onClick={closePart}
+          >
+            <motion.div
+              initial={{ scale: 0.96, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.96, opacity: 0 }}
+              onClick={e => e.stopPropagation()}
+              className={`max-w-md w-full overflow-hidden ${dark ? 'bg-[#0a0a0a] border border-white/8' : 'bg-[#f8f7f4] border border-black/8'}`}
+            >
+              {/* Slideshow */}
+              <div className="relative bg-black" style={{ aspectRatio: '4/3' }}>
+                <AnimatePresence mode="wait">
+                  {failedImgs.has(imgIdx) ? (
+                    <motion.div
+                      key={`fallback-${imgIdx}`}
+                      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                      className="w-full h-full flex flex-col items-center justify-center gap-2"
+                      style={{ color: 'rgba(255,255,255,0.15)' }}
+                    >
+                      <span className="text-lg font-mono">◆</span>
+                      <span className="text-[9px] tracking-[0.15em] uppercase font-mono">Photo not found</span>
+                    </motion.div>
+                  ) : (
+                    <motion.img
+                      key={imgIdx}
+                      src={selected.imgs[imgIdx]}
+                      alt={`${selected.name} ${imgIdx + 1}`}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+                      className="w-full h-full object-cover"
+                      onError={() => setFailed(prev => new Set(prev).add(imgIdx))}
+                    />
+                  )}
+                </AnimatePresence>
+
+                {/* Nav arrows — only show if multiple images */}
+                {selected.imgs.length > 1 && (
+                  <>
+                    <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/60 text-white flex items-center justify-center text-sm hover:bg-black/80 transition-colors font-mono">‹</button>
+                    <button onClick={next} className="absolute right-10 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/60 text-white flex items-center justify-center text-sm hover:bg-black/80 transition-colors font-mono">›</button>
+                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                      {selected.imgs.map((_, i) => (
+                        <button
+                          key={i}
+                          onClick={e => { e.stopPropagation(); setImgIdx(i) }}
+                          className={`rounded-full transition-all duration-200 ${i === imgIdx ? 'w-4 h-1 bg-white' : 'w-1 h-1 bg-white/40 hover:bg-white/70'}`}
+                        />
+                      ))}
+                    </div>
+                    <div className="absolute top-3 right-10 text-[9px] font-mono text-white/50 bg-black/50 px-2 py-0.5">
+                      {imgIdx + 1}/{selected.imgs.length}
+                    </div>
+                  </>
+                )}
+
+                <button
+                  onClick={closePart}
+                  className="absolute top-3 right-3 w-7 h-7 flex items-center justify-center text-xs font-mono text-white/50 hover:text-white bg-black/50 transition-colors"
+                >
+                  ✕
+                </button>
               </div>
+
+              {/* Info */}
               <div className="p-6">
                 <div className="flex items-start justify-between mb-2">
-                  <h3 className={`font-mono text-lg ${dark?'text-white':'text-black'}`}>{selected.name}</h3>
-                  <button data-hover onClick={()=>setSelected(null)} className={`text-sm ml-4 font-mono ${dark?'text-white/25 hover:text-white/60':'text-black/25 hover:text-black/60'}`}>✕</button>
+                  <h3 className={`font-mono text-lg ${dark ? 'text-white' : 'text-black'}`}>{selected.name}</h3>
+                  <button data-hover onClick={closePart} className={`text-sm ml-4 font-mono ${dark ? 'text-white/25 hover:text-white/60' : 'text-black/25 hover:text-black/60'}`}>✕</button>
                 </div>
-                <p className={`text-[10px] tracking-[0.1em] uppercase font-mono mb-4 ${dark?'text-white/25':'text-black/25'}`}>{selected.material}</p>
-                <p className={`text-sm leading-relaxed font-mono ${dark?'text-white/45':'text-black/45'}`}>{selected.desc}</p>
+                <p className={`text-[10px] tracking-[0.1em] uppercase font-mono mb-4 ${dark ? 'text-white/25' : 'text-black/25'}`}>{selected.material}</p>
+                <p className={`text-sm leading-relaxed font-mono ${dark ? 'text-white/45' : 'text-black/45'}`}>{selected.desc}</p>
               </div>
             </motion.div>
           </motion.div>
@@ -775,14 +948,12 @@ function ProjectsSection({dark}:{dark:boolean}) {
         <Label dark={dark}>Projects</Label>
         <h1 className={`font-mono text-3xl md:text-4xl leading-[1.2] mb-14 ${dark?'text-white':'text-black'}`}>Things I've made.</h1>
 
-        {/* Table-style project list */}
         <div className={`border-t ${dark?'border-white/8':'border-black/8'}`}>
           {PROJECTS.map((p,i)=>(
             <motion.div key={p.id} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:i*0.07}}
               data-hover onClick={()=>handleClick(p)}
               className={`border-b cursor-pointer transition-all duration-150 group ${dark?'border-white/8 hover:bg-white/2':'border-black/8 hover:bg-black/2'}`}>
               <div className="py-5 flex items-center gap-5">
-                {/* Thumbnail */}
                 <div className={`w-16 h-12 flex-shrink-0 overflow-hidden ${dark?'bg-white/5':'bg-black/5'}`}>
                   {p.imgs?.[0]
                     ? <img src={p.imgs[0]} alt={p.name} className="w-full h-full object-cover"
@@ -790,12 +961,10 @@ function ProjectsSection({dark}:{dark:boolean}) {
                     : <div className={`w-full h-full flex items-center justify-center ${dark?'text-white/15':'text-black/15'}`}><span className="text-xs font-mono">◆</span></div>
                   }
                 </div>
-                {/* Info */}
                 <div className="flex-1 min-w-0">
                   <p className={`text-sm font-mono mb-1 ${dark?'text-white':'text-black'}`}>{p.name}</p>
                   <p className={`text-[11px] font-mono leading-snug ${dark?'text-white/30':'text-black/30'}`}>{p.desc}</p>
                 </div>
-                {/* Meta */}
                 <div className="hidden sm:flex flex-col items-end gap-1.5 flex-shrink-0">
                   <span className={`text-[10px] tracking-[0.08em] uppercase font-mono ${dark?'text-white/20':'text-black/20'}`}>{p.stat}</span>
                   {p.video && <span className={`text-[9px] font-mono ${dark?'text-white/20':'text-black/20'}`}>▷ video</span>}
@@ -834,7 +1003,6 @@ function TrainingSection({dark}:{dark:boolean}) {
         Obsessed with constant improvement — it keeps my headspace level.
       </p>
 
-      {/* Links as rows */}
       <div className={`border-t mb-14 ${dark?'border-white/8':'border-black/8'}`}>
         {externalLinks.map((l,i)=>(
           <motion.a key={l.label} href={l.href} target="_blank" rel="noreferrer" initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.1+i*0.06}} data-hover
@@ -848,7 +1016,6 @@ function TrainingSection({dark}:{dark:boolean}) {
         ))}
       </div>
 
-      {/* Golf */}
       <div className="mb-14">
         <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-6 ${dark?'text-white/20':'text-black/20'}`}>Golf</p>
         <div className="flex items-start gap-8 mb-8 flex-wrap">
@@ -866,7 +1033,6 @@ function TrainingSection({dark}:{dark:boolean}) {
         </div>
       </div>
 
-      {/* Ironman */}
       <div className="mb-14">
         <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-6 ${dark?'text-white/20':'text-black/20'}`}>Ironman Training</p>
         <div className={`border-t ${dark?'border-white/8':'border-black/8'}`}>
@@ -880,7 +1046,6 @@ function TrainingSection({dark}:{dark:boolean}) {
         </div>
       </div>
 
-      {/* Races */}
       <div>
         <p className={`text-[10px] tracking-[0.2em] uppercase font-mono mb-6 ${dark?'text-white/20':'text-black/20'}`}>Races</p>
         <div className={`border-t ${dark?'border-white/8':'border-black/8'}`}>
