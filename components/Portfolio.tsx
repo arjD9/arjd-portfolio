@@ -62,7 +62,7 @@ const PROJECTS = [
     id:'prints', name:'3D Printed & Manufactured Parts',
     desc:'A growing gallery of FDM/SLA and machined components. Tap to browse each part with its description.',
     detail:'An ongoing collection of parts designed and made across different projects — enclosures, jigs, brackets, and custom hardware. Materials range from PLA and ABS to engineering-grade PETG and SLA resin.',
-    imgs: ['/images/3dprints-1.jpg'],
+    imgs: ['/images/prints/tempsensor-01.jpg'],
     video: null as string | null,
     tags:['FDM','SLA','CNC','Fabrication'], stat:'Growing library', gallery:true,
   },
