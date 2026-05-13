@@ -699,7 +699,7 @@ function PrintsGallery({ dark, onClose }: { dark: boolean; onClose: () => void }
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className={`fixed inset-0 z-[200] ${selected ? 'overflow-hidden' : 'overflow-y-auto'}`}
+      className="fixed inset-0 z-[200] overflow-y-auto"
       style={{ background: dark ? 'rgba(8,8,8,0.98)' : 'rgba(248,247,244,0.98)', backdropFilter: 'blur(20px)' }}
     >
       <div className="max-w-[860px] mx-auto px-6 md:px-10 py-14">
