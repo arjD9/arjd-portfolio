@@ -518,8 +518,7 @@ function HomeSection({dark,onNav}:{dark:boolean;onNav:(s:Section)=>void}) {
                       <p className={`text-[11px] font-mono mt-0.5 ${dark?'text-white/35':'text-black/35'}`}>{exp.company}</p>
                     </div>
                   </div>
-                  <div className="text-right flex-shrink-0 hidden sm:block">
-                    <p className={`text-[11px] font-mono ${dark?'text-white/25':'text-black/25'}`}>{exp.date}</p>
+                  <div className="text-right flex-shrink-0 hidden sm:block w-36">                    <p className={`text-[11px] font-mono ${dark?'text-white/25':'text-black/25'}`}>{exp.date}</p>
                     <p className={`text-[11px] font-mono mt-0.5 ${dark?'text-white/20':'text-black/20'}`}>{exp.location}</p>
                   </div>
                   <span className={`text-xs flex-shrink-0 mt-1 transition-transform duration-200 ${openId===exp.id?'rotate-180':''} ${dark?'text-white/20':'text-black/20'}`}>↓</span>
