@@ -499,7 +499,7 @@ function HomeSection({dark,onNav}:{dark:boolean;onNav:(s:Section)=>void}) {
             <motion.div key={exp.id} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.3+i*0.08}}>
               <button onClick={()=>setOpenId(openId===exp.id?null:exp.id)} data-hover
                 className={`w-full border-b text-left transition-all duration-150 ${dark?'border-white/8 hover:bg-white/2':'border-black/8 hover:bg-black/2'}`}>
-                <div className="py-5 grid grid-cols-[minmax(0,1fr)_120px_20px] items-start gap-6">
+                <div className="py-5 flex items-start justify-between gap-6">
                   <div className="flex items-center gap-4 min-w-0">
                     <div className={`w-8 h-8 flex-shrink-0 flex items-center justify-center overflow-hidden ${dark?'bg-white/5':'bg-black/5'}`}>
                       <img
