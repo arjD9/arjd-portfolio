@@ -25,7 +25,7 @@ const EXPERIENCES = [
   id:'watonomous', 
   initials:'WA', 
   title:'Mechanical Engineer — Humanoid Team', 
-  company:'Watonomous', 
+  company:'WATonomous', 
   location:'Waterloo, ON', 
   date:'May 2026 – Present', 
   tags:['Mechanical Design','Robotics', 'ONshape', 'SolidWorks','Humanoid'], 
