@@ -237,61 +237,41 @@ const WRITING_POSTS = [
     date: '2024-2025',
     cat: '',
     content: `
-    Easily the best year of highschool. I set myself up pretty well to have a good year. I have been pretty chubby most of my life and I usually 
-    never cared to take care of it because I was playing so much hockey but in grade 11 I started taking the gym extremely seriously and I was able to lose 
-    40 pounds before getting into grade 12. I felt better, looked better, and I was a much more confident person in general and this year is where I became
-    much more outgoing. Due to the weight loss I became very quick and agile and I also started for football and won a couple awards and was a all star, one
-    of my best performing seasons across all my sports. That was a bit of a tangent but that weightloss really did contribute a lot to my happiness in grade
-    12 and I think it is what made me do well in school, sports, work and it is a really big factor in why I got into every program I applied to. 
-    
-    First Semester was super cool and I was just playing so much football and studying and working doing park maintenace for Conservation Halton. I fell in love
-    with physics because of my teacher Mr.Young who taught things with so much passion and effort that it lit a fire in me to go above and beyond to do well in his class.
-    I led a couple buisness clubs and my main one was DECA but some annoying stuff happened where finals for football and the DECA exam were on the same day at the same time.
-    Due to this me and my partner got split up and I got taken out of my event and basically kicked out of DECA because I raised the idea that I might not be able to take the exam.
-    Sadly in the end, we did not make finals so I was able to arrange a way to take the exam but I had to do a written event. DECA kind of got wasted but it was cool, me and my partner
-    made the most last minute case ever and we just took it as a year to have fun go to toronto and have fun with buddies. 
-    My grades were alright like everything relatively high but I got SMOKED in ENG4U for my midterm mark (85) because of some group project where one of our members
-    essentially did no work and we had to pull slack and it made the whole thing soooo bad. Lucklily, I was able to secure a 95 in the course in the end which was my highest english mark
-    in highschool and it came at absolute best time. I genuinely poured my heart and soul into the most useless projects ever and my final project especially which I spent days filming and
-    editing with my friends. 
-    After football ended there was a lot of sadness but I moved on and I had to there was just so much to do. I applied to so many programs almost 20, my biggest fear was not getting in anywehre
-    and it showed. I figured that if I were to drop 1200 on something it would be on school so I justfied it. What I did not expect was how many programs did not require a supp app which saved me 
-    so much time. I did UoFT so last minute because I knew I would never accept it even if I got it, but I spent all my time on Tron at Uw. I iterated and edited the same things over and over again
-    and I spent 3 months doing this and submitted a day before the due date and even then I was doubtful. I got offers in sem 1 at TMU, Carelton, Uottawa, and Guelph but these were never my goal
-    so I kept working hard and pushing to make my average as nice as possible. I was working as a ski instructor for the winter and I picked up a lot of shifts. Because I had seasonal jobs throughout
-    high school there was always a awkward 1-2 months where I did not do too much work so I was compensating for that and also just preparing for the amount of money I expected to spend on golf, food, christmas
-    and so many more things coming up. So I was working 5-6 times a week, going to the gym, studying for finals, and trying to get outside with friends as much as possible and also ski by myself outside of 
-    the job. Extremely safe to say that I took on wayyyy too much and it was hard going to the library to get 2 hours of studying in after a 4-9 right after school. I was on this schedule all of Jan which 
-    was finals and performance task time. It was so brutal but I got away with it and got 100s on most of my exams and I got all the marks I needed/wanted for the upcoming rounds of Uni. Now, in the middle of 
-    Jan something struck me. I always had a dream of going to Mcgill as I spent a lot of time as a kid in Montreal. So on a whim I applied to Mcgill for CE and it had no supp app which was nice. I remember waiting
-    for quite a while before I got offers from where I actually wanted and then out of nowhere while I was at work 2 weeks after I applied I got into Mcgill. This was a huge moment because I realized that my average
-    could be good enough for most of the places I applied to since Mcgill is purely average based. A couple weeks following this in the same week I got into Queens, Western, and Mac. I ended up getting everything
-    except Uoft and Waterloo. 
-    Second Semester was the best but the diet was sooo horrible and was spending less time in the gym but I was just living as best as I could. I knew I had to keep grades up till midterrms and I was taking chem 
-    calc and econ this sem so it was not exactly easy but I was looking out for chem since it was brutal at my highschool. Regardless I was able to get what I wished for gradewise by midterms. Before midterms it 
-    was still super chill and life was great and not too stressful. But post midterms, I showed up to tests on a hour of booklet review and a couple prayers, it was the best. I also liked the idea of testing 
-    my ability to pull stuff on the spot and actually recall. My usual method is hammering practice problems and review until I can almost recite a textbook to you and it was nice golfing the night before a
-    thermo test instead of sitting at my desk for hours on end. Senior assasin was super fun (I WON) and in general this year was so good. I went to Italy and france for a cruise 2 weeks before prom and it was such
-    a unreal trip. The main reason being that the day before I left on my way home from school while I ran a errand with my dad I GOT INTO WATERLOOOO. It was so nuts and I was ecstatic man. It was such a happy moment
-    especially since I doubted myself almost the whole year. Seeing all my cousins go to Waterloo and Ivy's and constantly being compared as a kid put so much pressure which my parents eased up on but in that moment
-    I realized I was capable too and I was going to program I have dreamt of for so long. Now I will say, my dream was UBC, Stanford, or CMU and I took SAT's and ACT's in grade 11 and did super well, but due to certain
-    pressures/people I was not able to apply. It is a big regret I have letting someonoe decide my future for me or make me feel bad for wanting to pursue my dreams and I definitely will never allow that to happen again.
-    I am hoping its relatively easy to assume what this is about but yea it was brutal. I coped with it by telling myself it was cost effective but looking back I wish I applied to just see if I would have gotten in. 
-    I would say it is one of the dumbest things I have ever done and if my parents knew the real reason I did not apply they would be extremly dissapointed especially since they warned me about this possibility with a girlfriend
-    but its cool. In the end I got my number one and I am exactly where I want to be in life. I hosted the prom party and rushed back from France to make prom and got my suit the night before. Prom party was hilarious and
-    I set a record for how many people could fit into my home (>150). I was lucky the only thing that broke was a toilet seat (I learnt how to replace a toilet seat the next morning.) 
-    All in all such a good year super fun and I made friends and best friends who I now consider people ill have in my life forever. Such a great time to be alive and I am so grateful for the experiences I had. I spent so much money
-    on golf, food, good times and looking back I dont regret a single thing and its rare to look back and say you would not have done anything differently but I wouldnt. I wish I took care of my diet a bit better but I figured it out
-    and I am all good now and it was all just so fun.
+Easily the best year of high school. I set myself up pretty well for it.
 
-    If you are reading this and wondering about admissions I have 3 pieces of advice. Grades. In Ontario your grades matter a lot and getting those mid 90s matter a lot especially when you are applying to programs which have over 50 percent
-    of the applicants with averages above 95. Get involved in school and try things and explore as much you can. Not only will this give you something to talk about on your supp apps and honestly stack your supp app but more importantly it will
-    help you figure out what you want to do with your life and program. Not to mention it will make highschool so much fun and let you meet so many people. Lastly, HAVE FUN. We normalize this whole grind mindset but you need to take time to enjoy
-    life and focus on your happiness and for most people that just does not lie in studying and constantly staying locked. You need to go out with your friends, pick up hobbies, and supplement all the hard work youre putting into school. I noticed
-    second sem when I was missing class and doing so much BS but school I was the happiest but when I sat down to study it was super effective and I was happy with that process more than when I was solely focused on school. Should you do this all time? NO.
-    But my point is that no matter where you are in your life especially grade 12 you need to destress and just chill out. In a year it will not matter and you can not change a thing. Uni admissions can be a lottery sometimes and it is important to put your
-    best in and then detach yourself from the outcome. If you dont get in it is okay, you will be okay and you will thrive no matter where you go with the right mindset. Take care of yourself and priortize your mental health and everything will follow. I wish
-    I am still learning this and figuring it out day by day but it is so valuable
+I had been on the heavier side for most of my life and never really focused on changing it, mainly because I was always playing hockey. In Grade 11, I finally started taking the gym seriously and ended up losing about 40 pounds before Grade 12. That change made a huge difference. I felt better, looked better, and became much more confident overall. I also became more outgoing. Physically, I got quicker and more agile, which carried into sports. I started in football, had one of my best seasons across all sports, and won a couple awards as an all-star. Looking back, that period was a major factor in my happiness in Grade 12, and I genuinely think it influenced how I performed in school, sports, and work—and even helped me get into every program I applied to.
+
+First semester was a great balance of football, studying, and working at Conservation Halton doing park maintenance. Around this time, I also developed a real interest in physics, largely because of my teacher Mr. Young, who taught with so much passion that it pushed me to go above and beyond in the course.
+
+I also got involved in a few business clubs, mainly DECA. Unfortunately, things got messy when football finals and the DECA exam ended up on the same day at the same time. Because of the conflict, I got pulled out of my event and, in the process, essentially lost my spot in DECA after raising concerns about not being able to write the exam. In the end, we didn’t make finals anyway, so I managed to take the written component. It didn’t go how I originally expected, but we still made the most of the year—especially at regionals in Toronto—treating it more as a fun experience with friends.
+
+Academically, things were solid overall. My midterm in ENG4U dropped to an 85 because of a group project where one member didn’t contribute, and the workload fell on the rest of us. That project dragged everything down. Luckily, I finished the course at a 95, which ended up being my highest English mark in high school. I put a lot of effort into the final project, spending days filming and editing with friends, and it paid off.
+
+After football ended, there was definitely a bit of a shift emotionally, but I stayed busy. I applied to almost 20 programs and was honestly worried about not getting in anywhere. I ended up putting most of my effort into Waterloo Tron and spent months refining my application before submitting it just before the deadline.
+
+I received early offers from TMU, Carleton, uOttawa, and Guelph, but I kept pushing because they weren’t my top choices. At the same time, I was working as a ski instructor, picking up a lot of shifts during the winter. That period got really intense—working 5–6 days a week, going to the gym, studying for finals, and still trying to have a social life. There were days where I’d go straight from school to a 4–9 shift and then try to squeeze in studying after. January especially was a grind.
+
+Then things started to shift. I applied to McGill on a whim since it was purely grade-based and I had a personal connection to Montreal. A couple weeks later, I got in while I was at work. That moment was huge for me because it gave me confidence in my average and my applications overall.
+
+Not long after, I also received offers from Queen’s, Western, and McMaster. By that point, I had gotten into everything except U of T and Waterloo.
+
+Second semester was easily the most fun, though my habits became more relaxed. My diet wasn’t great and I spent less time in the gym, but I tried to enjoy the moment as much as possible. Academically, I still made sure to stay on track until midterms in chem, calc, and econ. After midterms, things got a bit looser and I became more comfortable going into tests with minimal studying, relying more on recall and understanding than long hours of prep.
+
+Outside of school, senior assassin was a highlight (I won), and overall the semester felt like a mix of stress and freedom. Two weeks before prom, I went on a cruise through Italy and France, which was an unreal trip. The day before leaving, I found out I got into Waterloo, which made the entire experience even more meaningful.
+
+Waterloo meant a lot to me. Growing up, I was constantly compared to cousins who went there or to top schools, and there was always pressure attached to that. Getting in made me realize I was capable of reaching what I had worked toward.
+
+I had also once wanted to apply to schools like UBC, Stanford, and CMU and even wrote SATs and ACTs, but for a mix of external pressure and hesitation, I never followed through with those applications. That’s one regret I still think about—choosing not to try because of outside influence.
+
+Right before prom, I rushed back from France, picked up my suit the night before, and still managed to make it. I also hosted the prom party and ended up fitting over 150 people into my house. The only casualty was a broken toilet seat, which I learned how to replace the next morning.
+
+Overall, it was an incredible year. I built strong friendships, created lasting memories, and experienced a lot of growth. I don’t regret much. The only thing I might change is taking slightly better care of my diet at times, but even that worked itself out.
+
+If there’s any advice to take from this:
+
+Grades matter a lot in Ontario, especially for competitive programs where averages are extremely high.
+Get involved in things outside the classroom—it helps your applications, but more importantly, it helps you figure out who you are and what you want.
+And finally, don’t forget to enjoy it. The grind matters, but so does living your life. Balance is what makes the experience meaningful. In a year, most of the stress won’t matter anymore, but the memories will.
     
     `,
   },
