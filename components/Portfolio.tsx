@@ -245,15 +245,15 @@ function Gallery({ imgs, alt }: { imgs: string[]; alt: string }) {
   const step = (d: number) => setI(n => (n + d + imgs.length) % imgs.length)
   return (
     <div className="mb-10">
-      <div className="relative aspect-[3/2] overflow-hidden bg-[#211f1a]">
+      <div className="overflow-hidden bg-[#211f1a]">
         {bad.has(i) ? (
-          <div className={`flex h-full w-full items-center justify-center text-[12px] ${muted}`} style={S}>Photo not found</div>
+          <div className={`flex h-48 w-full items-center justify-center text-[12px] ${muted}`} style={S}>Photo not found</div>
         ) : (
           <img
             key={i}
             src={imgs[i]}
             alt={`${alt} ${i + 1}`}
-            className="fade h-full w-full object-cover"
+            className="fade block h-auto w-full"
             onError={() => setBad(prev => new Set(prev).add(i))}
           />
         )}
