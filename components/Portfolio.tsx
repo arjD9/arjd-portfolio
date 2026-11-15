@@ -12,7 +12,7 @@ const S = { fontFamily: 'var(--font-sans), system-ui, sans-serif' }
 
 const EMAIL = 'adindiga@uwaterloo.ca'
 const LINKEDIN = 'https://www.linkedin.com/in/arjundindigal'
-const RESUME = '/resume.pdf'
+const RESUME = '/Arjun Dindigal.pdf'
 
 type Experience = { id: string; company: string; role: string; year: string; date: string; location: string; bullets: string[] }
 
@@ -148,36 +148,46 @@ const PARTS: Item[] = [
 
 const PROJECTS: Item[] = [
   {
-    id: 'vex', name: 'Autonomous VEX Retrieval Bot', line: 'PID control, sensor fusion, custom chassis', meta: 'C++ · PID · Sensor fusion · CAD',
-    detail: 'Designed and built an autonomous robotic system for a school engineering project focused on solving a structured object retrieval scenario under constrained time and performance conditions. Led the mechanical design of the robot including a custom chassis, drivetrain architecture, and a mechanically actuated elevator system used for lifting and placing objects. Engineered gear ratios, torque transmission paths, and structural supports to ensure stable and repeatable motion during autonomous operation. Manufactured and assembled 8+ custom CAD-designed components, iterating on weight distribution, rigidity, and system layout to improve efficiency and reliability. Achieved 15% overall weight reduction through structural optimization while maintaining mechanical strength. Autonomous performance was supported through PID control and sensor fusion algorithms, resulting in 98% turn accuracy and 92% object retrieval success, with consistent performance across repeated test runs.',
+    id: 'vex', name: 'Autonomous VEX Retrieval Bot',
+    line: '15% mass reduction, 98% turn accuracy, 92% retrieval success',
+    meta: 'SolidWorks · FEA · Gear train design · Drivetrain · Mass optimization · PID · Sensor fusion · C++',
+    detail: 'Led the mechanical design of an autonomous retrieval robot built to acquire and place objects under tight time and performance constraints. The architecture was driven by a torque-versus-speed trade-off: I sized the drivetrain and elevator gear ratios against motor stall torque, target travel speed, and the lifted payload, then laid out the torque transmission path so loads went through supported shafts rather than cantilevered members. The custom chassis was iterated for stiffness-to-weight, with material removed from low-stress regions and kept around motor mounts, bearing supports, and the elevator column, achieving a 15% mass reduction without measurable loss of rigidity. Weight distribution and centre of gravity were tuned to keep traction consistent and prevent tipping during elevator extension. Over 8 custom components were designed in CAD, with hole patterns and shaft clearances toleranced for repeatable assembly and low-friction rotation. On the controls side, PID loops and sensor fusion closed the loop on motion, giving 98% turn accuracy and 92% retrieval success across repeated trials, and mechanical backlash and chassis flex were treated as controls-relevant error sources rather than tuned around.',
     imgs: ['/images/vex-01.jpg', '/images/vex-02.jpeg', '/images/vex-03.jpeg', '/images/vex-04.jpg', '/images/vex-05.jpg', '/images/vex-06.jpg', '/images/vex-07.jpg', '/images/vex-08.jpg', '/images/vex-09.jpg'],
     video: 'https://www.youtube.com/embed/U5MgGNN_4Jk?si=gar5LqpS8Pg7ZvK1',
   },
   {
-    id: 'cart', name: 'Reverse Engineered Regress Cart', line: '100+ kg production cart, redesigned with DFMA', meta: 'Siemens NX · SolidWorks · DFMA · GD&T',
-    detail: 'Reverse-engineered an industrial production cart used in a real operational environment and redesigned it using DFMA principles to reduce mechanical complexity, improve manufacturability, and enhance technician usability. Developed full CAD models in SolidWorks and Siemens NX, iterating through multiple design revisions focused on structural efficiency and ease of assembly. Produced detailed GD&T manufacturing drawings and worked directly with machinists to coordinate fabrication using waterjet cutting processes. The final system was a 100+ kg load-bearing cart that improved workflow efficiency by reducing assembly time, minimizing part count, and optimizing ergonomic interaction points for end users while maintaining structural integrity under industrial use conditions.',
+    id: 'cart', name: 'Reverse Engineered Regress Cart',
+    line: '100+ kg industrial cart rebuilt for manufacture: DFMA, waterjet-cut, GD&T-documented',
+    meta: 'SolidWorks · FEA · DFMA · GD&T · Tolerance stack-up · Waterjet · Weldment design',
+    detail: 'Reverse engineered a 100+ kg production cart in active use and redesigned it around DFMA to cut part count, assembly time, and fabrication cost. I measured the existing unit and rebuilt it in SolidWorks, then ran multiple revisions focused on load path, joint design, and ease of assembly. The redesign used waterjet-cut plate with self-locating tab-and-slot features, so parts register to each other during assembly and reduce reliance on fixturing and operator judgment. I accounted for waterjet kerf and edge taper when setting hole and slot tolerances, and called out critical datums and fits in GD&T manufacturing drawings so the machinists could produce parts that assembled first time. Fastener selection and joint layout were chosen to keep the structure serviceable. Ergonomics were treated as a design requirement: handle height and placement, wheel layout, and access points were set around technician use. I worked directly with the machine shop on nesting, material, and fabrication sequence, producing a cart with fewer parts, faster assembly, and structural integrity under industrial loading.',
     imgs: ['/images/cart-01.jpg', '/images/cart-02.jpg', '/images/cart-03.png', '/images/cart-04.jpg'],
     video: 'https://www.youtube.com/embed/2CA7vmuQ3vw',
   },
   {
-    id: 'gauge', name: 'Runout Gauge', line: 'Bearing-supported inspection gauge, deployed in production', meta: 'SolidWorks · FDM · Tolerance analysis',
-    detail: 'Designed a custom runout gauge for in-process quality inspection on the shop floor at Linamar, taking the project from initial SolidWorks CAD design through FDM rapid prototyping for fit and functional validation, followed by final machining in aluminum for production deployment. Iterated the design from an initial concept where rotation occurred directly on a gear surface to a refined bearing-supported puck and housing system, eliminating surface-induced vibration and improving rotational smoothness and measurement consistency. Developed approximately 8 custom components including structural housing, alignment features, and bearing interfaces, ensuring manufacturability through collaboration with tool room and shop floor machinists. Validated measurement repeatability by benchmarking against coordinate measuring machine (CMM) data, confirming high accuracy performance. Successfully deployed into production use, significantly improving inspection reliability and reducing per-part inspection time in a live manufacturing environment.',
+    id: 'gauge', name: 'Runout Gauge',
+    line: 'Bearing-supported inspection gauge, CMM-validated and deployed to production',
+    meta: 'SolidWorks · GD&T · Tolerance stack-up · Metrology · CMM correlation · Bearing fits · FDM prototyping · Machining',
+    detail: 'Designed an in-process runout gauge for the Linamar shop floor to replace a slower, less repeatable inspection method. The first concept rotated the part directly on a gear surface, which introduced surface-induced vibration and inconsistent readings. I redesigned it around a bearing-supported puck and housing, isolating rotation from the gear geometry and giving a smooth, repeatable datum axis. Roughly 8 custom components (housing, alignment features, bearing interfaces) were developed with the measurement chain in mind: bearing seat concentricity, datum alignment, and fit selection were controlled so the gauge\'s own error stayed a small fraction of the part tolerance it had to inspect. I prototyped in FDM to validate fit, ergonomics, and function cheaply before committing to metal, then machined the final version in aluminum for durability and dimensional stability on the floor, working with tool room machinists on manufacturability and achievable tolerances. Repeatability was verified by benchmarking against CMM data, and the gauge was deployed into live production, improving inspection reliability and cutting per-part inspection time.',
     imgs: ['/images/runout-01.jpeg', '/images/runout-02.jpeg', '/images/runout-03.jpg', '/images/runout-04.jpg', '/images/runout-05.jpg', '/images/runout-06.jpeg', '/images/runout-07.jpeg'],
     video: 'https://www.youtube.com/embed/CsTB8vzFzGU',
   },
   {
-    id: 'stairs', name: 'Welded Stairs', line: 'Load-tested industrial access structure', meta: 'SolidWorks weldments · Fabrication · Structural',
-    detail: 'Designed and iterated a welded steel stair and platform system to improve industrial line access, using SolidWorks weldments and sheet metal tools to develop multiple design configurations including straight, L-shaped, and platform-based layouts. Performed full structural layout from first principles, defining stringer geometry, tread bracket positioning, and load paths to ensure safe and ergonomic access between production areas. Produced detailed fabrication drawings and coordinated directly with the weldment team and shop floor personnel to support manufacturing and assembly of the final structure. While fabrication was executed by the welding team, led all CAD modeling, design iteration, and engineering documentation to ensure accuracy and manufacturability. The final structure was physically load-tested above expected design conditions, validated for structural integrity, and finished with protective primer and paint for long-term industrial use.',
+    id: 'stairs', name: 'Welded Stairs',
+    line: 'Welded steel access structure, designed from first principles and proof-loaded above design load',
+    meta: 'SolidWorks Weldments · FEA · Structural analysis · Weld design · Load path · Proof testing · Fabrication drawings',
+    detail: 'Designed a welded steel stair and platform system to give safe, ergonomic access to an industrial production line. I developed straight, L-shaped, and platform-based configurations in SolidWorks using weldment and sheet metal tools, comparing them on footprint, access, and material usage. The structural layout was done from first principles: stringer geometry, tread bracket spacing, and platform supports were sized by tracing the load path from tread to stringer to base, with attention to bending in the stringers and weld joint loading. Rise, run, and tread geometry were set for comfortable, repeatable stepping. I produced fabrication drawings with weld callouts, cut lists, and dimensioned assembly views, and coordinated with the weldment team on joint preparation, sequencing, and distortion control so the finished structure matched the model. The completed structure was physically load-tested above expected service conditions to validate it, then primed and painted for long-term corrosion protection in a plant environment.',
     imgs: ['/images/stairs-01.jpg', '/images/stairs-02.jpg', '/images/stairs-03.jpg', '/images/stairs-04.jpg', '/images/stairs-05.jpg', '/images/stairs-06.jpg', '/images/stairs-07.jpg', '/images/stairs-08.jpg', '/images/stairs-09.jpg', '/images/stairs-10.jpg', '/images/stairs-11.jpg'],
   },
   {
-    id: 'parts', name: 'Printed & Machined Parts', line: 'Fixtures, holders and replacements made on the shop floor',
-    detail: 'An ongoing collection of parts designed and made across different projects: enclosures, jigs, brackets, and custom hardware. Materials range from PLA and ABS to PETG, carbon fibre PLA, Delrin, aluminum and copper.',
+    id: 'parts', name: 'Printed & Machined Parts',
+    line: '12 production fixtures, holders, and rapid replacements across plastics and metals',
+    meta: 'SolidWorks · DFMA · Material selection · FDM · Manual mill & lathe · Fits & tolerances · Reverse engineering',
+    detail: 'A collection of fixtures, holders, and replacement components designed and made on the Linamar shop floor, each driven by a real production problem such as scrap, downtime, lost tooling, or operator handling. Material choice was part of each design: ABS where part temperatures required heat resistance, carbon fibre PLA and PETG where stiffness, wear, and durability mattered, Delrin for low-friction part handling, aluminum and copper for machined and weld-process components, and heat-treated 4140 steel where wear resistance was needed. Process selection followed the same logic: FDM for fast iteration and low-volume organizers, manual mill and lathe for functional hardware, with tolerances and fits chosen per part for press, snug, or clearance behaviour. Several parts were reverse engineered from failed or undocumented components to restore production quickly.',
     imgs: ['/images/prints/tempsensor-01.jpg'], parts: PARTS,
   },
 ]
 
-const TOOLKIT = 'SolidWorks (Weldments, Sheet Metal, PDM, FEA), Fusion 360, Onshape, Siemens NX, AutoCAD, Inventor, GD&T, DFMA, Machining, FDM/SLA, Fixture Design, Python, MATLAB, C/C++ (ESP32), Linux, Git, STM32, ROS'
+const TOOLKIT = 'SolidWorks (Weldments, Sheet Metal, PDM, FEA), Fusion 360, Onshape, AutoCAD, Inventor, GD&T, DFMA, Machining, FDM/SLA, Fixture Design, Python, MATLAB, C/C++ (ESP32), Linux, Git, STM32, ROS'
 const INTERESTS = 'Robotics, rocketry, manufacturing, triathlon, golf, lifting, photography'
 
 const GYM_TRACKER_URL = 'https://docs.google.com/spreadsheets/d/1n55fCkjTbq4fRDdX-duE-72flZUlar5hGinjMlM436Y/view?usp=sharing'
@@ -388,6 +398,7 @@ function Projects({ go }: { go: (s: Section) => void }) {
         <div className="fade">
           <Back label="Projects" onClick={() => { setProject(null); top() }} />
           <h1 className="mb-4 text-[38px] font-light leading-[1.1] tracking-tight" style={D}>{project.name}</h1>
+          {project.meta && <p className={`mb-6 text-[13px] ${muted}`} style={S}>{project.meta}</p>}
           <p className="mb-14 max-w-[520px] text-[14px] font-light leading-[1.8] text-[#c9c3b4]" style={S}>{project.detail}</p>
           <div className="grid grid-cols-2 gap-x-5 gap-y-9">
             {project.parts.map(p => (
