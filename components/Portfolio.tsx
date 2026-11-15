@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { Cormorant_Garamond, Inter } from 'next/font/google'
 
 const display = Cormorant_Garamond({ subsets: ['latin'], weight: ['300', '400', '500'], variable: '--font-display' })
@@ -273,45 +273,6 @@ function Detail({ item }: { item: Item }) {
   )
 }
 
-/* A small photo that trails the cursor while a project title is hovered (mouse devices only). */
-function HoverPreview({ src }: { src: string | null }) {
-  const box = useRef<HTMLDivElement>(null)
-  const pos = useRef({ x: 0, y: 0, tx: 0, ty: 0, init: false })
-  const [ok, setOk] = useState(true)
-  useEffect(() => { setOk(true) }, [src])
-  useEffect(() => {
-    if (!window.matchMedia('(hover: hover)').matches) return
-    let raf = 0
-    const move = (e: MouseEvent) => {
-      const p = pos.current
-      p.tx = e.clientX; p.ty = e.clientY
-      if (!p.init) { p.x = e.clientX; p.y = e.clientY; p.init = true }
-    }
-    const tick = () => {
-      const p = pos.current
-      p.x += (p.tx - p.x) * 0.12
-      p.y += (p.ty - p.y) * 0.12
-      if (box.current) box.current.style.transform = `translate3d(${p.x + 28}px, ${p.y - 90}px, 0)`
-      raf = requestAnimationFrame(tick)
-    }
-    window.addEventListener('mousemove', move)
-    tick()
-    return () => { window.removeEventListener('mousemove', move); cancelAnimationFrame(raf) }
-  }, [])
-  return (
-    <div
-      ref={box}
-      aria-hidden
-      className="pointer-events-none fixed left-0 top-0 z-40 hidden md:block"
-      style={{ opacity: src && ok ? 1 : 0, transition: 'opacity .25s ease' }}
-    >
-      <div className="h-[150px] w-[220px] overflow-hidden bg-[#211f1a]">
-        {src && <img src={src} alt="" className="h-full w-full object-cover" onError={() => setOk(false)} />}
-      </div>
-    </div>
-  )
-}
-
 /* ─── HOME ──────────────────────────────────────────────────── */
 
 function Home({ go }: { go: (s: Section) => void }) {
@@ -408,7 +369,6 @@ function About({ go }: { go: (s: Section) => void }) {
 function Projects({ go }: { go: (s: Section) => void }) {
   const [project, setProject] = useState<Item | null>(null)
   const [part, setPart] = useState<Item | null>(null)
-  const [hover, setHover] = useState<string | null>(null)
   const top = () => window.scrollTo({ top: 0 })
 
   // Level 3: a single part
@@ -461,14 +421,11 @@ function Projects({ go }: { go: (s: Section) => void }) {
     <div className="fade">
       <Back label="Arjun Dindigal" onClick={() => go('home')} />
       <h1 className="mb-12 text-[38px] font-light leading-[1.1] tracking-tight" style={D}>Projects</h1>
-      <HoverPreview src={hover} />
       <div>
         {PROJECTS.map(p => (
           <button
             key={p.id}
-            onClick={() => { setHover(null); setProject(p); top() }}
-            onMouseEnter={() => setHover(p.imgs[0] ?? null)}
-            onMouseLeave={() => setHover(null)}
+            onClick={() => { setProject(p); top() }}
             className="group block w-full py-3 text-left"
           >
             <span className="block text-[22px] font-normal leading-tight transition-opacity duration-200 group-hover:opacity-50" style={D}>{p.name}</span>
@@ -556,7 +513,7 @@ function Training({ go }: { go: (s: Section) => void }) {
         </div>
         <div className="aspect-video bg-black">
           <iframe
-            src="https://www.youtube.com/embed/iriOazO32T0"
+            src="https://www.youtube.com/embed/4KbalLxFi04"
             title="Golf"
             className="h-full w-full"
             style={{ border: 0 }}
