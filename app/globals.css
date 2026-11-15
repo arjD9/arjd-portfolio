@@ -1,111 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --font-display: 'DM Serif Display', Georgia, serif;
-  --font-body:    'DM Sans', sans-serif;
-  --font-mono:    'DM Mono', monospace;
-}
 
 * { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
-  cursor: none;
+  background: #14130f;
 }
 
 body {
-  font-family: var(--font-body);
+  background: #14130f;
+  color: #ece6d8;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-/* Custom cursor */
-.cursor-dot {
-  width: 8px;
-  height: 8px;
-  background: currentColor;
-  border-radius: 50%;
-  position: fixed;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.15s ease, opacity 0.2s;
-  mix-blend-mode: difference;
-}
-
-.cursor-ring {
-  width: 36px;
-  height: 36px;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  position: fixed;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 9998;
-  transition: transform 0.08s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s;
-  mix-blend-mode: difference;
-  transform: translate(-50%, -50%);
-}
-
-.cursor-ring.hovered {
-  width: 64px;
-  height: 64px;
-  opacity: 0.6;
-}
-
-/* Selection */
 ::selection {
-  background: rgba(100, 100, 90, 0.2);
+  background: #ece6d8;
+  color: #14130f;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(100,100,90,0.3); border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: rgba(236, 230, 216, 0.2); border-radius: 2px; }
 
-/* Skill tag hover shimmer */
-@keyframes shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position:  200% center; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
-
-.shimmer-tag:hover {
-  background-image: linear-gradient(90deg,
-    transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
-  background-size: 200% auto;
-  animation: shimmer 1.2s linear infinite;
-}
-
-/* Nav active underline draw */
-.nav-underline {
-  position: relative;
-}
-.nav-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -2px; left: 0;
-  width: 0; height: 1px;
-  background: currentColor;
-  transition: width 0.3s ease;
-}
-.nav-underline.active::after,
-.nav-underline:hover::after { width: 100%; }
-
-/* Magnetic button base */
-.magnetic { display: inline-block; transition: transform 0.3s cubic-bezier(.23,1,.32,1); }
-
-/* grain class kept for compatibility but does nothing — grain removed */
-.grain::before { display: none; }
-
-/* Accordion drawer */
-.drawer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.38s ease; }
-.drawer.open { grid-template-rows: 1fr; }
-.drawer-inner { overflow: hidden; }
-
-/* Project card image hover */
-.proj-img { overflow: hidden; }
-.proj-img img { transition: transform 0.5s cubic-bezier(.23,1,.32,1); }
-.proj-img:hover img { transform: scale(1.06); }
