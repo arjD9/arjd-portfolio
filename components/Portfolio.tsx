@@ -12,7 +12,7 @@ const S = { fontFamily: 'var(--font-sans), system-ui, sans-serif' }
 
 const EMAIL = 'adindiga@uwaterloo.ca'
 const LINKEDIN = 'https://www.linkedin.com/in/arjundindigal'
-const RESUME = '/Arjun Dindigal.pdf'
+const RESUME = '/Arjun%20Dindigal.pdf'
 
 type Experience = { id: string; company: string; role: string; year: string; date: string; location: string; bullets: string[] }
 
@@ -74,6 +74,7 @@ type Item = {
   name: string
   line: string
   meta?: string
+  status?: string
   detail: string
   imgs: string[]
   video?: string | null
@@ -147,6 +148,14 @@ const PARTS: Item[] = [
 ]
 
 const PROJECTS: Item[] = [
+  {
+    id: 'tendon', name: 'Tendon-Driven Robotic Forearm & Hand',
+    line: 'Forearm-mounted actuation, independently actuated fingers, in active development',
+    status: 'In progress · Oct 2026 – Present',
+    meta: 'SolidWorks · FEA · ESP32 · MATLAB · Tendon routing · Transmission design · Actuator packaging · Additive manufacturing',
+    detail: 'An ongoing project to design a tendon-driven robotic forearm and hand with actuation housed in the forearm and independently actuated fingers. Moving the actuators out of the hand keeps the distal mass and envelope small, but it makes the tendon transmission the central design problem: routing paths, pulley and guide geometry, and joint stops all determine how much force actually reaches the fingertip. I am developing the tendon-routing, joint-stop, and actuator-packaging architectures in SolidWorks, using additive manufacturing to iterate quickly on guide features, joint geometry, and the forearm layout. Mechanisms are being validated through iterative prototyping, grasp testing, and transmission-performance evaluation, with FEA used on load-bearing components and MATLAB used to analyze the transmission. An ESP32 handles actuator control for testing. Results, CAD renders, and test footage will be added here as the project progresses.',
+    imgs: [],
+  },
   {
     id: 'vex', name: 'Autonomous VEX Retrieval Bot',
     line: '15% mass reduction, 98% turn accuracy, 92% retrieval success',
@@ -264,6 +273,7 @@ function Detail({ item }: { item: Item }) {
   return (
     <div className="fade">
       <h1 className="mb-2 text-[38px] font-light leading-[1.1] tracking-tight" style={D}>{item.name}</h1>
+      {item.status && <p className={`mb-1 text-[12px] uppercase tracking-[0.16em] ${muted}`} style={S}>{item.status}</p>}
       {item.meta && <p className={`mb-10 text-[13px] ${muted}`} style={S}>{item.meta}</p>}
       <Gallery key={item.id} imgs={item.imgs} alt={item.name} />
       {item.video && (
@@ -440,7 +450,9 @@ function Projects({ go }: { go: (s: Section) => void }) {
             className="group block w-full py-3 text-left"
           >
             <span className="block text-[22px] font-normal leading-tight transition-opacity duration-200 group-hover:opacity-50" style={D}>{p.name}</span>
-            <span className={`block text-[12px] font-light ${muted}`} style={S}>{p.line}</span>
+            <span className={`block text-[12px] font-light ${muted}`} style={S}>
+              {p.status ? `${p.status} · ` : ''}{p.line}
+            </span>
           </button>
         ))}
       </div>
